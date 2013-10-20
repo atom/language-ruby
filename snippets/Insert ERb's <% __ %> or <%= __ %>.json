@@ -1,0 +1,6 @@
+{
+  "content": "<%= ${0:$TM_SELECTED_TEXT} %>",
+  "keyEquivalent": "^>",
+  "name": "Insert ERb’s <% .. %> or <%= .. %>",
+  "scope": "text.html.erb, source.yaml"
+}

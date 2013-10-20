@@ -1,0 +1,8 @@
+{
+  "beforeRunningCommand": "saveActiveFile",
+  "command": "if (( ${#TM_PROJECT_DIRECTORY} != 0 )); then\n    cd \"$TM_PROJECT_DIRECTORY\"\n    output=\"`basename \"$TM_PROJECT_DIRECTORY\"`\"\n    input=\".\"\nelse\n    cd \"$TM_DIRECTORY\"\n    output=\"$TM_FILENAME\"\n    input=\"$TM_FILENAME\"\nfi\n\noutput_dir=\"/tmp/rdoc_${output}\"\n\nrm -rf \"${output_dir}\"\n\nrdoc -S -N -q -f html --op \"${output_dir}\" \"$input\" &>/dev/null\n\necho \"<html><head><meta http-equiv=\\\"refresh\\\" content=\\\"0;URL=file://${output_dir}/index.html\\\"></head></html>\"\n",
+  "input": "none",
+  "name": "Show for Current File / Project",
+  "output": "showAsHTML",
+  "scope": "source.ruby"
+}

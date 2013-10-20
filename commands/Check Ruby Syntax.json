@@ -1,0 +1,9 @@
+{
+  "beforeRunningCommand": "nop",
+  "command": "#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby\nrequire ENV['TM_SUPPORT_PATH'] + '/lib/textmate'\nputs `\"${TM_RUBY:=ruby}\" -e'puts \"Using ruby-\" + RUBY_VERSION.to_s'`\nresult = `\"${TM_RUBY:=ruby}\" -wc 2>&1`\nputs result\nTextMate.go_to :line => $1 if result =~ /-:(\\d+):/\n",
+  "input": "document",
+  "keyEquivalent": "^V",
+  "name": "Validate Syntax",
+  "output": "showAsTooltip",
+  "scope": "source.ruby"
+}

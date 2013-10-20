@@ -1,0 +1,6 @@
+{
+  "content": "File.open(${1:\"${2:path/to/file}.dump\"}, \"rb\") { |${3:file}| Marshal.load(${3:file}) }",
+  "name": "Marshal.load(obj)",
+  "scope": "source.ruby",
+  "tabTrigger": "Ml"
+}

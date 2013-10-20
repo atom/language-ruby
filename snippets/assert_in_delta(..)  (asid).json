@@ -1,0 +1,6 @@
+{
+  "content": "assert_in_delta`\"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb\"`${1:expected_float}, ${2:actual_float}, ${0:2 ** -20}`\"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb\" end`",
+  "name": "assert_in_delta(..)",
+  "scope": "source.ruby",
+  "tabTrigger": "asid"
+}

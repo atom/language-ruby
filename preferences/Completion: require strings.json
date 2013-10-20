@@ -1,0 +1,7 @@
+{
+  "name": "Completion: require strings",
+  "scope": "meta.require.ruby string.quoted",
+  "settings": {
+    "completionCommand": "#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby\n\t\tptrn = /^#{Regexp.escape ENV[\"TM_CURRENT_WORD\"].to_s}[^.]+\\..+/\n\t\tputs( $LOAD_PATH.inject([]) do |res, path|\n\t\tres << Dir.new(path).grep(ptrn) { |file| file[/^[^.]+/] } if File.exists?(path)\n\t\tres\n\t\tend.sort.uniq )"
+  }
+}

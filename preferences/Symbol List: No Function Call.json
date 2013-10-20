@@ -1,0 +1,7 @@
+{
+  "name": "Symbol List: No Function Call",
+  "scope": "source.ruby meta.function-call entity.name.function",
+  "settings": {
+    "showInSymbolList": 0
+  }
+}

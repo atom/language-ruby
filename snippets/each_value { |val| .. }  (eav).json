@@ -1,0 +1,6 @@
+{
+  "content": "each_value { |${1:val}| $0 }",
+  "name": "each_value { |val| .. }",
+  "scope": "source.ruby",
+  "tabTrigger": "eav"
+}

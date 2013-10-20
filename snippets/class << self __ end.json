@@ -1,0 +1,6 @@
+{
+  "content": "class << ${1:self}\n\t$0\nend",
+  "name": "class << self .. end",
+  "scope": "source.ruby",
+  "tabTrigger": "cla"
+}

@@ -1,0 +1,6 @@
+{
+  "content": "select { |${1:e}| $0 }",
+  "name": "select { |e| .. }",
+  "scope": "source.ruby",
+  "tabTrigger": "sel"
+}

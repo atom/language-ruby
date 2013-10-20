@@ -1,0 +1,11 @@
+{
+  "beforeRunningCommand": "nop",
+  "command": "#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby\ns = STDIN.read\ncase s\nwhen /^\\w+$/\n  print \"*#{s}*$0\"\nwhen \"\"\n  print \"*$1*$0\"\nelse\n  print \"<b>#{s}</b>\"\nend",
+  "fallbackInput": "word",
+  "input": "selection",
+  "keyEquivalent": "@b",
+  "name": "Bold",
+  "output": "insertAsSnippet",
+  "scope": "source.ruby comment",
+  "semanticClass": "style.strong.rdoc.ruby"
+}

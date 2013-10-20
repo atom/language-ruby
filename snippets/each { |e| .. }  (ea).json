@@ -1,0 +1,6 @@
+{
+  "content": "each { |${1:e}| $0 }",
+  "name": "each { |e| .. }",
+  "scope": "source.ruby",
+  "tabTrigger": "ea"
+}

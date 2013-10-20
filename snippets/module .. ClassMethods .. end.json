@@ -1,0 +1,6 @@
+{
+  "content": "module ${1:${TM_FILENAME/(?:\\A|_)([A-Za-z0-9]+)(?:\\.rb)?/(?2::\\u$1)/g}}\n\tmodule ClassMethods\n\t\t$0\n\tend\n\t\n\tmodule InstanceMethods\n\t\t\n\tend\n\t\n\tdef self.included(receiver)\n\t\treceiver.extend         ClassMethods\n\t\treceiver.send :include, InstanceMethods\n\tend\nend",
+  "name": "module .. ClassMethods .. end",
+  "scope": "source.ruby",
+  "tabTrigger": "mod"
+}

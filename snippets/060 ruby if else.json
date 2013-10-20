@@ -1,0 +1,6 @@
+{
+  "content": "if ${1:condition}\n\t$2\nelse\n\t$3\nend",
+  "name": "if … else … end",
+  "scope": "source.ruby",
+  "tabTrigger": "ife"
+}

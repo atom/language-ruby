@@ -1,0 +1,6 @@
+{
+  "content": "min { |a, b| $0 }",
+  "name": "min { |a, b| .. }",
+  "scope": "source.ruby",
+  "tabTrigger": "min"
+}

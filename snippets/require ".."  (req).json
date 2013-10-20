@@ -1,0 +1,6 @@
+{
+  "content": "require \"$0\"",
+  "name": "require \"..\"",
+  "scope": "source.ruby",
+  "tabTrigger": "req"
+}

@@ -1,0 +1,6 @@
+{
+  "content": "scan(/${1:pattern}/) { |${2:match}| $0 }",
+  "name": "scan(/../) { |match| .. }",
+  "scope": "source.ruby",
+  "tabTrigger": "sca"
+}

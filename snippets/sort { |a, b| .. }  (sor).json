@@ -1,0 +1,6 @@
+{
+  "content": "sort { |a, b| $0 }",
+  "name": "sort { |a, b| .. }",
+  "scope": "source.ruby",
+  "tabTrigger": "sor"
+}

@@ -1,0 +1,6 @@
+{
+  "content": "case ${1:object}\nwhen ${2:condition}\n\t$0\nend",
+  "name": "case … end",
+  "scope": "source.ruby",
+  "tabTrigger": "case"
+}

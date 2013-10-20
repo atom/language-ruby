@@ -1,0 +1,6 @@
+{
+  "content": "until ${1:condition}\n\t$0\nend",
+  "name": "until ... end",
+  "scope": "source.ruby",
+  "tabTrigger": "until"
+}

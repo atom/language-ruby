@@ -1,0 +1,6 @@
+{
+  "content": "require \"$0\"",
+  "name": "require_gem \"..\"",
+  "scope": "source.ruby",
+  "tabTrigger": "reqg-"
+}

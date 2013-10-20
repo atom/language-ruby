@@ -1,0 +1,6 @@
+{
+  "content": "REXML::Document.new(File.read(${1:\"${2:path/to/file}\"}))",
+  "name": "xmlread(..)",
+  "scope": "source.ruby",
+  "tabTrigger": "xml-"
+}

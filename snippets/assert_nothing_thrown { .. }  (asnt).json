@@ -1,0 +1,6 @@
+{
+  "content": "assert_nothing_thrown { $0 }",
+  "name": "assert_nothing_thrown { .. }",
+  "scope": "source.ruby",
+  "tabTrigger": "asnt"
+}

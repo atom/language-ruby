@@ -1,0 +1,6 @@
+{
+  "content": "File.dirname(__FILE__)",
+  "name": "directory()",
+  "scope": "source.ruby",
+  "tabTrigger": "dir"
+}

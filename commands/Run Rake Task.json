@@ -1,0 +1,13 @@
+{
+  "beforeRunningCommand": "nop",
+  "command": "#!/usr/bin/env bash\n\nexport RUBYLIB=\"$TM_BUNDLE_SUPPORT/RakeMate${RUBYLIB:+:$RUBYLIB}\"\nexport TM_RAKE=$(which \"${TM_RAKE:-rake}\")\n\n\"/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby\" -- \"$TM_BUNDLE_SUPPORT/RakeMate/rake_mate.rb\"\n",
+  "input": "none",
+  "inputFormat": "text",
+  "keyEquivalent": "^R",
+  "name": "Run Rake Task",
+  "outputCaret": "afterOutput",
+  "outputFormat": "html",
+  "outputLocation": "newWindow",
+  "scope": "source.ruby",
+  "version": 2
+}

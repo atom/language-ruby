@@ -1,0 +1,6 @@
+{
+  "content": "alias_method :${1:new_name}, :${0:old_name}",
+  "name": "alias_method ..",
+  "scope": "source.ruby",
+  "tabTrigger": "am"
+}

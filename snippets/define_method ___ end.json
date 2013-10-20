@@ -1,0 +1,6 @@
+{
+  "content": "define_method :${1:method_name} do${2/.+/ |/}${2:args}${2/.+/|/}\n  $0\nend",
+  "name": "define_method ... end",
+  "scope": "source.ruby",
+  "tabTrigger": "defm"
+}

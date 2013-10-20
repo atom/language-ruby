@@ -1,0 +1,11 @@
+{
+  "beforeRunningCommand": "nop",
+  "bundleUUID": "467B298F-6227-11D9-BFB1-000D93589AF6",
+  "command": "#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby\n\nprint case str = STDIN.read\n  # Handle standard quotes\n  when /\\A[\"'](\\w+)[\"']\\z/ then \":\" + $1\n  when /\\A:(\\w+)\\z/ then '\"' + $1 + '\"'\n  # Default case\n  else str\nend\n",
+  "fallbackInput": "scope",
+  "input": "selection",
+  "keyEquivalent": "^:",
+  "name": "Toggle String / Symbol",
+  "output": "replaceSelectedText",
+  "scope": "source.ruby string.quoted, source.ruby constant.other.symbol.ruby"
+}

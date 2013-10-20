@@ -1,0 +1,6 @@
+{
+  "content": "# encoding: ${1:UTF-8}\n",
+  "name": "# encoding: UTF-8",
+  "scope": "source.ruby",
+  "tabTrigger": "utf8"
+}

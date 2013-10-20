@@ -1,0 +1,6 @@
+{
+  "content": "def initialize${1/.+/(/}${1:args}${1/.+/)/}\n  $0\nend",
+  "name": "def initialize .. end",
+  "scope": "source.ruby",
+  "tabTrigger": "defi"
+}

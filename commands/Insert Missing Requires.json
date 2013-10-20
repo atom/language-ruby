@@ -1,0 +1,10 @@
+{
+  "beforeRunningCommand": "nop",
+  "command": "#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby\n$: << \"#{ENV['TM_SUPPORT_PATH']}/lib\"\n\nrequire \"escape\"\nrequire \"open3\"\n\n# make exceptions in the writing Thread kill the process so we don't hang\nThread.abort_on_exception = true\n\nCURSOR = [0xFFFC].pack(\"U\").freeze\nline, col = ENV[\"TM_LINE_NUMBER\"].to_i - 1, ENV[\"TM_LINE_INDEX\"].to_i\n\nstdin, stdout, stderr = Open3.popen3(\"/usr/bin/env\", \"ruby\", \"#{ENV['TM_BUNDLE_SUPPORT']}/bin/insert_requires.rb\")\nThread.new do\n  code = STDIN.read.to_a\n  unless ENV.has_key?('TM_SELECTED_TEXT')\n    if code[line].nil?  # if cursor was on the last line and it was blank\n      code << CURSOR\n    else\n      code[line][col...col] = CURSOR\n    end\n  end\n  stdin.write code.join\n  stdin.close\nend\n\nprint stdout.read.split(CURSOR).join('${0}')\n",
+  "fallbackInput": "document",
+  "input": "selection",
+  "keyEquivalent": "^#",
+  "name": "Insert Missing Requires",
+  "output": "insertAsSnippet",
+  "scope": "source.ruby"
+}

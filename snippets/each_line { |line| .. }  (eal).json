@@ -1,0 +1,6 @@
+{
+  "content": "each_line$1 { |${2:line}| $0 }",
+  "name": "each_line { |line| .. }",
+  "scope": "source.ruby",
+  "tabTrigger": "eal"
+}

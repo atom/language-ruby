@@ -1,0 +1,6 @@
+{
+  "content": "class ${1:${TM_FILENAME/(?:\\A|_)([A-Za-z0-9]+)(?:\\.rb)?/(?2::\\u$1)/g}}\n\tdef initialize${2/(^.*?\\S.*)|.*/(?1:\\()/}${2:args}${2/(^.*?\\S.*)|.*/(?1:\\))/}\n\t\t$0\n\tend\n\t\n\t\nend",
+  "name": "class .. initialize .. end",
+  "scope": "source.ruby",
+  "tabTrigger": "cla"
+}

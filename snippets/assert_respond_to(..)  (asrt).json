@@ -1,0 +1,6 @@
+{
+  "content": "assert_respond_to`\"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb\"`${1:object}, :${0:method}`\"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb\" end`",
+  "name": "assert_respond_to(..)",
+  "scope": "source.ruby",
+  "tabTrigger": "asrt"
+}

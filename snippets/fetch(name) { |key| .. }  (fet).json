@@ -1,0 +1,6 @@
+{
+  "content": "fetch(${1:name}) { ${2/(^(?<var>\\s*(?:\\*|\\*?[a-z_])[a-zA-Z0-9_]*\\s*)(,\\g<var>)*,?\\s*$)|.*/(?1:|)/}${2:key}${2/(^(?<var>\\s*(?:\\*|\\*?[a-z_])[a-zA-Z0-9_]*\\s*)(,\\g<var>)*,?\\s*$)|.*/(?1:| )/}$0 }",
+  "name": "fetch(name) { |key| .. }",
+  "scope": "source.ruby",
+  "tabTrigger": "fet"
+}

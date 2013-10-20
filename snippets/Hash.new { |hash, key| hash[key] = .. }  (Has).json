@@ -1,0 +1,6 @@
+{
+  "content": "Hash.new { |${1:hash}, ${2:key}| ${1:hash}[${2:key}] = $0 }",
+  "name": "Hash.new { |hash, key| hash[key] = .. }",
+  "scope": "source.ruby",
+  "tabTrigger": "Hash"
+}

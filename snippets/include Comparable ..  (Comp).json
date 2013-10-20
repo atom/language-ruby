@@ -1,0 +1,6 @@
+{
+  "content": "include Comparable\n\ndef <=>(other)\n\t$0\nend",
+  "name": "include Comparable ..",
+  "scope": "source.ruby",
+  "tabTrigger": "Comp"
+}

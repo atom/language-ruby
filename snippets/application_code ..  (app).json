@@ -1,0 +1,6 @@
+{
+  "content": "if __FILE__ == \\$PROGRAM_NAME\n\t$0\nend",
+  "name": "application { .. }",
+  "scope": "source.ruby",
+  "tabTrigger": "app"
+}

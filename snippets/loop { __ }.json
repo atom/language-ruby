@@ -1,0 +1,6 @@
+{
+  "content": "loop { $0 }",
+  "name": "loop { .. }",
+  "scope": "source.ruby",
+  "tabTrigger": "loo"
+}

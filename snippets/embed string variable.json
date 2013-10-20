@@ -1,0 +1,6 @@
+{
+  "content": "#{${1:$TM_SELECTED_TEXT}}",
+  "keyEquivalent": "#",
+  "name": "Embedded Code — #{…}",
+  "scope": "B:(string.quoted.double.ruby|string.interpolated.ruby) - string source"
+}

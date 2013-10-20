@@ -1,0 +1,6 @@
+{
+  "content": "find_all { |${1:e}| $0 }",
+  "name": "find_all { |e| .. }",
+  "scope": "source.ruby",
+  "tabTrigger": "fina"
+}

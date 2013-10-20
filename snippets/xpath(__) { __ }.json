@@ -1,0 +1,6 @@
+{
+  "content": "elements.each(${1:\"${2://XPath}\"}) do |${3:node}|\n\t$0\nend",
+  "name": "xpath(..) { .. }",
+  "scope": "source.ruby",
+  "tabTrigger": "xpa"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "ruby-tmbundle",
+  "version": "0.0.0",
+  "description": "Ruby language support in Atom",
+  "engines": {
+    "atom": "*",
+    "node": "*"
+  },
+  "homepage": "http://atom.github.io/language-ruby",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/language-ruby.git"
+  },
+  "bugs": {
+    "url": "https://github.com/atom/language-ruby/issues"
+  }
+}

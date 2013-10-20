@@ -1,0 +1,18 @@
+{
+  "beforeRunningCommand": "nop",
+  "captureFormatString": "$0",
+  "capturePattern": "(/[^:]+):(\\d+)",
+  "command": "#!/bin/sh\n\nexport RUBYLIB=\"$TM_BUNDLE_SUPPORT/RubyMate${RUBYLIB:+:$RUBYLIB}\"\n\n/usr/bin/env ruby -KU -- \"$TM_BUNDLE_SUPPORT/RubyMate/run_script.rb\" --name=\n",
+  "fileCaptureRegister": "1",
+  "input": "document",
+  "inputFormat": "text",
+  "keyEquivalent": "@R",
+  "lineCaptureRegister": "2",
+  "name": "Run Focused Unit Test",
+  "outputCaret": "afterOutput",
+  "outputFormat": "html",
+  "outputLocation": "newWindow",
+  "scope": "source.ruby",
+  "semanticClass": "process.test.ruby",
+  "version": 2
+}

@@ -1,0 +1,6 @@
+{
+  "content": "${1:${TM_FILENAME/(?:\\A|_)([A-Za-z0-9]+)(?:\\.rb)?/(?2::\\u$1)/g}} = Struct.new(:${2:attr_names}) do\n\tdef ${3:method_name}\n\t\t$0\n\tend\n\t\n\t\nend",
+  "name": "ClassName = Struct .. do .. end",
+  "scope": "source.ruby",
+  "tabTrigger": "cla"
+}

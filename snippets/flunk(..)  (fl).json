@@ -1,0 +1,6 @@
+{
+  "content": "flunk`\"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb\"`\"${1:Failure message.}\"`\"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb\" end`$0",
+  "name": "flunk(..)",
+  "scope": "source.ruby",
+  "tabTrigger": "flu"
+}

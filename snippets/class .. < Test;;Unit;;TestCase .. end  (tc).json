@@ -1,0 +1,6 @@
+{
+  "content": "require \"test/unit\"\n\nrequire \"${1:library_file_name}\"\n\nclass Test${2:${1/([\\w&&[^_]]+)|./\\u$1/g}} < Test::Unit::TestCase\n\tdef test_${3:case_name}\n\t\t$0\n\tend\nend",
+  "name": "class .. < Test::Unit::TestCase .. end",
+  "scope": "source.ruby",
+  "tabTrigger": "tc"
+}

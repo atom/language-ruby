@@ -1,0 +1,6 @@
+{
+  "content": "# => ",
+  "name": "Add ‘# =>’ Marker",
+  "scope": "source.ruby",
+  "tabTrigger": "#"
+}

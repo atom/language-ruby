@@ -1,0 +1,6 @@
+{
+  "content": "if ${1:condition}\n\t$0\nend",
+  "name": "if … end",
+  "scope": "source.ruby",
+  "tabTrigger": "if"
+}

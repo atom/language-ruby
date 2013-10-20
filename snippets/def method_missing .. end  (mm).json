@@ -1,0 +1,6 @@
+{
+  "content": "def method_missing(meth, *args, &blk)\n\t$0\nend",
+  "name": "def method_missing .. end",
+  "scope": "source.ruby",
+  "tabTrigger": "defmm"
+}

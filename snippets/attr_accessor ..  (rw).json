@@ -1,0 +1,6 @@
+{
+  "content": "attr_accessor :${0:attr_names}",
+  "name": "attr_accessor ..",
+  "scope": "source.ruby",
+  "tabTrigger": "rw"
+}

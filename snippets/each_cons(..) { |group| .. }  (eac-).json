@@ -1,0 +1,6 @@
+{
+  "content": "each_cons(${1:2}) { |${2:group}| $0 }",
+  "name": "each_cons(..) { |group| .. }",
+  "scope": "source.ruby",
+  "tabTrigger": "eac-"
+}

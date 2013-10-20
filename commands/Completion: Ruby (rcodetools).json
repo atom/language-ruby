@@ -1,0 +1,9 @@
+{
+  "beforeRunningCommand": "nop",
+  "command": "#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby\n\nrequire \"#{ENV[\"TM_SUPPORT_PATH\"]}/lib/exit_codes\"\nrequire \"#{ENV[\"TM_SUPPORT_PATH\"]}/lib/ui\"\n\nrequire \"pathname\"\n\nTM_RUBY    = ENV[\"TM_RUBY\"] || \"ruby\"\nRCODETOOLS = \"#{ENV['TM_BUNDLE_SUPPORT']}/vendor/rcodetools\"\n\nRAILS_DIR = nil\ndir = File.dirname(ENV[\"TM_FILEPATH\"]) rescue ENV[\"TM_PROJECT_DIRECTORY\"]\nif dir\n  dir = Pathname.new(dir)\n  loop do\n    if (dir + \"config/environment.rb\").exist?\n      Object.send(:remove_const, :RAILS_DIR)\n      RAILS_DIR = dir.to_s\n      break\n    end\n    \n    break if dir.to_s == \"/\"\n    \n    dir += \"..\"\n  end\nend\n\ncommand     = <<END_COMMAND.tr(\"\\n\", \" \").strip\n\"#{TM_RUBY}\"\n-I \"#{RCODETOOLS}/lib\"\n--\n\"#{RCODETOOLS}/bin/rct-complete\"\n#{\"-r \\\"#{RAILS_DIR}/config/environment.rb\\\"\" if RAILS_DIR}\n--line=#{ENV['TM_LINE_NUMBER']}\n--column=#{ENV['TM_LINE_INDEX']}\n2> /dev/null\nEND_COMMAND\ncompletions = `#{command}`.split(\"\\n\").map { |l| l.strip }.select { |l| l =~ /\\S/ }\n\nif not $?.success?\n  TextMate.exit_show_tool_tip \"Parse error.\"\nelsif completions.size == 1\n  selected = completions.first\nelsif completions.size > 1\n  selected = completions[TextMate::UI.menu(completions)] rescue exit\nelse\n  TextMate.exit_show_tool_tip \"No matches were found.\"\nend\n\nprint selected.sub(/\\A#{Regexp.escape(ENV['TM_CURRENT_WORD'].to_s)}/, \"\")\n",
+  "input": "document",
+  "keyEquivalent": "~\u001b",
+  "name": "Completion: Ruby (rcodetools)",
+  "output": "afterSelectedText",
+  "scope": "source.ruby"
+}

@@ -1,0 +1,6 @@
+{
+  "content": "File.read(${1:\"${2:path/to/file}\"})",
+  "name": "File.read(\"..\")",
+  "scope": "source.ruby",
+  "tabTrigger": "File"
+}

@@ -1,0 +1,6 @@
+{
+  "content": "each_slice(${1:2}) { |${2:group}| $0 }",
+  "name": "each_slice(..) { |group| .. }",
+  "scope": "source.ruby",
+  "tabTrigger": "eas-"
+}

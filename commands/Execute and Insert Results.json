@@ -1,0 +1,10 @@
+{
+  "beforeRunningCommand": "nop",
+  "command": "#!/bin/sh\nexport RUBYLIB=\"$TM_BUNDLE_SUPPORT/vendor/rcodetools/lib${RUBYLIB:+:$RUBYLIB}\"\nexec /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby \"$TM_BUNDLE_SUPPORT/vendor/rcodetools/bin/xmpfilter\" --interpreter \"${TM_RUBY:-ruby}\"\n",
+  "fallbackInput": "document",
+  "input": "selection",
+  "keyEquivalent": "^@E",
+  "name": "Execute and Update ‘# =>’ Markers",
+  "output": "replaceSelectedText",
+  "scope": "source.ruby"
+}

@@ -1,0 +1,6 @@
+{
+  "content": ":${1:key} => ${2:\"${3:value}\"}${4:, }",
+  "name": "Hash Pair — :key => \"value\"",
+  "scope": "source.ruby",
+  "tabTrigger": ":"
+}

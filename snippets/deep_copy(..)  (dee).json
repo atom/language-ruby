@@ -1,0 +1,6 @@
+{
+  "content": "Marshal.load(Marshal.dump(${0:obj_to_copy}))",
+  "name": "deep_copy(..)",
+  "scope": "source.ruby",
+  "tabTrigger": "deec"
+}

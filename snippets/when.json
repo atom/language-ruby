@@ -1,0 +1,6 @@
+{
+  "content": "when ${1:condition}\n\t$0",
+  "name": "when …",
+  "scope": "source.ruby",
+  "tabTrigger": "when"
+}

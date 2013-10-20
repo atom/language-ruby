@@ -1,0 +1,6 @@
+{
+  "content": "assert_nothing_raised(${1:Exception}) { $0 }",
+  "name": "assert_nothing_raised(..) { .. }",
+  "scope": "source.ruby",
+  "tabTrigger": "asnr"
+}

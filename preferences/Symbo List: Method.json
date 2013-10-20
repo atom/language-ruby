@@ -1,0 +1,8 @@
+{
+  "name": "Symbol List: Method",
+  "scope": "source.ruby meta.function",
+  "settings": {
+    "showInSymbolList": 1,
+    "symbolTransformation": "s/^\\s*def\\s+/ /"
+  }
+}

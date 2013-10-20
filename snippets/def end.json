@@ -1,0 +1,6 @@
+{
+  "content": "def ${1:method_name}\n\t$0\nend",
+  "name": "def … end",
+  "scope": "source.ruby",
+  "tabTrigger": "def"
+}

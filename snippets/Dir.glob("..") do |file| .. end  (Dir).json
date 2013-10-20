@@ -1,0 +1,6 @@
+{
+  "content": "Dir.glob(${1:\"${2:dir/glob/*}\"}) { |${3:file}| $0 }",
+  "name": "Dir.glob(\"..\") { |file| .. }",
+  "scope": "source.ruby",
+  "tabTrigger": "Dir"
+}

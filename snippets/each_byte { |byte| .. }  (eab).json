@@ -1,0 +1,6 @@
+{
+  "content": "each_byte { |${1:byte}| $0 }",
+  "name": "each_byte { |byte| .. }",
+  "scope": "source.ruby",
+  "tabTrigger": "eab"
+}

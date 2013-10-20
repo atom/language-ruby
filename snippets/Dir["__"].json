@@ -1,0 +1,6 @@
+{
+  "content": "Dir[${1:\"${2:glob/**/*.rb}\"}]",
+  "name": "Dir[\"..\"]",
+  "scope": "source.ruby",
+  "tabTrigger": "Dir"
+}

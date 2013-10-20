@@ -1,0 +1,6 @@
+{
+  "content": "detect { |${1:e}| $0 }",
+  "name": "detect { |e| .. }",
+  "scope": "source.ruby",
+  "tabTrigger": "det"
+}

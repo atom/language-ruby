@@ -1,0 +1,15 @@
+{
+  "beforeRunningCommand": "nop",
+  "command": "#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -w\n\nrequire \"#{ENV[\"TM_SUPPORT_PATH\"]}/lib/escape\"\nrequire \"enumerator\"\n\nTAGS = %w[<%= <%# <%- <%].freeze\n\n# locate caret (Allan's code)\nline = ENV['TM_LINE_NUMBER'].to_i - ENV['TM_INPUT_START_LINE'].to_i\ncol  = ENV['TM_LINE_INDEX'].to_i\nif ENV['TM_LINE_NUMBER'].to_i == ENV['TM_INPUT_START_LINE'].to_i\n  col -= ENV['TM_INPUT_START_LINE_INDEX'].to_i\nend\n\n# read input\ninput = $stdin.read\n\n# snippetize output\nlines       = RUBY_VERSION < \"1.9\" ? input.to_a : input.lines.to_a\nlines[line] = e_sn(lines[line][0...col]) + \"${0}\" + e_sn(lines[line][col..-1])\nenum        = RUBY_VERSION < \"1.9\" ? lines.enum_with_index :\n                                     lines.each.with_index\noutput      = enum.inject(String.new) do |out, (l, i)|\n  i == line ? out + l : out + e_sn(l)\nend\n\n# swap ERb tags\nresult = output.sub(/\\A<%[-#=]?/) { |match| TAGS[TAGS.index(match) - 1] }\nif result[2] == ?-\n  result.sub!(/%>\\Z/, \"-%>\")\nelse\n  result.sub!(/-%>\\Z/, \"%>\")\nend\nprint result",
+  "disableOutputAutoIndent": true,
+  "fallbackInput": "scope",
+  "input": "selection",
+  "inputFormat": "text",
+  "keyEquivalent": "^>",
+  "name": "Toggle ERb Tags",
+  "outputCaret": "afterOutput",
+  "outputFormat": "snippet",
+  "outputLocation": "replaceInput",
+  "scope": "meta.embedded.block.erb, meta.embedded.line.erb, comment.block.erb",
+  "version": 2
+}

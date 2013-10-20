@@ -1,0 +1,6 @@
+{
+  "content": "def test_${1:case_name}\n\t$0\nend",
+  "name": "def test_ .. end",
+  "scope": "source.ruby",
+  "tabTrigger": "deft"
+}
