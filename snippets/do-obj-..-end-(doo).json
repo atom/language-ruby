@@ -1,5 +1,5 @@
 {
-  "content": "do${1/(^(?<var>\\s*[a-z_][a-zA-Z0-9_]*\\s*)(,\\g<var>)*,?\\s*$)|.*/(?1: |)/}${1:variable}${1/(^(?<var>\\s*[a-z_][a-zA-Z0-9_]*\\s*)(,\\g<var>)*,?\\s*$)|.*/(?1:|)/}\n\t$0\nend",
+  "content": "do |${1:variable}|\n\t$0\nend",
   "name": "Insert do |variable| … end",
   "scope": "source.ruby",
   "tabTrigger": "do"
