@@ -6,12 +6,5 @@
     "atom": "*",
     "node": "*"
   },
-  "homepage": "http://atom.github.io/language-ruby",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/atom/language-ruby.git"
-  },
-  "bugs": {
-    "url": "https://github.com/atom/language-ruby/issues"
-  }
+  "repository": "https://github.com/atom/language-ruby"
 }
