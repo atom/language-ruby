@@ -129,11 +129,11 @@
     },
     {
       "match": "\\bnil\\b(?![?!])",
-      "name": "constant.nil.ruby"
+      "name": "constant.language.nil.ruby"
     },
     {
       "match": "\\b(true|false)\\b(?![?!])",
-      "name": "constant.boolean.ruby"
+      "name": "constant.language.boolean.ruby"
     },
     {
       "match": "\\b(__(FILE|LINE)__|self)\\b(?![?!])",
