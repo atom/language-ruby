@@ -129,7 +129,7 @@
     },
     {
       "match": "\\bnil\\b(?![?!])",
-      "name": "constant.language.ruby"
+      "name": "constant.nil.ruby"
     },
     {
       "match": "\\b(true|false)\\b(?![?!])",
