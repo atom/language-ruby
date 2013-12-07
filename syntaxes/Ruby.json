@@ -128,8 +128,12 @@
       "name": "keyword.control.pseudo-method.ruby"
     },
     {
-      "match": "\\b(nil|true|false)\\b(?![?!])",
-      "name": "constant.language.ruby"
+      "match": "\\bnil\\b(?![?!])",
+      "name": "constant.language.nil.ruby"
+    },
+    {
+      "match": "\\b(true|false)\\b(?![?!])",
+      "name": "constant.language.boolean.ruby"
     },
     {
       "match": "\\b(__(FILE|LINE)__|self)\\b(?![?!])",
