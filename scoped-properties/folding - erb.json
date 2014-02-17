@@ -1,0 +1,7 @@
+{
+  "text.html.erb": {
+    "editor": {
+      "foldEndPattern": "(?x)\n\t\t(</(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)>\n\t\t|^\\s*-->\n\t\t|(^|\\s)\\}\n\t\t)"
+    }
+  }
+}

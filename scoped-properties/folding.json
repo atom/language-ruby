@@ -1,0 +1,7 @@
+{
+  "source.ruby -string.unquoted.heredoc": {
+    "editor": {
+      "foldEndPattern": "(?x)\n\t\t(   (^|;) \\s*+ end   \\s*+ ([#].*)? $\n\t\t|   (^|;) \\s*+ end \\. .* $\n\t\t|   ^     \\s*+ [}\\]] ,? \\s*+ ([#].*)? $\n\t\t|   [#] .*? \\(end\\) \\s*+ $      # Sune’s special marker\n\t\t|   ^=end\n\t\t)\n\t"
+    }
+  }
+}

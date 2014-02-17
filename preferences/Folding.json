@@ -1,8 +1,0 @@
-{
-  "name": "Folding (Ruby)",
-  "scope": "source.ruby -string.unquoted.heredoc",
-  "settings": {
-    "foldingStartMarker": "(?x)^\n\t    (\\s*+\n\t        (module|class|def(?!.*\\bend\\s*$)\n\t        |unless|if\n\t        |case\n\t        |begin\n\t        |for|while|until\n\t         |^=begin\n\t        |(  \"(\\\\.|[^\"])*+\"          # eat a double quoted string\n\t         | '(\\\\.|[^'])*+'        # eat a single quoted string\n\t         |   [^#\"']                # eat all but comments and strings\n\t         )*\n\t         (                        \\s   (do|begin|case)\n\t         | (?<!\\$)[-+=&|*/~%^<>~] \\s*+ (if|unless)\n\t         )\n\t        )\\b\n\t        (?! [^;]*+ ; .*? \\bend\\b )\n\t    |(  \"(\\\\.|[^\"])*+\"              # eat a double quoted string\n\t     | '(\\\\.|[^'])*+'            # eat a single quoted string\n\t     |   [^#\"']                    # eat all but comments and strings\n\t     )*\n\t     ( \\{ (?!  [^}]*+ \\} )\n\t     | \\[ (?! [^\\]]*+ \\] )\n\t     )\n\t    ).*$\n\t|   [#] .*? \\(fold\\) \\s*+ $         # Sune’s special marker\n\t",
-    "foldingStopMarker": "(?x)\n\t\t(   (^|;) \\s*+ end   \\s*+ ([#].*)? $\n\t\t|   (^|;) \\s*+ end \\. .* $\n\t\t|   ^     \\s*+ [}\\]] ,? \\s*+ ([#].*)? $\n\t\t|   [#] .*? \\(end\\) \\s*+ $      # Sune’s special marker\n\t\t|   ^=end\n\t\t)\n\t"
-  }
-}

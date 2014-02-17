@@ -1,7 +1,0 @@
-{
-  "name": "Completion: ENV[…] variables",
-  "scope": "meta.environment-variable.ruby string.quoted",
-  "settings": {
-    "completionCommand": "env|grep \"^$TM_CURRENT_WORD\"|sort|cut -d= -f1"
-  }
-}
