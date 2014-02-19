@@ -6,5 +6,6 @@
     "atom": "*",
     "node": "*"
   },
+  "license": "MIT",
   "repository": "https://github.com/atom/language-ruby"
 }
