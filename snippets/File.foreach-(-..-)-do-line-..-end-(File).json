@@ -1,6 +1,0 @@
-{
-  "content": "File.foreach(${1:\"${2:path/to/file}\"}) { |${3:line}| $0 }",
-  "name": "File.foreach (\"..\") { |line| .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "File"
-}

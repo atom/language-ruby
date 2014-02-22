@@ -1,6 +1,0 @@
-{
-  "content": "skip`\"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb\"`\"${1:Message.}\"`\"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb\" end`$0",
-  "name": "skip(..)",
-  "scope": "source.ruby",
-  "tabTrigger": "ski"
-}

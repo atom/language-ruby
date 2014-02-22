@@ -1,6 +1,0 @@
-{
-  "content": "ARGF.each_line$1 do |${2:line}|\n\t$0\nend",
-  "name": "unix_filter { .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "unif"
-}

@@ -1,6 +1,0 @@
-{
-  "content": "File.join(File.dirname(__FILE__), *%w[${1:rel path here}])",
-  "name": "path_from_here( .. )",
-  "scope": "source.ruby",
-  "tabTrigger": "patfh"
-}

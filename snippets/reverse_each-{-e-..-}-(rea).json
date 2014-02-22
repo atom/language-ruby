@@ -1,6 +1,0 @@
-{
-  "content": "reverse_each { |${1:e}| $0 }",
-  "name": "reverse_each { |e| .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "reve"
-}

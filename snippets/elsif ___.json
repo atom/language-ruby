@@ -1,6 +1,0 @@
-{
-  "content": "elsif ${1:condition}\n\t$0",
-  "name": "elsif ...",
-  "scope": "source.ruby",
-  "tabTrigger": "elsif"
-}

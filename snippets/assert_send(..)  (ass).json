@@ -1,6 +1,0 @@
-{
-  "content": "assert_send`\"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb\"`[${1:object}, :${2:message}, ${0:args}]`\"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb\" end`",
-  "name": "assert_send(..)",
-  "scope": "source.ruby",
-  "tabTrigger": "ass"
-}

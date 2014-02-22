@@ -1,6 +1,0 @@
-{
-  "content": "assert_no_match`\"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb\"`/${1:unexpected_pattern}/, ${0:actual_string}`\"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb\" end`",
-  "name": "assert_no_match(..)",
-  "scope": "source.ruby",
-  "tabTrigger": "asnm"
-}

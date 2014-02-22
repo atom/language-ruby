@@ -1,6 +1,0 @@
-{
-  "content": "transaction${1/(^.*?\\S.*)|.*/(?1:\\()/}${1:true}${1/(^.*?\\S.*)|.*/(?1:\\))/} { $0 }",
-  "name": "transaction( .. ) { .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "tra"
-}

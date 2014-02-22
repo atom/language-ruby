@@ -1,6 +1,0 @@
-{
-  "content": "delete_if { |${1:e}| $0 }",
-  "name": "delete_if { |e| .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "deli"
-}

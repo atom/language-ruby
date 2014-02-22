@@ -1,6 +1,0 @@
-{
-  "content": "assert_not_same`\"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb\"`${1:unexpected}, ${0:actual}`\"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb\" end`",
-  "name": "assert_not_same(..)",
-  "scope": "source.ruby",
-  "tabTrigger": "asns"
-}

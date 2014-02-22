@@ -1,6 +1,0 @@
-{
-  "content": "map { |${1:e}| $0 }",
-  "name": "map { |e| .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "map"
-}

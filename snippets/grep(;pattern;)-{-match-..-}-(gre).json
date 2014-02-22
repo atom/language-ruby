@@ -1,6 +1,0 @@
-{
-  "content": "grep(${1:/${2:pattern}/}) { |${3:match}| $0 }",
-  "name": "grep(/pattern/) { |match| .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "gre"
-}

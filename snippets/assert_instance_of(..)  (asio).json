@@ -1,6 +1,0 @@
-{
-  "content": "assert_instance_of`\"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb\"`${1:ExpectedClass}, ${0:actual_instance}`\"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb\" end`",
-  "name": "assert_instance_of(..)",
-  "scope": "source.ruby",
-  "tabTrigger": "asio"
-}

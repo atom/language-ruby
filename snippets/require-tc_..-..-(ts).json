@@ -1,6 +1,0 @@
-{
-  "content": "require \"test/unit\"\n\nrequire \"tc_${1:test_case_file}\"\nrequire \"tc_${2:test_case_file}\"\n",
-  "name": "require \"tc_..\" ..",
-  "scope": "source.ruby",
-  "tabTrigger": "ts"
-}

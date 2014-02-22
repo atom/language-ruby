@@ -1,6 +1,0 @@
-{
-  "content": "results.report(\"${1:name}:\") { TESTS.times { $0 } }",
-  "name": "results.report(..) { .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "rep"
-}

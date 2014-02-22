@@ -1,6 +1,0 @@
-{
-  "content": "do |${1:variable}|\n\t$0\nend",
-  "name": "Insert do |variable| … end",
-  "scope": "source.ruby",
-  "tabTrigger": "do"
-}

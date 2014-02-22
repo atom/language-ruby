@@ -1,6 +1,0 @@
-{
-  "content": "unless ${1:condition}\n\t$0\nend",
-  "name": "unless … end",
-  "scope": "source.ruby",
-  "tabTrigger": "unless"
-}

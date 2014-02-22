@@ -1,6 +1,0 @@
-{
-  "content": "#!/usr/bin/env ruby${TM_RUBY_SWITCHES: -wKU}\n",
-  "name": "#!/usr/bin/env ruby -wKU",
-  "scope": "source.ruby, L:dyn.caret.begin.document",
-  "tabTrigger": "rb"
-}

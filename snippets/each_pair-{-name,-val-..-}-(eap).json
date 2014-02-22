@@ -1,6 +1,0 @@
-{
-  "content": "each_pair { |${1:name}, ${2:val}| $0 }",
-  "name": "each_pair { |name, val| .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "eap"
-}

@@ -1,6 +1,0 @@
-{
-  "content": "PStore.new(${1:\"${2:file_name.pstore}\"})",
-  "name": "PStore.new( .. )",
-  "scope": "source.ruby",
-  "tabTrigger": "Pn-"
-}

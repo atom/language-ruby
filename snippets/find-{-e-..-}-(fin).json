@@ -1,6 +1,0 @@
-{
-  "content": "find { |${1:e}| $0 }",
-  "name": "find { |e| .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "fin"
-}

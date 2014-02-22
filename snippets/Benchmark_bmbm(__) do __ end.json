@@ -1,6 +1,0 @@
-{
-  "content": "TESTS = ${1:10_000}\nBenchmark.bmbm do |results|\n  $0\nend",
-  "name": "Benchmark.bmbm do .. end",
-  "scope": "source.ruby",
-  "tabTrigger": "bm-"
-}

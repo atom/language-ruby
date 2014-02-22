@@ -1,6 +1,0 @@
-{
-  "content": "assert_not_nil`\"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb\"`${0:instance}`\"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb\" end`",
-  "name": "assert_not_nil(..)",
-  "scope": "source.ruby",
-  "tabTrigger": "asnn"
-}

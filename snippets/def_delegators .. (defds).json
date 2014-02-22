@@ -1,6 +1,0 @@
-{
-  "content": "def_delegators :${1:@del_obj}, :${0:del_methods}",
-  "name": "def_delegators ..",
-  "scope": "source.ruby",
-  "tabTrigger": "defds"
-}

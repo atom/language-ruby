@@ -1,6 +1,0 @@
-{
-  "content": "class << self; self end",
-  "name": "singleton_class()",
-  "scope": "source.ruby",
-  "tabTrigger": "sinc"
-}

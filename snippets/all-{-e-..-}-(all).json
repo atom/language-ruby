@@ -1,6 +1,0 @@
-{
-  "content": "all? { |${1:e}| $0 }",
-  "name": "all? { |e| .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "all"
-}

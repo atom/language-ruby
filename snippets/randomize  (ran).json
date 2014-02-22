@@ -1,6 +1,0 @@
-{
-  "content": "sort_by { rand }",
-  "name": "randomize()",
-  "scope": "source.ruby",
-  "tabTrigger": "ran"
-}

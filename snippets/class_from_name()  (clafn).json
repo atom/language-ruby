@@ -1,6 +1,0 @@
-{
-  "content": "split(\"::\").inject(Object) { |par, const| par.const_get(const) }",
-  "name": "class_from_name()",
-  "scope": "source.ruby",
-  "tabTrigger": "clafn"
-}

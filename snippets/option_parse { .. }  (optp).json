@@ -1,6 +1,0 @@
-{
-  "content": "require \"optparse\"\n\noptions = {${1::default => \"args\"}}\n\nARGV.options do |opts|\n\topts.banner = \"Usage:  #{File.basename(\\$PROGRAM_NAME)} [OPTIONS]${2/^\\s*$|(.*\\S.*)/(?1: )/}${2:OTHER_ARGS}\"\n\t\n\topts.separator \"\"\n\topts.separator \"Specific Options:\"\n\t\n\t$0\n\t\n\topts.separator \"Common Options:\"\n\t\n\topts.on( \"-h\", \"--help\",\n\t         \"Show this message.\" ) do\n\t\tputs opts\n\t\texit\n\tend\n\t\n\tbegin\n\t\topts.parse!\n\trescue\n\t\tputs opts\n\t\texit\n\tend\nend\n",
-  "name": "option_parse { .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "optp"
-}

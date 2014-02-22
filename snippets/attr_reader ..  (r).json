@@ -1,6 +1,0 @@
-{
-  "content": "attr_reader :${0:attr_names}",
-  "name": "attr_reader ..",
-  "scope": "source.ruby",
-  "tabTrigger": "r"
-}

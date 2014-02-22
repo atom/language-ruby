@@ -1,6 +1,0 @@
-{
-  "content": "include Enumerable\n\ndef each(&block)\n\t$0\nend",
-  "name": "include Enumerable ..",
-  "scope": "source.ruby",
-  "tabTrigger": "Enum"
-}

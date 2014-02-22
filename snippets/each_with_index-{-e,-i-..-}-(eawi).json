@@ -1,6 +1,0 @@
-{
-  "content": "each_with_index { |${1:e}, ${2:i}| $0 }",
-  "name": "each_with_index { |e, i| .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "eawi"
-}

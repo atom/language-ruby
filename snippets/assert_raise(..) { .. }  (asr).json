@@ -1,6 +1,0 @@
-{
-  "content": "assert_raise(${1:Exception}) { $0 }",
-  "name": "assert_raise(..) { .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "asr"
-}

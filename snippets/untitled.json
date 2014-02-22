@@ -1,6 +1,0 @@
-{
-  "content": "opts.on( \"-${1:o}\", \"--${2:long-option-name}\"${3/^\\s*$|(.*\\S.*)/(?1:, )/}${3:String},\n         \"${4:Option description.}\" ) do |${6:opt}|\n\t$0\nend",
-  "name": "option(..)",
-  "scope": "source.ruby",
-  "tabTrigger": "opt"
-}

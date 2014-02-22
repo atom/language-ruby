@@ -1,6 +1,0 @@
-{
-  "content": "namespace :${1:${TM_FILENAME/\\.\\w+//}} do\n\t$0\nend",
-  "name": "namespace :.. do .. end",
-  "scope": "source.ruby",
-  "tabTrigger": "nam"
-}

@@ -1,6 +1,0 @@
-{
-  "content": "extend Forwardable",
-  "name": "extend Forwardable",
-  "scope": "source.ruby",
-  "tabTrigger": "Forw-"
-}

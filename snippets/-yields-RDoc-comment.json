@@ -1,6 +1,0 @@
-{
-  "content": " :yields: ${0:arguments}",
-  "name": ":yields:",
-  "scope": "source.ruby comment",
-  "tabTrigger": "y"
-}

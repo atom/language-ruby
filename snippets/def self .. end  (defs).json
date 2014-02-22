@@ -1,6 +1,0 @@
-{
-  "content": "def self.${1:class_method_name}\n\t$0\nend",
-  "name": "def self .. end",
-  "scope": "source.ruby",
-  "tabTrigger": "defs"
-}

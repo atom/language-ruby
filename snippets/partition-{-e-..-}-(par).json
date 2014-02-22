@@ -1,6 +1,0 @@
-{
-  "content": "partition { |${1:e}| $0 }",
-  "name": "partition { |e| .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "par"
-}

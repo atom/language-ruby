@@ -1,6 +1,0 @@
-{
-  "content": "classify { |${1:e}| $0 }",
-  "name": "classify { |e| .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "cl"
-}

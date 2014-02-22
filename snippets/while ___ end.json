@@ -1,6 +1,0 @@
-{
-  "content": "while ${1:condition}\n\t$0\nend",
-  "name": "while ... end",
-  "scope": "source.ruby",
-  "tabTrigger": "while"
-}

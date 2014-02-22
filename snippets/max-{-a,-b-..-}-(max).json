@@ -1,6 +1,0 @@
-{
-  "content": "max { |a, b| $0 }",
-  "name": "max { |a, b| .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "max"
-}

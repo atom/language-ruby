@@ -1,6 +1,0 @@
-{
-  "content": "class ${1:BlankSlate}\n\tinstance_methods.each { |meth| undef_method(meth) unless meth =~ /\\A__/ }\n\t\n\tdef initialize${2/(^.*?\\S.*)|.*/(?1:\\()/}${2:args}${2/(^.*?\\S.*)|.*/(?1:\\))/}\n\t\t@${3:delegate} = ${4:delegate_object}\n\t\t\n\t\t$0\n\tend\n\t\n\tdef method_missing(meth, *args, &block)\n\t\t@${3:delegate}.send(meth, *args, &block)\n\tend\n\t\n\t\nend",
-  "name": "class BlankSlate .. initialize .. end",
-  "scope": "source.ruby",
-  "tabTrigger": "cla"
-}

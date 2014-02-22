@@ -1,6 +1,0 @@
-{
-  "content": "inject(Array.new) { |${1:arr}, ${2:a}| ${1:arr}.push(*${2:a}) }",
-  "name": "flatten_once()",
-  "scope": "source.ruby",
-  "tabTrigger": "flao"
-}

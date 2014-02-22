@@ -1,6 +1,0 @@
-{
-  "content": "lambda { ${1/(^(?<var>\\s*(?:\\*|\\*?[a-z_])[a-zA-Z0-9_]*\\s*)(,\\g<var>)*,?\\s*$)|.*/(?1:|)/}${1:args}${1/(^(?<var>\\s*(?:\\*|\\*?[a-z_])[a-zA-Z0-9_]*\\s*)(,\\g<var>)*,?\\s*$)|.*/(?1:| )/}$0 }",
-  "name": "lambda { |args| .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "lam"
-}

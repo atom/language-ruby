@@ -1,6 +1,0 @@
-{
-  "content": "sort_by { |${1:e}| $0 }",
-  "name": "sort_by { |e| .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "sorb"
-}

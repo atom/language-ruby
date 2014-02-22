@@ -1,6 +1,0 @@
-{
-  "content": "each_char { |${1:chr}| $0 }",
-  "name": "each_char { |chr| .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "eac-"
-}

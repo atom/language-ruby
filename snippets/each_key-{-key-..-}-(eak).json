@@ -1,6 +1,0 @@
-{
-  "content": "each_key { |${1:key}| $0 }",
-  "name": "each_key { |key| .. }",
-  "scope": "source.ruby",
-  "tabTrigger": "eak"
-}

@@ -1,6 +1,0 @@
-{
-  "content": "assert_equal`\"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb\"`${1:expected}, ${0:actual}`\"$TM_BUNDLE_SUPPORT/bin/snippet_paren.rb\" end`",
-  "name": "assert_equal(..)",
-  "scope": "source.ruby",
-  "tabTrigger": "ase"
-}
