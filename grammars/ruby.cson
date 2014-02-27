@@ -7,6 +7,7 @@
   'cgi'
   'fcgi'
   'gemspec'
+  'podspec'
   'irbrc'
   'capfile'
   'ru'
