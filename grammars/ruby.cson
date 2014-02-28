@@ -9,6 +9,7 @@
   'gemspec'
   'irbrc'
   'capfile'
+  'Capfile'
   'ru'
   'prawn'
   'Gemfile'
