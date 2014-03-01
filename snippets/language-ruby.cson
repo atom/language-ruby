@@ -172,7 +172,7 @@
     'prefix': 'elsif'
     'body': 'elsif ${1:condition}\n\t$0'
   'extend Forwardable':
-    'prefix': 'Forw-'
+    'prefix': 'Forw'
     'body': 'extend Forwardable'
   'find { |e| .. }':
     'prefix': 'fin'
