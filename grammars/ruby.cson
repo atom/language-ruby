@@ -106,7 +106,7 @@
     'name': 'keyword.control.pseudo-method.ruby'
   }
   {
-    'match': '\\bnil\\b(?![?!])'
+    'match': '\\bnil\\b[?!]?'
     'name': 'constant.language.nil.ruby'
   }
   {
