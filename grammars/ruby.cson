@@ -4,6 +4,7 @@
   'rjs'
   'Rakefile'
   'rake'
+  'thor'
   'cgi'
   'fcgi'
   'gemspec'
