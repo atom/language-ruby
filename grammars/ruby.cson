@@ -585,7 +585,7 @@
     ]
   }
   {
-    'begin': '%[QWSR]?\\('
+    'begin': '%[IQWSR]?\\('
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
@@ -608,7 +608,7 @@
     ]
   }
   {
-    'begin': '%[QWSR]?\\['
+    'begin': '%[IQWSR]?\\['
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
@@ -631,7 +631,7 @@
     ]
   }
   {
-    'begin': '%[QWSR]?\\<'
+    'begin': '%[IQWSR]?\\<'
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
@@ -654,7 +654,7 @@
     ]
   }
   {
-    'begin': '%[QWSR]?\\{'
+    'begin': '%[IQWSR]?\\{'
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
@@ -677,7 +677,7 @@
     ]
   }
   {
-    'begin': '%[QWSR]([^\\w])'
+    'begin': '%[IQWSR]([^\\w])'
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
