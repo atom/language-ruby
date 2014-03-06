@@ -298,3 +298,10 @@
   ':yields:':
     'prefix': 'y'
     'body': ' :yields: ${0:arguments}'
+'.text.html.erb':
+  'erb_render_block':
+    'prefix': '='
+    'body': '<%= $1 %>'
+  'erb_exec_block':
+    'prefix': '-'
+    'body': '<% $1 %>'
