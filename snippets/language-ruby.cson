@@ -134,7 +134,7 @@
     'body': 'File.dirname(__FILE__)'
   'Insert do |variable| … end':
     'prefix': 'do'
-    'body': 'do |${1:variable}|\n\t$0\nend'
+    'body': 'do${1: |${2:variable}|}\n\t$0\nend'
   'each { |e| .. }':
     'prefix': 'ea'
     'body': 'each { |${1:e}| $0 }'
