@@ -17,10 +17,10 @@
   'Rakefile'
   'Rantfile'
   'rb'
-  'ruby'
   'rbx'
   'rjs'
   'ru'
+  'ruby'
   'thor'
   'Vagrantfile'
 ]
