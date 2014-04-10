@@ -125,7 +125,7 @@
   }
   {
     'comment': ' everything being a method but having a special function is a..'
-    'match': '\\b(initialize|new|loop|include|extend|prepend|raise|fail|attr_reader|attr_writer|attr_accessor|attr|catch|throw|private|module_function|public|protected|puts|print|p|eval|exec|system)\\b(?![?!])'
+    'match': '\\b(initialize|new|loop|include|extend|prepend|raise|fail|attr_reader|attr_writer|attr_accessor|attr|catch|throw|private|module_function|public|protected)\\b(?![?!])'
     'name': 'keyword.other.special-method.ruby'
   }
   {
@@ -185,6 +185,10 @@
   {
     'match': '\\b[A-Z]\\w*(?=((\\.|::)[A-Za-z]|\\[))'
     'name': 'support.class.ruby'
+  }
+  {
+    'match': '\\b(abort|at_exit|autoload|autoload?|binding|callcc|caller|caller_locations|chomp|chop|eval|exec|exit|exit!|fork|format|gets|global_variables|gsub|iterator?|lambda|load|local_variables|open|p|print|printf|proc|putc|puts|rand|readline|readlines|select|set_trace_func|sleep|spawn|sprintf|srand|sub|syscall|system|test|trace_var|trap|untrace_var|warn)\\b(?![?!])'
+    'name': 'support.function.kernel.ruby'
   }
   {
     'match': '\\b[A-Z]\\w*\\b'
