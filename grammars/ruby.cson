@@ -478,13 +478,45 @@
     ]
   }
   {
-    'begin': '(?x)\n\t\t\t   (?:\n\t\t\t     ^                      # beginning of line\n\t\t\t   | (?<=                   # or look-behind on:\n\t\t\t       [=>~(?:\\[,|&;]\n\t\t\t     | [\\s;]if\\s\t\t\t# keywords\n\t\t\t     | [\\s;]elsif\\s\n\t\t\t     | [\\s;]while\\s\n\t\t\t     | [\\s;]unless\\s\n\t\t\t     | [\\s;]when\\s\n\t\t\t     | [\\s;]assert_match\\s\n\t\t\t     | [\\s;]or\\s\t\t\t# boolean opperators\n\t\t\t     | [\\s;]and\\s\n\t\t\t     | [\\s;]not\\s\n\t\t\t     | [\\s.]index\\s\t\t\t# methods\n\t\t\t     | [\\s.]scan\\s\n\t\t\t     | [\\s.]sub\\s\n\t\t\t     | [\\s.]sub!\\s\n\t\t\t     | [\\s.]gsub\\s\n\t\t\t     | [\\s.]gsub!\\s\n\t\t\t     | [\\s.]match\\s\n\t\t\t     )\n\t\t\t   | (?<=                  # or a look-behind with line anchor:\n\t\t\t        ^when\\s            # duplication necessary due to limits of regex\n\t\t\t      | ^if\\s\n\t\t\t      | ^elsif\\s\n\t\t\t      | ^while\\s\n\t\t\t      | ^unless\\s\n\t\t\t      )\n\t\t\t   )\n\t\t\t   \\s*((/))(?![*+{}?])\n\t\t\t'
+    'begin': '(?x)
+      (?:
+      ^
+      | (?<=
+          [=>~(?:\\[,|&;]
+        | [\\s;]if\\s
+        | [\\s;]elsif\\s
+        | [\\s;]while\\s
+        | [\\s;]unless\\s
+        | [\\s;]when\\s
+        | [\\s;]assert_match\\s
+        | [\\s;]or\\s
+        | [\\s;]and\\s
+        | [\\s;]not\\s
+        | [\\s.]index\\s
+        | [\\s.]scan\\s
+        | [\\s.]sub\\s
+        | [\\s.]sub!\\s
+        | [\\s.]gsub\\s
+        | [\\s.]gsub!\\s
+        | [\\s.]match\\s
+        )
+      | (?<=
+          ^when\\s
+        | ^if\\s
+        | ^elsif\\s
+        | ^while\\s
+        | ^unless\\s
+        )
+      )
+      \\s*((/))(?![*+{}?])'
     'captures':
       '1':
         'name': 'string.regexp.classic.ruby'
       '2':
         'name': 'punctuation.definition.string.ruby'
-    'comment': 'regular expressions (normal)\n\t\t\twe only start a regexp if the character before it (excluding whitespace)\n\t\t\tis what we think is before a regexp\n\t\t\t'
+    'comment': 'regular expressions (normal)
+      we only start a regexp if the character before it (excluding whitespace)
+      is what we think is before a regexp'
     'contentName': 'string.regexp.classic.ruby'
     'end': '((/[eimnosux]*))'
     'patterns': [
