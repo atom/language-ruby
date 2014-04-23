@@ -1366,10 +1366,12 @@
   'interpolated_ruby':
     'patterns': [
       {
-        'begin': '#\\{'
+        'begin': '(#\\{)'
         'beginCaptures':
           '0':
             'name': 'punctuation.section.embedded.begin.ruby'
+          '1':
+            'name': 'source.ruby'
         'contentName': 'source.ruby'
         'end': '(\\})'
         'endCaptures':
