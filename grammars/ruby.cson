@@ -2,6 +2,7 @@
 'scopeName': 'source.ruby'
 'fileTypes': [
   'Appraisals'
+  'Berksfile'
   'cap'
   'Capfile'
   'capfile'
