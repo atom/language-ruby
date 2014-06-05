@@ -2180,11 +2180,11 @@
       {
         'captures':
           '1':
-            'name': 'punctuation.definition.arbitrary-repitition.ruby'
+            'name': 'punctuation.definition.arbitrary-repetition.ruby'
           '3':
-            'name': 'punctuation.definition.arbitrary-repitition.ruby'
+            'name': 'punctuation.definition.arbitrary-repetition.ruby'
         'match': '(\\{)\\d+(,\\d+)?(\\})'
-        'name': 'string.regexp.arbitrary-repitition.ruby'
+        'name': 'string.regexp.arbitrary-repetition.ruby'
       }
       {
         'begin': '\\[(?:\\^?\\])?'
