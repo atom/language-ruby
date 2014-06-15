@@ -25,6 +25,7 @@
   'ru'
   'ruby'
   'thor'
+  'Thorfile'
   'Vagrantfile'
 ]
 'firstLineMatch': '^#!\\s*/.*\\bruby'
