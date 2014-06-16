@@ -84,15 +84,15 @@
   'attr_writer ..':
     'prefix': 'w'
     'body': 'attr_writer :${0:attr_names}'
-  'class .. end':
-    'prefix': 'cla'
-    'body': 'class $1\n\t$0\nend'
   'ClassName = Struct .. do .. end':
     'prefix': 'cla'
     'body': '$1 = Struct.new(:${2:attr_names}) do\n\tdef ${3:method_name}\n\t\t$0\n\tend\n\t\n\t\nend'
   'class << self .. end':
     'prefix': 'cla'
     'body': 'class << ${1:self}\n\t$0\nend'
+  'class .. end':
+    'prefix': 'cla'
+    'body': 'class $1\n\t$0\nend'
   'class_from_name()':
     'prefix': 'clafn'
     'body': 'split("::").inject(Object) { |par, const| par.const_get(const) }'
@@ -210,12 +210,12 @@
   'min { |a, b| .. }':
     'prefix': 'min'
     'body': 'min { |a, b| $0 }'
-  'module .. end':
-    'prefix': 'mod'
-    'body': 'module $1\n\t$0\nend'
   'module .. module_function .. end':
     'prefix': 'mod'
     'body': 'module $1\n\tmodule_function\n\t\n\t$0\nend'
+  'module .. end':
+    'prefix': 'mod'
+    'body': 'module $1\n\t$0\nend'
   'namespace :.. do .. end':
     'prefix': 'nam'
     'body': 'namespace :$1 do\n\t$0\nend'
