@@ -1175,6 +1175,72 @@
     ]
   }
   {
+    'begin': '%\\{'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.ruby'
+    'end': '\\}'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.ruby'
+    'name': 'string.quoted.other.interpolated.ruby'
+    'patterns': [
+      {
+        'include': '#interpolated_ruby'
+      }
+      {
+        'include': '#escaped_char'
+      }
+      {
+        'include': '#nest_curly'
+      }
+    ]
+  }
+  {
+    'begin': '%\\['
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.ruby'
+    'end': '\\]'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.ruby'
+    'name': 'string.quoted.other.interpolated.ruby'
+    'patterns': [
+      {
+        'include': '#interpolated_ruby'
+      }
+      {
+        'include': '#escaped_char'
+      }
+      {
+        'include': '#nest_brackets'
+      }
+    ]
+  }
+  {
+    'begin': '%\\('
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.ruby'
+    'end': '\\)'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.ruby'
+    'name': 'string.quoted.other.interpolated.ruby'
+    'patterns': [
+      {
+        'include': '#interpolated_ruby'
+      }
+      {
+        'include': '#escaped_char'
+      }
+      {
+        'include': '#nest_parens'
+      }
+    ]
+  }
+  {
     'begin': '%([^\\w\\s=])'
     'beginCaptures':
       '0':
