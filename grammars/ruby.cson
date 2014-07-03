@@ -490,47 +490,15 @@
     ]
   }
   {
-    'begin': '(?x)
-      (?:
-      ^
-      | (?<=
-          [=>~(?:\\[,|&;]
-        | [\\s;]if\\s
-        | [\\s;]elsif\\s
-        | [\\s;]while\\s
-        | [\\s;]unless\\s
-        | [\\s;]when\\s
-        | [\\s;]assert_match\\s
-        | [\\s;]or\\s
-        | [\\s;]and\\s
-        | [\\s;]not\\s
-        | [\\s.]index\\s
-        | [\\s.]scan\\s
-        | [\\s.]sub\\s
-        | [\\s.]sub!\\s
-        | [\\s.]gsub\\s
-        | [\\s.]gsub!\\s
-        | [\\s.]match\\s
-        )
-      | (?<=
-          ^when\\s
-        | ^if\\s
-        | ^elsif\\s
-        | ^while\\s
-        | ^unless\\s
-        )
-      )
-      \\s*((/))(?![*+{}?])'
+    'begin': '(?<!\\w)((/))(?![*+{}?])'
     'captures':
       '1':
         'name': 'string.regexp.interpolated.ruby'
       '2':
         'name': 'punctuation.section.regexp.ruby'
-    'comment': 'regular expression literal with interpolation and // delimitor
-      we only start a regexp if the character before it (excluding whitespace)
-      is what we think is before a regexp'
+    'comment': 'regular expression literal with interpolation'
     'contentName': 'string.regexp.interpolated.ruby'
-    'end': '((/[eimnosux]*))'
+    'end': '((/[eimnosux]*))(?=\\W)'
     'patterns': [
       {
         'include': '#regex_sub'
