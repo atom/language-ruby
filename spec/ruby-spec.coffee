@@ -83,3 +83,14 @@ describe "CoffeeScript grammar", ->
     expect(tokens[2]).toEqual value: 'me', scopes: ['source.ruby']
     expect(tokens[3]).toEqual value: '/', scopes: ['source.ruby', 'keyword.operator.arithmetic.ruby']
     expect(tokens[4]).toEqual value: 'maybe', scopes: ['source.ruby']
+
+    {tokens} = grammar.tokenizeLine('(1+2)/3/4')
+    expect(tokens[0]).toEqual value: '(', scopes: ['source.ruby', 'punctuation.section.function.ruby']
+    expect(tokens[1]).toEqual value: '1', scopes: ['source.ruby', 'constant.numeric.ruby']
+    expect(tokens[2]).toEqual value: '+', scopes: ['source.ruby', 'keyword.operator.arithmetic.ruby']
+    expect(tokens[3]).toEqual value: '2', scopes: ['source.ruby', 'constant.numeric.ruby']
+    expect(tokens[4]).toEqual value: ')', scopes: ['source.ruby', 'punctuation.section.function.ruby']
+    expect(tokens[5]).toEqual value: '/', scopes: ['source.ruby', 'keyword.operator.arithmetic.ruby']
+    expect(tokens[6]).toEqual value: '3', scopes: ['source.ruby', 'constant.numeric.ruby']
+    expect(tokens[7]).toEqual value: '/', scopes: ['source.ruby', 'keyword.operator.arithmetic.ruby']
+    expect(tokens[8]).toEqual value: '4', scopes: ['source.ruby', 'constant.numeric.ruby']
