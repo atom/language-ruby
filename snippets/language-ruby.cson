@@ -36,6 +36,12 @@
   'Hash.new { |hash, key| hash[key] = .. }':
     'prefix': 'Hash'
     'body': 'Hash.new { |${1:hash}, ${2:key}| ${1:hash}[${2:key}] = $0 }'
+  'Array.new( .. )':
+    'prefix': 'arr'
+    'body': 'Array.new(${1:len,val})\n$0'
+  'Array.new( .. ) { |index| .. }':
+    'prefix': 'arri'
+    'body': 'Array.new(${1:len}) { |${2:i}| $0 }'
   'Marshal.dump(.., file)':
     'prefix': 'Md'
     'body': 'File.open(${1:"${2:path/to/file}.dump"}, "wb") { |${3:file}| Marshal.dump(${4:obj}, ${3:file}) }'
