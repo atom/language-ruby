@@ -12,6 +12,7 @@
   'gemspec'
   'Guardfile'
   'irbrc'
+  'opal'
   'podspec'
   'prawn'
   'pryrc'
