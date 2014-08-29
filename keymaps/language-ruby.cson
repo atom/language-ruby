@@ -1,0 +1,3 @@
+'.editor:not(.mini)':
+  '#': 'string-interpolation:insert'
+  'alt-3': 'string-interpolation:insert'
