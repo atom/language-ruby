@@ -2008,7 +2008,7 @@
     ]
   'yard_name_types':
     'comment': 'For YARD tags that follow the tag-name-types-comment pattern'
-    'match': '(attr|attr_reader|attr_writer|param|see|yieldparam)(\\s+([a-z_][a-zA-Z_]*))(\\s+(\\[\\w+\\]))?(.*)'
+    'match': '(attr|attr_reader|attr_writer|param|see|yieldparam)(\\s+([a-z_][a-zA-Z_]*))(\\s+((\\[)\\w+(\\])))?(.*)'
     'captures':
       '1':
         'name': 'comment.line.keyword.yard.ruby'
@@ -2017,16 +2017,24 @@
       '5':
         'name': 'comment.line.type.yard.ruby'
       '6':
+        'name': 'comment.line.punctuation.yard.ruby'
+      '7':
+        'name': 'comment.line.punctuation.yard.ruby'
+      '8':
         'name': 'comment.line.string.yard.ruby'
   'yard_types':
     'comment': 'For YARD tags that follow the tag-types-comment pattern'
-    'match': '(raise|return|yieldreturn)(\\s+(\\[\\w+\\]))?(.*)'
+    'match': '(raise|return|yieldreturn)(\\s+((\\[)\\w+(\\])))?(.*)'
     'captures':
       '1':
         'name': 'comment.line.keyword.yard.ruby'
       '3':
         'name': 'comment.line.type.yard.ruby'
       '4':
+        'name': 'comment.line.punctuation.yard.ruby'
+      '5':
+        'name': 'comment.line.punctuation.yard.ruby'
+      '6':
         'name': 'comment.line.string.yard.ruby'
   'yard_comment':
     'comment': 'For YARD tags that follow the tag-comment pattern'
