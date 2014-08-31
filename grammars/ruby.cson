@@ -1997,32 +1997,51 @@
         'name': 'comment.line.keyword.punctuation.yard.ruby'
     'patterns': [
       {
-        'include': '#yard_param'
+        'include': '#yard_name_types'
       }
       {
-        'include': '#yard_return'
+        'include': '#yard_types'
+      }
+      {
+        'inculde': '#yard_comment'
       }
     ]
-  'yard_param':
-    'match': '(param)\\s+([a-z_][a-zA-Z_]*)\\s+(\\[\\w+\\])?(.*)'
+  'yard_name_types':
+    'comment': 'For YARD tags that follow the tag-name-types-comment pattern'
+    'match': '(attr|attr_reader|attr_writer|param|see|yieldparam)(\\s+([a-z_][a-zA-Z_]*))(\\s+(\\[\\w+\\]))?(.*)'
     'captures':
       '1':
         'name': 'comment.line.keyword.yard.ruby'
-      '2':
+      '3':
         'name': 'comment.line.parameter.yard.ruby'
+      '5':
+        'name': 'comment.line.type.yard.ruby'
+      '6':
+        'name': 'comment.line.string.yard.ruby'
+  'yard_types':
+    'comment': 'For YARD tags that follow the tag-types-comment pattern'
+    'match': '(raise|return|yieldreturn)(\\s+(\\[\\w+\\]))?(.*)'
+    'captures':
+      '1':
+        'name': 'comment.line.keyword.yard.ruby'
       '3':
         'name': 'comment.line.type.yard.ruby'
       '4':
         'name': 'comment.line.string.yard.ruby'
-  'yard_return':
-    'match': '(return)\\s+(\\[\\w+\\])?(.*)'
+  'yard_comment':
+    'comment': 'For YARD tags that follow the tag-comment pattern'
+    'match': '(abstract|api|author|deprecated|example|note|since|todo|version)(.*)'
     'captures':
       '1':
         'name': 'comment.line.keyword.yard.ruby'
       '2':
-        'name': 'comment.line.type.yard.ruby'
-      '3':
         'name': 'comment.line.string.yard.ruby'
+  'yard_tag':
+    'comment': 'For YARD tags that are just the tag'
+    'match': '(private)'
+    'captures':
+      '1':
+        'name': 'comment.line.keyword.yard.ruby'
   'escaped_char':
     'match': '\\\\(?:[0-7]{1,3}|x[\\da-fA-F]{1,2}|.)'
     'name': 'constant.character.escape.ruby'
