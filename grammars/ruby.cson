@@ -1486,6 +1486,11 @@
             'name': 'punctuation.definition.comment.ruby'
         'end': '\\n'
         'name': 'comment.line.number-sign.ruby'
+        'patterns': [
+          {
+            'include': '#yard'
+          }
+        ]
       }
     ]
   }
@@ -1983,6 +1988,41 @@
   }
 ]
 'repository':
+  'yard':
+    'begin': '(@)'
+    'end': '$'
+    'name': 'comment.line.yard.ruby'
+    'captures':
+      '1':
+        'name': 'comment.line.keyword.punctuation.yard.ruby'
+    'patterns': [
+      {
+        'include': '#yard_param'
+      }
+      {
+        'include': '#yard_return'
+      }
+    ]
+  'yard_param':
+    'match': '(param)\\s+([a-z_][a-zA-Z_]*)\\s+(\\[\\w+\\])?(.*)'
+    'captures':
+      '1':
+        'name': 'comment.line.keyword.yard.ruby'
+      '2':
+        'name': 'comment.line.parameter.yard.ruby'
+      '3':
+        'name': 'comment.line.type.yard.ruby'
+      '4':
+        'name': 'comment.line.string.yard.ruby'
+  'yard_return':
+    'match': '(return)\\s+(\\[\\w+\\])?(.*)'
+    'captures':
+      '1':
+        'name': 'comment.line.keyword.yard.ruby'
+      '2':
+        'name': 'comment.line.type.yard.ruby'
+      '3':
+        'name': 'comment.line.string.yard.ruby'
   'escaped_char':
     'match': '\\\\(?:[0-7]{1,3}|x[\\da-fA-F]{1,2}|.)'
     'name': 'constant.character.escape.ruby'
