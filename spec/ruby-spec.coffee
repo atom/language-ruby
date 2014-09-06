@@ -1,4 +1,4 @@
-describe "CoffeeScript grammar", ->
+describe "Ruby grammar", ->
   grammar = null
 
   beforeEach ->
