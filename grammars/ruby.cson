@@ -2309,7 +2309,7 @@
     'name': 'comment.line.yard.ruby'
     'patterns': [
       {
-        'inculde': '#yard_comment'
+        'include': '#yard_comment'
       }
       {
         'include': '#yard_name_types'
