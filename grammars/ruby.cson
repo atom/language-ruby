@@ -1486,6 +1486,11 @@
             'name': 'punctuation.definition.comment.ruby'
         'end': '\\n'
         'name': 'comment.line.number-sign.ruby'
+        'patterns': [
+          {
+            'include': '#yard'
+          }
+        ]
       }
     ]
   }
@@ -2300,3 +2305,77 @@
         'name': 'comment.line.number-sign.ruby'
       }
     ]
+  'yard':
+    'name': 'comment.line.yard.ruby'
+    'patterns': [
+      {
+        'include': '#yard_comment'
+      }
+      {
+        'include': '#yard_name_types'
+      }
+      {
+        'include': '#yard_tag'
+      }
+      {
+        'include': '#yard_types'
+      }
+    ]
+  'yard_comment':
+    'comment': 'For YARD tags that follow the tag-comment pattern'
+    'match': '(@)(abstract|api|author|deprecated|example|note|since|todo|version)(.*)$'
+    'captures':
+      '1':
+        'name': 'comment.line.keyword.punctuation.yard.ruby'
+      '2':
+        'name': 'comment.line.keyword.yard.ruby'
+      '3':
+        'name': 'comment.line.string.yard.ruby'
+  'yard_name_types':
+    'comment': 'For YARD tags that follow the tag-name-types-comment pattern'
+    'match': '(@)(attr|attr_reader|attr_writer|param|see|yieldparam)(\\s+([a-z_][a-zA-Z_]*))(\\s+((\\[)[^]]+(\\])))?(.*)$'
+    'captures':
+      '1':
+        'name': 'comment.line.keyword.punctuation.yard.ruby'
+      '2':
+        'name': 'comment.line.keyword.yard.ruby'
+      '3':
+        'name': 'comment.line.yard.ruby'
+      '4':
+        'name': 'comment.line.parameter.yard.ruby'
+      '5':
+        'name': 'comment.line.yard.ruby'
+      '6':
+        'name': 'comment.line.type.yard.ruby'
+      '7':
+        'name': 'comment.line.punctuation.yard.ruby'
+      '8':
+        'name': 'comment.line.punctuation.yard.ruby'
+      '9':
+        'name': 'comment.line.string.yard.ruby'
+  'yard_tag':
+    'comment': 'For YARD tags that are just the tag'
+    'match': '(@)(private)$'
+    'captures':
+      '1':
+        'name': 'comment.line.keyword.punctuation.yard.ruby'
+      '2':
+        'name': 'comment.line.keyword.yard.ruby'
+  'yard_types':
+    'comment': 'For YARD tags that follow the tag-types-comment pattern'
+    'match': '(@)(raise|return|yieldreturn)(\\s+((\\[)[^]]+(\\])))?(.*)$'
+    'captures':
+      '1':
+        'name': 'comment.line.keyword.punctuation.yard.ruby'
+      '2':
+        'name': 'comment.line.keyword.yard.ruby'
+      '3':
+        'name': 'comment.line.yard.ruby'
+      '4':
+        'name': 'comment.line.type.yard.ruby'
+      '5':
+        'name': 'comment.line.punctuation.yard.ruby'
+      '6':
+        'name': 'comment.line.punctuation.yard.ruby'
+      '7':
+        'name': 'comment.line.string.yard.ruby'
