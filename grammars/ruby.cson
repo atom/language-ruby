@@ -491,7 +491,7 @@
     ]
   }
   {
-    'begin': '(?<!\\w)((/))(?![*+{}?])(?=.*/[eimnosux]*\\W)'
+    'begin': '(?<!\\w)((/))(?![*+?])(?=.*/[eimnosux]*\\W)'
     'captures':
       '1':
         'name': 'string.regexp.interpolated.ruby'
