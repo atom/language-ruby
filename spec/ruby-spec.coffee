@@ -92,6 +92,24 @@ describe "Ruby grammar", ->
     expect(tokens[2]).toEqual value: '/', scopes: ['source.ruby', 'string.regexp.interpolated.ruby', 'punctuation.section.regexp.ruby']
     expect(tokens[3]).toEqual value: '.', scopes: ['source.ruby', 'punctuation.separator.method.ruby']
 
+    {tokens} = grammar.tokenizeLine('foo(4 / 2).split(/c/)')
+
+    expect(tokens[0]).toEqual value: 'foo', scopes: ['source.ruby']
+    expect(tokens[1]).toEqual value: '(', scopes: ['source.ruby', 'punctuation.section.function.ruby']
+    expect(tokens[2]).toEqual value: '4', scopes: ['source.ruby', 'constant.numeric.ruby']
+    expect(tokens[3]).toEqual value: ' ', scopes: ['source.ruby']
+    expect(tokens[4]).toEqual value: '/', scopes: ['source.ruby', 'keyword.operator.arithmetic.ruby']
+    expect(tokens[5]).toEqual value: ' ', scopes: ['source.ruby']
+    expect(tokens[6]).toEqual value: '2', scopes: ['source.ruby', 'constant.numeric.ruby']
+    expect(tokens[7]).toEqual value: ')', scopes: ['source.ruby', 'punctuation.section.function.ruby']
+    expect(tokens[8]).toEqual value: '.', scopes: ['source.ruby', 'punctuation.separator.method.ruby']
+    expect(tokens[9]).toEqual value: 'split', scopes: ['source.ruby']
+    expect(tokens[10]).toEqual value: '(', scopes: ['source.ruby', 'punctuation.section.function.ruby']
+    expect(tokens[11]).toEqual value: '/', scopes: ['source.ruby', 'string.regexp.interpolated.ruby', 'punctuation.section.regexp.ruby']
+    expect(tokens[12]).toEqual value: 'c', scopes: ['source.ruby', 'string.regexp.interpolated.ruby']
+    expect(tokens[13]).toEqual value: '/', scopes: ['source.ruby', 'string.regexp.interpolated.ruby', 'punctuation.section.regexp.ruby']
+    expect(tokens[14]).toEqual value: ')', scopes: ['source.ruby', 'punctuation.section.function.ruby']
+
   it "tokenizes the / arithmetic operator", ->
     {tokens} = grammar.tokenizeLine('call/me/maybe')
     expect(tokens[0]).toEqual value: 'call', scopes: ['source.ruby']
