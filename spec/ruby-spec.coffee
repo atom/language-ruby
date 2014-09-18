@@ -110,6 +110,28 @@ describe "Ruby grammar", ->
     expect(tokens[13]).toEqual value: '/', scopes: ['source.ruby', 'string.regexp.interpolated.ruby', 'punctuation.section.regexp.ruby']
     expect(tokens[14]).toEqual value: ')', scopes: ['source.ruby', 'punctuation.section.function.ruby']
 
+    {tokens} = grammar.tokenizeLine('[/test/,3]')
+
+    expect(tokens[0]).toEqual value: '[', scopes: ['source.ruby', 'punctuation.section.array.begin.ruby']
+    expect(tokens[1]).toEqual value: '/', scopes: ['source.ruby', 'string.regexp.interpolated.ruby', 'punctuation.section.regexp.ruby']
+    expect(tokens[2]).toEqual value: 'test', scopes: ['source.ruby', 'string.regexp.interpolated.ruby']
+    expect(tokens[3]).toEqual value: '/', scopes: ['source.ruby', 'string.regexp.interpolated.ruby', 'punctuation.section.regexp.ruby']
+    expect(tokens[4]).toEqual value: ',', scopes: ['source.ruby', 'punctuation.separator.object.ruby']
+
+    {tokens} = grammar.tokenizeLine('/test/ && 4')
+
+    expect(tokens[0]).toEqual value: '/', scopes: ['source.ruby', 'string.regexp.interpolated.ruby', 'punctuation.section.regexp.ruby']
+    expect(tokens[1]).toEqual value: 'test', scopes: ['source.ruby', 'string.regexp.interpolated.ruby']
+    expect(tokens[2]).toEqual value: '/', scopes: ['source.ruby', 'string.regexp.interpolated.ruby', 'punctuation.section.regexp.ruby']
+    expect(tokens[3]).toEqual value: ' ', scopes: ['source.ruby']
+
+    {tokens} = grammar.tokenizeLine('/test/ || 4')
+
+    expect(tokens[0]).toEqual value: '/', scopes: ['source.ruby', 'string.regexp.interpolated.ruby', 'punctuation.section.regexp.ruby']
+    expect(tokens[1]).toEqual value: 'test', scopes: ['source.ruby', 'string.regexp.interpolated.ruby']
+    expect(tokens[2]).toEqual value: '/', scopes: ['source.ruby', 'string.regexp.interpolated.ruby', 'punctuation.section.regexp.ruby']
+    expect(tokens[3]).toEqual value: ' ', scopes: ['source.ruby']
+
   it "tokenizes the / arithmetic operator", ->
     {tokens} = grammar.tokenizeLine('call/me/maybe')
     expect(tokens[0]).toEqual value: 'call', scopes: ['source.ruby']
