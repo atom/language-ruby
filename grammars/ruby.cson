@@ -125,8 +125,12 @@
     'name': 'constant.language.boolean.ruby'
   }
   {
-    'match': '\\b(__(FILE|LINE)__|self)\\b(?![?!])'
+    'match': '\\b(__(FILE|LINE)__)\\b(?![?!])'
     'name': 'variable.language.ruby'
+  }
+  {
+    'match': '\\bself\\b(?![?!])'
+    'name': 'variable.language.self.ruby'
   }
   {
     'comment': ' everything being a method but having a special function is a..'
