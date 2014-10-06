@@ -2333,7 +2333,7 @@
         'name': 'comment.line.string.yard.ruby'
   'yard_name_types':
     'comment': 'For YARD tags that follow the tag-name-types-comment pattern'
-    'match': '(@)(attr|attr_reader|attr_writer|param|see|yieldparam)(\\s+([a-z_][a-zA-Z_]*))(\\s+((\\[)[^]]+(\\])))?(.*)$'
+    'match': '(@)(attr|attr_reader|attr_writer|param|see|yieldparam)(\\s+([a-z_][a-zA-Z_]*))?(\\s+((\\[).+(\\])))?(.*)$'
     'captures':
       '1':
         'name': 'comment.line.keyword.punctuation.yard.ruby'
@@ -2363,7 +2363,7 @@
         'name': 'comment.line.keyword.yard.ruby'
   'yard_types':
     'comment': 'For YARD tags that follow the tag-types-comment pattern'
-    'match': '(@)(raise|return|yieldreturn)(\\s+((\\[)[^]]+(\\])))?(.*)$'
+    'match': '(@)(raise|return|yieldreturn)(\\s+((\\[).+(\\])))?(.*)$'
     'captures':
       '1':
         'name': 'comment.line.keyword.punctuation.yard.ruby'
