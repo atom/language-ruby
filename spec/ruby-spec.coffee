@@ -12,9 +12,18 @@ describe "Ruby grammar", ->
     expect(grammar).toBeTruthy()
     expect(grammar.scopeName).toBe "source.ruby"
 
-  it 'tokenizes self', ->
+  it "tokenizes self", ->
     {tokens} = grammar.tokenizeLine('self')
     expect(tokens[0]).toEqual value: 'self', scopes: ['source.ruby', 'variable.language.self.ruby']
+
+  it "tokenizes symbols", ->
+    {tokens} = grammar.tokenizeLine(':test')
+    expect(tokens[0]).toEqual value: ':', scopes: ['source.ruby', 'constant.other.symbol.ruby', 'punctuation.definition.constant.ruby']
+    expect(tokens[1]).toEqual value: 'test', scopes: ['source.ruby', 'constant.other.symbol.ruby']
+
+    {tokens} = grammar.tokenizeLine(':$symbol')
+    expect(tokens[0]).toEqual value: ':', scopes: ['source.ruby', 'constant.other.symbol.ruby', 'punctuation.definition.constant.ruby']
+    expect(tokens[1]).toEqual value: '$symbol', scopes: ['source.ruby', 'constant.other.symbol.ruby']
 
   it "tokenizes %{} style strings", ->
     {tokens} = grammar.tokenizeLine('%{te{s}t}')
