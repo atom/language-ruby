@@ -1931,7 +1931,7 @@
     'name': 'punctuation.separator.key-value'
   }
   {
-    'match': '<<=|%=|&=|\\*=|\\*\\*=|\\+=|\\-=|\\^=|\\|{1,2}=|<<'
+    'match': '<<=|%=|&{1,2}=|\\*=|\\*\\*=|\\+=|\\-=|\\^=|\\|{1,2}=|<<'
     'name': 'keyword.operator.assignment.augmented.ruby'
   }
   {
