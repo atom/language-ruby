@@ -6,7 +6,7 @@ describe "Ruby grammar", ->
       atom.packages.activatePackage("language-ruby")
 
     runs ->
-      grammar = atom.syntax.grammarForScopeName("source.ruby")
+      grammar = atom.grammars.grammarForScopeName("source.ruby")
 
   it "parses the grammar", ->
     expect(grammar).toBeTruthy()
