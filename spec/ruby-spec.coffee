@@ -131,6 +131,13 @@ describe "Ruby grammar", ->
     expect(tokens[3]).toEqual value: '/', scopes: ['source.ruby', 'string.regexp.interpolated.ruby', 'punctuation.section.regexp.ruby']
     expect(tokens[4]).toEqual value: ',', scopes: ['source.ruby', 'punctuation.separator.object.ruby']
 
+    {tokens} = grammar.tokenizeLine('[/test/]')
+
+    expect(tokens[0]).toEqual value: '[', scopes: ['source.ruby', 'punctuation.section.array.begin.ruby']
+    expect(tokens[1]).toEqual value: '/', scopes: ['source.ruby', 'string.regexp.interpolated.ruby', 'punctuation.section.regexp.ruby']
+    expect(tokens[2]).toEqual value: 'test', scopes: ['source.ruby', 'string.regexp.interpolated.ruby']
+    expect(tokens[3]).toEqual value: '/', scopes: ['source.ruby', 'string.regexp.interpolated.ruby', 'punctuation.section.regexp.ruby']
+
     {tokens} = grammar.tokenizeLine('/test/ && 4')
 
     expect(tokens[0]).toEqual value: '/', scopes: ['source.ruby', 'string.regexp.interpolated.ruby', 'punctuation.section.regexp.ruby']
