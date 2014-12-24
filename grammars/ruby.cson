@@ -1630,14 +1630,14 @@
     'begin': '(?=(?><<-("?)((?:[_\\w]+_|)CPP)\\b\\1))'
     'comment': 'Heredoc with embedded c++'
     'end': '(?!\\G)'
-    'name': 'meta.embedded.block.c++'
+    'name': 'meta.embedded.block.cpp'
     'patterns': [
       {
         'begin': '(?><<-("?)((?:[_\\w]+_|)CPP)\\b\\1)'
         'beginCaptures':
           '0':
             'name': 'punctuation.definition.string.begin.ruby'
-        'contentName': 'source.c++'
+        'contentName': 'source.cpp'
         'end': '\\s*\\2$\\n?'
         'endCaptures':
           '0':
@@ -1650,8 +1650,15 @@
           {
             'include': '#interpolated_ruby'
           }
+
+          # TODO: remove once new language-c package is released with the
+          # 'source.cpp' scope name
           {
             'include': 'source.c++'
+          }
+
+          {
+            'include': 'source.cpp'
           }
           {
             'include': '#escaped_char'
