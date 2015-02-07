@@ -13,6 +13,7 @@
   'Guardfile'
   'irbrc'
   'opal'
+  'Podfile'
   'podspec'
   'prawn'
   'pryrc'
