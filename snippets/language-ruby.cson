@@ -300,6 +300,9 @@
   'zip(enums) { |row| .. }':
     'prefix': 'zip'
     'body': 'zip(${1:enums}) { |${2:row}| $0 }'
+  'pry':
+    'prefix': 'pry'
+    'body': 'binding.pry'
 '.source.ruby .comment':
   ':yields:':
     'prefix': 'y'
