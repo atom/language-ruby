@@ -25,6 +25,22 @@ describe "Ruby grammar", ->
     expect(tokens[0]).toEqual value: ':', scopes: ['source.ruby', 'constant.other.symbol.ruby', 'punctuation.definition.constant.ruby']
     expect(tokens[1]).toEqual value: '$symbol', scopes: ['source.ruby', 'constant.other.symbol.ruby']
 
+  it "tokenizes symbol as hash key (1.9 syntax)", ->
+    {tokens} = grammar.tokenizeLine('foo: 1')
+    expect(tokens[0]).toEqual value: 'foo', scopes: ['source.ruby', 'constant.other.symbol.hashkey.ruby']
+    expect(tokens[1]).toEqual value: ':', scopes: ['source.ruby', 'constant.other.symbol.hashkey.ruby', 'punctuation.definition.constant.hashkey.ruby']
+    expect(tokens[2]).toEqual value: ' ', scopes: ['source.ruby']
+    expect(tokens[3]).toEqual value: '1', scopes: ['source.ruby', 'constant.numeric.ruby']
+
+  it "tokenizes symbol as hash key (1.8 syntax)", ->
+    {tokens} = grammar.tokenizeLine(':foo => 1')
+    expect(tokens[0]).toEqual value: ':', scopes: ['source.ruby', 'constant.other.symbol.hashkey.ruby', 'punctuation.definition.constant.ruby']
+    expect(tokens[1]).toEqual value: 'foo', scopes: ['source.ruby', 'constant.other.symbol.hashkey.ruby']
+    expect(tokens[2]).toEqual value: ' ', scopes: ['source.ruby']
+    expect(tokens[3]).toEqual value: '=>', scopes: ['source.ruby', 'punctuation.separator.key-value']
+    expect(tokens[4]).toEqual value: ' ', scopes: ['source.ruby']
+    expect(tokens[5]).toEqual value: '1', scopes: ['source.ruby', 'constant.numeric.ruby']
+
   it "tokenizes %{} style strings", ->
     {tokens} = grammar.tokenizeLine('%{te{s}t}')
 
