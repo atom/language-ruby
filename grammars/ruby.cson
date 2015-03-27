@@ -79,7 +79,7 @@
   {
     'captures':
       '1':
-        'name': 'punctuation.definition.constant.ruby'
+        'name': 'punctuation.separator.key-value'
     'comment': 'symbols as hash key (1.9 syntax)'
     'match': '(?>[a-zA-Z_]\\w*(?>[?!])?)(:)(?!:)'
     'name': 'constant.other.symbol.hashkey.ruby'
