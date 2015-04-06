@@ -1,5 +1,5 @@
-'name': 'Ruby'
-'scopeName': 'source.ruby'
+'name': 'Crystal'
+'scopeName': 'source.crystal'
 'fileTypes': [
   'Appraisals'
   'Berksfile'
