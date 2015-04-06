@@ -1,11 +1,11 @@
 {
-  "name": "language-ruby",
-  "version": "0.51.0",
-  "description": "Ruby language support in Atom",
+  "name": "language-crystal",
+  "version": "0.0.0",
+  "description": "Crystal language support in Atom",
   "engines": {
     "atom": "*",
     "node": "*"
   },
   "license": "MIT",
-  "repository": "https://github.com/atom/language-ruby"
+  "repository": "https://github.com/k2b6s9j/language-crystal"
 }
