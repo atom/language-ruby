@@ -3,7 +3,7 @@ describe "Crystal grammar", ->
 
   beforeEach ->
     waitsForPromise ->
-      atom.packages.activatePackage("language-crystal")
+      atom.packages.activatePackage("language-crystal-actual")
 
     runs ->
       grammar = atom.grammars.grammarForScopeName("source.crystal")
