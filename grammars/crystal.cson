@@ -44,6 +44,27 @@
     'name': 'meta.module.crystal'
   }
   {
+    'captures':
+      '1':
+        'name': 'keyword.control.enum.crystal'
+      '2':
+        'name': 'entity.name.type.enum.crystal'
+      '3':
+        'name': 'entity.other.inherited-class.enum.first.crystal'
+      '4':
+        'name': 'punctuation.separator.inheritance.crystal'
+      '5':
+        'name': 'entity.other.inherited-class.enum.second.crystal'
+      '6':
+        'name': 'punctuation.separator.inheritance.crystal'
+      '7':
+        'name': 'entity.other.inherited-class.enum.third.crystal'
+      '8':
+        'name': 'punctuation.separator.inheritance.crystal'
+    'match': '^\\s*(enum)\\s+(([A-Z]\\w*(::))?([A-Z]\\w*(::))?([A-Z]\\w*(::))*[A-Z]\\w*)'
+    'name': 'meta.enum.crystal'
+  }
+  {
     'comment': 'else if is a common mistake carried over from other languages. it works if you put in a second end, but it’s never what you want.'
     'match': '(?<!\\.)\\belse(\\s)+if\\b'
     'name': 'invalid.deprecated.crystal'
