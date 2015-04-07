@@ -65,6 +65,15 @@
     'name': 'meta.enum.crystal'
   }
   {
+    'captures':
+      '1':
+        'name': 'keyword.control.lib.crystal'
+      '2':
+        'name': 'entity.name.type.lib.crystal'
+    'match': '^\\s*(lib)\\s+([A-Z]\\w*)'
+    'name': 'meta.lib.crystal'
+  }
+  {
     'comment': 'else if is a common mistake carried over from other languages. it works if you put in a second end, but it’s never what you want.'
     'match': '(?<!\\.)\\belse(\\s)+if\\b'
     'name': 'invalid.deprecated.crystal'
