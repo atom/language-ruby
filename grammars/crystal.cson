@@ -321,15 +321,6 @@
     'name': 'constant.numeric.crystal'
   }
   {
-    'captures':
-      '1':
-        'name': 'punctuation.definition.constant.crystal'
-      '2':
-        'name': 'entity.content.symbol.crystal'
-    'match': '(:)((?:".+")|(?:\\S+))'
-    'name': 'constant.other.symbol.crystal'
-  }
-  {
     'begin': ':"'
     'beginCaptures':
       '0':
