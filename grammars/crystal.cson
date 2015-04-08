@@ -1487,7 +1487,7 @@
   }
   {
     'comment': 'symbols'
-    'match': ':(?:\\S+)'
+    'match': ' :(?:\\S[^,]+)'
     'name': 'constant.other.symbol.crystal'
   }
   {
