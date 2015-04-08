@@ -19,11 +19,11 @@ describe "Crystal grammar", ->
   it "tokenizes symbols", ->
     {tokens} = grammar.tokenizeLine(':test')
     expect(tokens[0]).toEqual value: ':', scopes: ['source.crystal', 'constant.other.symbol.crystal', 'punctuation.definition.constant.crystal']
-    expect(tokens[1]).toEqual value: 'test', scopes: ['source.crystal', 'constant.other.symbol.crystal', 'entity.content.symbol.crystal']
+    expect(tokens[1]).toEqual value: 'test', scopes: ['source.crystal', 'constant.other.symbol.crystal']
 
     {tokens} = grammar.tokenizeLine(':$symbol')
     expect(tokens[0]).toEqual value: ':', scopes: ['source.crystal', 'constant.other.symbol.crystal', 'punctuation.definition.constant.crystal']
-    expect(tokens[1]).toEqual value: '$symbol', scopes: ['source.crystal', 'constant.other.symbol.crystal', 'entity.content.symbol.crystal']
+    expect(tokens[1]).toEqual value: '$symbol', scopes: ['source.crystal', 'constant.other.symbol.crystal']
 
   it "tokenizes %{} style strings", ->
     {tokens} = grammar.tokenizeLine('%{te{s}t}')
