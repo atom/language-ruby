@@ -1486,11 +1486,8 @@
     ]
   }
   {
-    'captures':
-      '1':
-        'name': 'punctuation.definition.constant.crystal'
     'comment': 'symbols'
-    'match': '(?<!:)(:)(?>[$a-zA-Z_]\\w*(?>[?!]|=(?![>=]))?|===?|>[>=]?|<[<=]?|<=>|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[\\]=?|@@?[a-zA-Z_]\\w*)'
+    'match': ':(?:\\S+)'
     'name': 'constant.other.symbol.crystal'
   }
   {
