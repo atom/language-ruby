@@ -285,22 +285,13 @@
     'name': 'constant.numeric.crystal'
   }
   {
-    'begin': ':\''
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.symbol.begin.crystal'
-    'comment': "symbol literal with '' delimitor"
-    'end': '\''
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.symbol.end.crystal'
+    'captures':
+      '1':
+        'name': 'punctuation.beginning.symbol.crystal'
+    'match': '(:)(\\S+)'
     'name': 'constant.other.symbol.crystal'
-    'patterns': [
-      {
-        'match': '\\\\[\'\\\\]'
-        'name': 'constant.character.escape.crystal'
-      }
-    ]
+    'comment': 'for the sake of simplicity a symbol is anything after a colon
+      and isn\'t whitespace'
   }
   {
     'begin': ':"'
