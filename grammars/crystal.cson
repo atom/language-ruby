@@ -141,7 +141,7 @@
     'name': 'keyword.other.special-method.crystal'
   }
   {
-    'begin': '\\b(require|require_relative|gem)\\b'
+    'begin': '\\b(require)\\b'
     'captures':
       '1':
         'name': 'keyword.other.special-method.crystal'
