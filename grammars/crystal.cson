@@ -322,7 +322,7 @@
   {
     'captures':
       '1':
-        'name': 'punctuation.beginning.symbol.crystal'
+        'name': 'punctuation.definition.constant.crystal'
       '2':
         'name': 'entity.content.symbol.crystal'
     'match': '(:)((?:".+")|(?:\\S+))'
