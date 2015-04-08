@@ -328,7 +328,7 @@
     'endCaptures':
       '0':
         'name': 'punctuation.definition.char.end.crystal'
-    'name': 'char.crystal'
+    'name': 'string.literal.char.crystal'
     'patterns': [
       {
         'match': '\\\\\'|\\\\\\\\'
