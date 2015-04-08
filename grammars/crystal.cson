@@ -1250,26 +1250,29 @@
       }
     ]
   }
-  {
-    'begin': '%([^\\w\\s=])'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.crystal'
-    'comment': 'string literal with interpolation and wildcard delimitor'
-    'end': '\\1'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.crystal'
-    'name': 'string.quoted.other.interpolated.crystal'
-    'patterns': [
-      {
-        'include': '#interpolated_crystal'
-      }
-      {
-        'include': '#escaped_char'
-      }
-    ]
-  }
+  # I've disabled this syntax because it conflicts with Crystal's macro Syntax.
+  # I may altogether remove this section if it does not cause further issue down
+  #   the road.
+  #{
+  #  'begin': '%([^\\w\\s=])'
+  #  'beginCaptures':
+  #    '0':
+  #      'name': 'punctuation.definition.string.begin.crystal'
+  #  'comment': 'string literal with interpolation and wildcard delimitor'
+  #  'end': '\\1'
+  #  'endCaptures':
+  #    '0':
+  #      'name': 'punctuation.definition.string.end.crystal'
+  #  'name': 'string.quoted.other.interpolated.crystal'
+  #  'patterns': [
+  #    {
+  #      'include': '#interpolated_crystal'
+  #    }
+  #    {
+  #      'include': '#escaped_char'
+  #    }
+  #  ]
+  #}
   {
     'begin': '%q\\('
     'beginCaptures':
