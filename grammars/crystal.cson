@@ -95,7 +95,8 @@
     'name': 'meta.lib.crystal'
   }
   {
-    'comment': 'else if is a common mistake carried over from other languages. it works if you put in a second end, but it’s never what you want.'
+    'comment': 'else if is a common mistake carried over from other languages.
+      it works if you put in a second end, but it’s never what you want.'
     'match': '(?<!\\.)\\belse(\\s)+if\\b'
     'name': 'invalid.deprecated.crystal'
   }
@@ -116,7 +117,8 @@
     'name': 'constant.other.symbol.hashkey.crystal'
   }
   {
-    'comment': 'everything being a reserved word, not a value and needing a \'end\' is a..'
+    'comment': 'everything being a reserved word, not a value and needing a
+      \'end\' is a..'
     'match': '(?<!\\.)\\b(BEGIN|begin|case|class|else|elsif|END|end|ensure|for|if|in|module|rescue|then|unless|until|when|while)\\b(?![?!])'
     'name': 'keyword.control.crystal'
   }
@@ -131,7 +133,8 @@
     'name': 'meta.syntax.crystal.start-block'
   }
   {
-    'comment': ' as above, just doesn\'t need a \'end\' and does a logic operation'
+    'comment': ' as above, just doesn\'t need a \'end\' and does a logic
+      operation'
     'match': '(?<!\\.)\\b(and|not|or)\\b'
     'name': 'keyword.operator.logical.crystal'
   }
@@ -236,7 +239,8 @@
         'name': 'entity.name.function.crystal'
       '3':
         'name': 'punctuation.definition.parameters.crystal'
-    'comment': 'the method pattern comes from the symbol pattern, see there for a explaination'
+    'comment': 'the method pattern comes from the symbol pattern, see there for
+      a explaination'
     'end': '\\)'
     'endCaptures':
       '0':
@@ -269,7 +273,8 @@
         'name': 'keyword.control.def.crystal'
       '2':
         'name': 'entity.name.function.crystal'
-    'comment': 'same as the previous rule, but without parentheses around the arguments'
+    'comment': 'same as the previous rule, but without parentheses around the
+      arguments'
     'end': '$'
     'name': 'meta.function.method.with-arguments.crystal'
     'patterns': [
@@ -297,7 +302,8 @@
         'name': 'keyword.control.def.crystal'
       '3':
         'name': 'entity.name.function.crystal'
-    'comment': ' the optional name is just to catch the def also without a method-name'
+    'comment': ' the optional name is just to catch the def also without a
+      method-name'
     'match': '(?x)\n\t\t\t         (?=def\\b)                                                           # an optimization to help Oniguruma fail fast\n\t\t\t         (?<=^|\\s)(def)\\b                                                    # the def keyword\n\t\t\t         ( \\s+                                                               # an optional group of whitespace followed by…\n\t\t\t           ( (?>[a-zA-Z_]\\w*(?>\\.|::))?                                      # a method name prefix\n\t\t\t             (?>[a-zA-Z_]\\w*(?>[?!]|=(?!>))?                                 # the method name\n\t\t\t             |===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[\\]=?) ) )?  # …or an operator method\n\t\t\t        '
     'name': 'meta.function.method.without-arguments.crystal'
   }
@@ -719,7 +725,8 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.crystal'
-    'comment': 'array of symbols literal with interpolation and wildcard delimitor'
+    'comment': 'array of symbols literal with interpolation and wildcard
+      delimitor'
     'end': '\\1'
     'endCaptures':
       '0':
@@ -933,7 +940,8 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.crystal'
-    'comment': 'array of strings literal with interpolation and wildcard delimitor'
+    'comment': 'array of strings literal with interpolation and wildcard
+      delimitor'
     'end': '\\1'
     'endCaptures':
       '0':
@@ -1517,7 +1525,7 @@
     ]
   }
   {
-    'comment': '\n\t\t\tmatches questionmark-letters.\n\n\t\t\texamples (1st alternation = hex):\n\t\t\t?\\x1     ?\\x61\n\n\t\t\texamples (2nd alternation = octal):\n\t\t\t?\\0      ?\\07     ?\\017\n\n\t\t\texamples (3rd alternation = escaped):\n\t\t\t?\\n      ?\\b\n\n\t\t\texamples (4th alternation = meta-ctrl):\n\t\t\t?\\C-a    ?\\M-a    ?\\C-\\M-\\C-\\M-a\n\n\t\t\texamples (4th alternation = normal):\n\t\t\t?a       ?A       ?0 \n\t\t\t?*       ?"       ?( \n\t\t\t?.       ?#\n\t\t\t\n\t\t\t\n\t\t\tthe negative lookbehind prevents against matching\n\t\t\tp(42.tainted?)\n\t\t\t'
+    'comment': '\n\t\t\tmatches questionmark-letters.\n\n\t\t\texamples(1st alternation = hex):\n\t\t\t?\\x1     ?\\x61\n\n\t\t\texamples (2nd alternation = octal):\n\t\t\t?\\0      ?\\07     ?\\017\n\n\t\t\texamples (3rd alternation = escaped):\n\t\t\t?\\n      ?\\b\n\n\t\t\texamples (4th alternation = meta-ctrl):\n\t\t\t?\\C-a    ?\\M-a    ?\\C-\\M-\\C-\\M-a\n\n\t\t\texamples (4th alternation = normal):\n\t\t\t?a       ?A       ?0 \n\t\t\t?*       ?"       ?( \n\t\t\t?.       ?#\n\t\t\t\n\t\t\t\n\t\t\tthe negative lookbehind prevents against matching\n\t\t\tp(42.tainted?)\n\t\t\t'
     'match': '(?<!\\w)\\?(\\\\(x\\h{1,2}(?!\\h)\\b|0[0-7]{0,2}(?![0-7])\\b|[^x0MC])|(\\\\[MC]-)+\\w|[^\\s\\\\])'
     'name': 'constant.numeric.crystal'
   }
@@ -2326,7 +2334,9 @@
         'beginCaptures':
           '1':
             'name': 'punctuation.definition.comment.crystal'
-        'comment': 'We are restrictive in what we allow to go after the comment character to avoid false positives, since the availability of comments depend on regexp flags.'
+        'comment': 'We are restrictive in what we allow to go after the comment
+          character to avoid false positives, since the availability of comments
+          depend on regexp flags.'
         'end': '$\\n?'
         'endCaptures':
           '0':
