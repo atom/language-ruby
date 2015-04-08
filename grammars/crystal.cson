@@ -240,6 +240,10 @@
     'name': 'keyword.control.def.macro.crystal'
   }
   {
+    'match': '(?:(abstract) def)'
+    'name': 'keyword.control.def.abstract.crystal'
+  }
+  {
     'match': '(?:(abstract) class)'
     'name': 'keyword.control.class.abstract.crystal'
   }
