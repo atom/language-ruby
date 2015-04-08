@@ -2,6 +2,7 @@
 'scopeName': 'source.crystal'
 'fileTypes': [
   'cr'
+  'Projectfile'
 ]
 'firstLineMatch': '^#!\\s*/.*\\bcrystal'
 'patterns': [
