@@ -67,6 +67,27 @@
   {
     'captures':
       '1':
+        'name': 'keyword.control.struct.crystal'
+      '2':
+        'name': 'entity.name.type.struct.crystal'
+      '3':
+        'name': 'entity.other.inherited-class.struct.first.crystal'
+      '4':
+        'name': 'punctuation.separator.inheritance.crystal'
+      '5':
+        'name': 'entity.other.inherited-class.struct.second.crystal'
+      '6':
+        'name': 'punctuation.separator.inheritance.crystal'
+      '7':
+        'name': 'entity.other.inherited-class.struct.third.crystal'
+      '8':
+        'name': 'punctuation.separator.inheritance.crystal'
+    'match': '^\\s*(struct)\\s+(([A-Z]\\w*(::))?([A-Z]\\w*(::))?([A-Z]\\w*(::))*[A-Z]\\w*)'
+    'name': 'meta.struct.crystal'
+  }
+  {
+    'captures':
+      '1':
         'name': 'keyword.control.lib.crystal'
       '2':
         'name': 'entity.name.type.lib.crystal'
