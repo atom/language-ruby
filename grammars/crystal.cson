@@ -288,10 +288,10 @@
     'captures':
       '1':
         'name': 'punctuation.beginning.symbol.crystal'
-    'match': '(:)(\\S+)'
+      '2':
+        'name': 'entity.content.symbol.crystal'
+    'match': '(:)((?:".+")|(?:\\S+))'
     'name': 'constant.other.symbol.crystal'
-    'comment': 'for the sake of simplicity a symbol is anything after a colon
-      and isn\'t whitespace'
   }
   {
     'begin': ':"'
