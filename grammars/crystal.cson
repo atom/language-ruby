@@ -140,7 +140,7 @@
   }
   {
     'comment': ' just as above but being not a logical operation'
-    'match': '(?<!\\.)\\b(alias|alias_method|break|next|redo|retry|return|super|undef|yield)\\b(?![?!])|\\bdefined\\?|\\bblock_given\\?'
+    'match': '(?<!\\.)\\b(alias|alias_method|break|next|redo|retry|return|super|undef|yield|as|with)\\b(?![?!])|\\bdefined\\?|\\bblock_given\\?'
     'name': 'keyword.control.pseudo-method.crystal'
   }
   {
@@ -161,7 +161,7 @@
   }
   {
     'comment': ' everything being a method but having a special function is a..'
-    'match': '\\b(initialize|new|loop|include|extend|prepend|raise|fail|getter|setter|property|catch|throw|module_function)\\b(?![?!])'
+    'match': '\\b(initialize|new|loop|include|extend|prepend|raise|fail|getter|setter|property|catch|throw|module_function|sizeof|instance_sizeof|pointerof)\\b(?![?!])'
     'name': 'keyword.other.special-method.crystal'
   }
   {
