@@ -161,7 +161,7 @@
   }
   {
     'comment': ' everything being a method but having a special function is a..'
-    'match': '\\b(initialize|new|loop|include|extend|prepend|raise|fail|getter|setter|property|catch|throw|private|module_function|public|protected)\\b(?![?!])'
+    'match': '\\b(initialize|new|loop|include|extend|prepend|raise|fail|getter|setter|property|catch|throw|module_function)\\b(?![?!])'
     'name': 'keyword.other.special-method.crystal'
   }
   {
