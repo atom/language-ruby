@@ -7,95 +7,6 @@
 'firstLineMatch': '^#!\\s*/.*\\bcrystal'
 'patterns': [
   {
-    'captures':
-      '1':
-        'name': 'keyword.control.class.crystal'
-      '2':
-        'name': 'entity.name.type.class.crystal'
-      '4':
-        'name': 'entity.other.inherited-class.crystal'
-      '5':
-        'name': 'punctuation.separator.inheritance.crystal'
-      '6':
-        'name': 'variable.other.object.crystal'
-      '7':
-        'name': 'punctuation.definition.variable.crystal'
-    'match': '^\\s*(class)\\s+(([.a-zA-Z0-9_:]+(\\s*(<)\\s*[.a-zA-Z0-9_:]+)?)|((<<)\\s*[.a-zA-Z0-9_:]+))'
-    'name': 'meta.class.crystal'
-  }
-  {
-    'captures':
-      '1':
-        'name': 'keyword.control.module.crystal'
-      '2':
-        'name': 'entity.name.type.module.crystal'
-      '3':
-        'name': 'entity.other.inherited-class.module.first.crystal'
-      '4':
-        'name': 'punctuation.separator.inheritance.crystal'
-      '5':
-        'name': 'entity.other.inherited-class.module.second.crystal'
-      '6':
-        'name': 'punctuation.separator.inheritance.crystal'
-      '7':
-        'name': 'entity.other.inherited-class.module.third.crystal'
-      '8':
-        'name': 'punctuation.separator.inheritance.crystal'
-    'match': '^\\s*(module)\\s+(([A-Z]\\w*(::))?([A-Z]\\w*(::))?([A-Z]\\w*(::))*[A-Z]\\w*)'
-    'name': 'meta.module.crystal'
-  }
-  {
-    'captures':
-      '1':
-        'name': 'keyword.control.enum.crystal'
-      '2':
-        'name': 'entity.name.type.enum.crystal'
-      '3':
-        'name': 'entity.other.inherited-class.enum.first.crystal'
-      '4':
-        'name': 'punctuation.separator.inheritance.crystal'
-      '5':
-        'name': 'entity.other.inherited-class.enum.second.crystal'
-      '6':
-        'name': 'punctuation.separator.inheritance.crystal'
-      '7':
-        'name': 'entity.other.inherited-class.enum.third.crystal'
-      '8':
-        'name': 'punctuation.separator.inheritance.crystal'
-    'match': '^\\s*(enum)\\s+(([A-Z]\\w*(::))?([A-Z]\\w*(::))?([A-Z]\\w*(::))*[A-Z]\\w*)'
-    'name': 'meta.enum.crystal'
-  }
-  {
-    'captures':
-      '1':
-        'name': 'keyword.control.struct.crystal'
-      '2':
-        'name': 'entity.name.type.struct.crystal'
-      '3':
-        'name': 'entity.other.inherited-class.struct.first.crystal'
-      '4':
-        'name': 'punctuation.separator.inheritance.crystal'
-      '5':
-        'name': 'entity.other.inherited-class.struct.second.crystal'
-      '6':
-        'name': 'punctuation.separator.inheritance.crystal'
-      '7':
-        'name': 'entity.other.inherited-class.struct.third.crystal'
-      '8':
-        'name': 'punctuation.separator.inheritance.crystal'
-    'match': '^\\s*(struct)\\s+(([A-Z]\\w*(::))?([A-Z]\\w*(::))?([A-Z]\\w*(::))*[A-Z]\\w*)'
-    'name': 'meta.struct.crystal'
-  }
-  {
-    'captures':
-      '1':
-        'name': 'keyword.control.lib.crystal'
-      '2':
-        'name': 'entity.name.type.lib.crystal'
-    'match': '^\\s*(lib)\\s+([A-Z]\\w*)'
-    'name': 'meta.lib.crystal'
-  }
-  {
     'comment': 'else if is a common mistake carried over from other languages.
       it works if you put in a second end, but it’s never what you want.'
     'match': '(?<!\\.)\\belse(\\s)+if\\b'
@@ -246,10 +157,6 @@
   {
     'match': '(?:(abstract) def)'
     'name': 'keyword.control.def.abstract.crystal'
-  }
-  {
-    'match': '(?:(abstract) class)'
-    'name': 'keyword.control.class.abstract.crystal'
   }
   {
     'begin': '(?x)\n\t\t\t         (?=def\\b)                                                      # an optimization to help Oniguruma fail fast\n\t\t\t         (?<=^|\\s)(def)\\s+                                              # the def keyword\n\t\t\t         ( (?>[a-zA-Z_]\\w*(?>\\.|::))?                                   # a method name prefix\n\t\t\t           (?>[a-zA-Z_]\\w*(?>[?!]|=(?!>))?                              # the method name\n\t\t\t           |===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[\\]=?) )  # …or an operator method\n\t\t\t         \\s*(\\()                                                        # the openning parenthesis for arguments\n\t\t\t        '
@@ -2040,6 +1947,14 @@
         'name': 'punctuation.seperator.inheritance.crystal'
     'match': '(?:([A-Z][^\\s\\W:]+)(::)?)'
     'name': 'meta.object.crystal'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.control.object.crystal'
+    'match':
+      '((?:abstract\\s)?class|module|enum|struct|lib)\\s+(?:[A-Z][^\\s\\W:]+)'
+    'name': 'meta.definition.object.crystal'
   }
 ]
 'repository':
