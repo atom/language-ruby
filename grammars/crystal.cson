@@ -2032,6 +2032,15 @@
     'match': '\\(|\\)'
     'name': 'punctuation.section.function.crystal'
   }
+  {
+    'captures':
+      '1':
+        'name': 'entity.class.crystal'
+      '2':
+        'name': 'punctuation.seperator.inheritance.crystal'
+    'match': '(?:([A-Z][^\\s\\W:]+)(::)?)'
+    'name': 'meta.object.crystal'
+  }
 ]
 'repository':
   'escaped_char':
