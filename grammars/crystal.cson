@@ -147,19 +147,8 @@
     'name': 'variable.other.constant.crystal'
   }
   {
-    'match': '(?:(private|protected) def)'
-    'name': 'keyword.control.def.visibility.crystal'
-  }
-  {
-    'match': '(?:(macro) def)'
-    'name': 'keyword.control.def.macro.crystal'
-  }
-  {
-    'match': '(?:(abstract) def)'
-    'name': 'keyword.control.def.abstract.crystal'
-  }
-  {
-    'begin': '(?x)\n\t\t\t         (?=def\\b)                                                      # an optimization to help Oniguruma fail fast\n\t\t\t         (?<=^|\\s)(def)\\s+                                              # the def keyword\n\t\t\t         ( (?>[a-zA-Z_]\\w*(?>\\.|::))?                                   # a method name prefix\n\t\t\t           (?>[a-zA-Z_]\\w*(?>[?!]|=(?!>))?                              # the method name\n\t\t\t           |===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[\\]=?) )  # …or an operator method\n\t\t\t         \\s*(\\()                                                        # the openning parenthesis for arguments\n\t\t\t        '
+    'begin':
+      '((?:(?:private|protected|macro)\\s+)?def)\\s+([^\\s\\(]+)(?:\\()(.+)'
     'beginCaptures':
       '1':
         'name': 'keyword.control.def.crystal'
@@ -195,7 +184,8 @@
     ]
   }
   {
-    'begin': '(?x)\n\t\t\t         (?=def\\b)                                                      # an optimization to help Oniguruma fail fast\n\t\t\t         (?<=^|\\s)(def)\\s+                                              # the def keyword\n\t\t\t         ( (?>[a-zA-Z_]\\w*(?>\\.|::))?                                   # a method name prefix\n\t\t\t           (?>[a-zA-Z_]\\w*(?>[?!]|=(?!>))?                              # the method name\n\t\t\t           |===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[\\]=?) )  # …or an operator method\n\t\t\t         [ \\t]                                                          # the space separating the arguments\n\t\t\t         (?=[ \\t]*[^\\s#;])                                              # make sure arguments and not a comment follow\n\t\t\t        '
+    'begin':
+      '((?:(?:private|protected|macro)\\s+)?def)\\s+(\\S+)(?:\\s+)(.+)'
     'beginCaptures':
       '1':
         'name': 'keyword.control.def.crystal'
@@ -228,11 +218,12 @@
     'captures':
       '1':
         'name': 'keyword.control.def.crystal'
-      '3':
+      '2':
         'name': 'entity.name.function.crystal'
     'comment': ' the optional name is just to catch the def also without a
       method-name'
-    'match': '(?x)\n\t\t\t         (?=def\\b)                                                           # an optimization to help Oniguruma fail fast\n\t\t\t         (?<=^|\\s)(def)\\b                                                    # the def keyword\n\t\t\t         ( \\s+                                                               # an optional group of whitespace followed by…\n\t\t\t           ( (?>[a-zA-Z_]\\w*(?>\\.|::))?                                      # a method name prefix\n\t\t\t             (?>[a-zA-Z_]\\w*(?>[?!]|=(?!>))?                                 # the method name\n\t\t\t             |===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[\\]=?) ) )?  # …or an operator method\n\t\t\t        '
+    'match':
+      '((?:(?:private|protected|macro)\\s+)?def)\\s+([^\\s\\(]+)(\\(\\))?'
     'name': 'meta.function.method.without-arguments.crystal'
   }
   {
