@@ -31,7 +31,7 @@
   'Thorfile'
   'Vagrantfile'
 ]
-'firstLineMatch': '^#!\\s*/.*\\bruby'
+'firstLineMatch': '^#!\\s*/.*\\bruby|^#\\s+-\\*-\\s*ruby\\s*-\\*-",
 'patterns': [
   {
     'captures':
