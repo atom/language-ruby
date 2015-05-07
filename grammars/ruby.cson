@@ -213,7 +213,7 @@
         'name': 'entity.name.function.ruby'
       '3':
         'name': 'punctuation.definition.parameters.ruby'
-    'comment': 'the method pattern comes from the symbol pattern, see there for a explaination'
+    'comment': 'The method pattern comes from the symbol pattern. See there for an explanation.'
     'end': '\\)'
     'endCaptures':
       '0':
