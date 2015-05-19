@@ -25,6 +25,10 @@ describe "Ruby grammar", ->
     expect(tokens[0]).toEqual value: ':', scopes: ['source.ruby', 'constant.other.symbol.ruby', 'punctuation.definition.constant.ruby']
     expect(tokens[1]).toEqual value: '$symbol', scopes: ['source.ruby', 'constant.other.symbol.ruby']
 
+    {tokens} = grammar.tokenizeLine(':<=>')
+    expect(tokens[0]).toEqual value: ':', scopes: ['source.ruby', 'constant.other.symbol.ruby', 'punctuation.definition.constant.ruby']
+    expect(tokens[1]).toEqual value: '<=>', scopes: ['source.ruby', 'constant.other.symbol.ruby']
+
   it "tokenizes symbol as hash key (1.9 syntax)", ->
     {tokens} = grammar.tokenizeLine('foo: 1')
     expect(tokens[0]).toEqual value: 'foo', scopes: ['source.ruby', 'constant.other.symbol.hashkey.ruby']
