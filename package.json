@@ -1,6 +1,6 @@
 {
   "name": "language-ruby",
-  "version": "0.53.0",
+  "version": "0.54.0",
   "description": "Ruby language support in Atom",
   "engines": {
     "atom": "*",
