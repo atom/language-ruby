@@ -1963,10 +1963,6 @@
     'name': 'keyword.operator.other.ruby'
   }
   {
-    'match': ':'
-    'name': 'punctuation.separator.other.ruby'
-  }
-  {
     'match': '\\;'
     'name': 'punctuation.separator.statement.ruby'
   }
@@ -1977,6 +1973,10 @@
   {
     'match': '\\.|::'
     'name': 'punctuation.separator.method.ruby'
+  }
+  {
+    'match': ':'
+    'name': 'punctuation.separator.other.ruby'
   }
   {
     'match': '\\{'
