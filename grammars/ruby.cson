@@ -1971,8 +1971,16 @@
     'name': 'punctuation.separator.object.ruby'
   }
   {
-    'match': '\\.|::'
-    'name': 'punctuation.separator.method.ruby'
+    'match': '(::)\\s*(?=[A-Z])'
+    'captures':
+      '1':
+        'name': 'punctuation.separator.namespace.ruby'
+  }
+  {
+    'match': '(\\.|::)\\s*(?![A-Z])'
+    'captures':
+      '1':
+        'name': 'punctuation.separator.method.ruby'
   }
   {
     'match': ':'

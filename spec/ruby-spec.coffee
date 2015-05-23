@@ -25,9 +25,8 @@ describe "Ruby grammar", ->
     expect(tokens[2]).toEqual value: 'require ', scopes: ['source.ruby']
 
     {tokens} = grammar.tokenizeLine('Kernel::require "."')
-    expect(tokens[1]).toEqual value: ':', scopes: ['source.ruby', 'punctuation.separator.other.ruby']
-    expect(tokens[2]).toEqual value: ':', scopes: ['source.ruby', 'punctuation.separator.other.ruby']
-    expect(tokens[3]).toEqual value: 'require ', scopes: ['source.ruby']
+    expect(tokens[1]).toEqual value: '::', scopes: ['source.ruby', 'punctuation.separator.method.ruby']
+    expect(tokens[2]).toEqual value: 'require ', scopes: ['source.ruby']
 
   it "tokenizes symbols", ->
     {tokens} = grammar.tokenizeLine(':test')
@@ -57,6 +56,41 @@ describe "Ruby grammar", ->
     expect(tokens[3]).toEqual value: '=>', scopes: ['source.ruby', 'punctuation.separator.key-value']
     expect(tokens[4]).toEqual value: ' ', scopes: ['source.ruby']
     expect(tokens[5]).toEqual value: '1', scopes: ['source.ruby', 'constant.numeric.ruby']
+
+  it "tokenizes :: separators", ->
+    {tokens} = grammar.tokenizeLine('File::read "test"')
+    expect(tokens[0]).toEqual value: 'File', scopes: ['source.ruby', 'support.class.ruby']
+    expect(tokens[1]).toEqual value: '::', scopes: ['source.ruby', 'punctuation.separator.method.ruby']
+    expect(tokens[2]).toEqual value: 'read ', scopes: ['source.ruby']
+
+    {tokens} = grammar.tokenizeLine('File:: read "test"')
+    expect(tokens[0]).toEqual value: 'File', scopes: ['source.ruby', 'variable.other.constant.ruby']
+    expect(tokens[1]).toEqual value: '::', scopes: ['source.ruby', 'punctuation.separator.method.ruby']
+    expect(tokens[2]).toEqual value: ' ', scopes: ['source.ruby']
+    expect(tokens[3]).toEqual value: 'read ', scopes: ['source.ruby']
+
+    {tokens} = grammar.tokenizeLine('RbConfig::CONFIG')
+    expect(tokens[0]).toEqual value: 'RbConfig', scopes: ['source.ruby', 'support.class.ruby']
+    expect(tokens[1]).toEqual value: '::', scopes: ['source.ruby', 'punctuation.separator.namespace.ruby']
+    expect(tokens[2]).toEqual value: 'CONFIG', scopes: ['source.ruby', 'variable.other.constant.ruby']
+
+    {tokens} = grammar.tokenizeLine('RbConfig:: CONFIG')
+    expect(tokens[0]).toEqual value: 'RbConfig', scopes: ['source.ruby', 'variable.other.constant.ruby']
+    expect(tokens[1]).toEqual value: '::', scopes: ['source.ruby', 'punctuation.separator.namespace.ruby']
+    expect(tokens[2]).toEqual value: ' ', scopes: ['source.ruby']
+    expect(tokens[3]).toEqual value: 'CONFIG', scopes: ['source.ruby', 'variable.other.constant.ruby']
+
+  it "tokenizes . separator", ->
+    {tokens} = grammar.tokenizeLine('File.read "test"')
+    expect(tokens[0]).toEqual value: 'File', scopes: ['source.ruby', 'support.class.ruby']
+    expect(tokens[1]).toEqual value: '.', scopes: ['source.ruby', 'punctuation.separator.method.ruby']
+    expect(tokens[2]).toEqual value: 'read ', scopes: ['source.ruby']
+
+    {tokens} = grammar.tokenizeLine('File. read "test"')
+    expect(tokens[0]).toEqual value: 'File', scopes: ['source.ruby', 'variable.other.constant.ruby']
+    expect(tokens[1]).toEqual value: '.', scopes: ['source.ruby', 'punctuation.separator.method.ruby']
+    expect(tokens[2]).toEqual value: ' ', scopes: ['source.ruby']
+    expect(tokens[3]).toEqual value: 'read ', scopes: ['source.ruby']
 
   it "tokenizes %{} style strings", ->
     {tokens} = grammar.tokenizeLine('%{te{s}t}')
