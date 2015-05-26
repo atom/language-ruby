@@ -1963,10 +1963,6 @@
     'name': 'keyword.operator.other.ruby'
   }
   {
-    'match': ':'
-    'name': 'punctuation.separator.other.ruby'
-  }
-  {
     'match': '\\;'
     'name': 'punctuation.separator.statement.ruby'
   }
@@ -1975,8 +1971,23 @@
     'name': 'punctuation.separator.object.ruby'
   }
   {
-    'match': '\\.|::'
-    'name': 'punctuation.separator.method.ruby'
+    'comment': 'Mark as namespace separator if double colons followed by capital letter'
+    'match': '(::)\\s*(?=[A-Z])'
+    'captures':
+      '1':
+        'name': 'punctuation.separator.namespace.ruby'
+  }
+  {
+    'comment': 'Mark as method separator if double colons not followed by capital letter'
+    'match': '(\\.|::)\\s*(?![A-Z])'
+    'captures':
+      '1':
+        'name': 'punctuation.separator.method.ruby'
+  }
+  {
+    'comment': 'Must come after method and constant separators to prefer double colons'
+    'match': ':'
+    'name': 'punctuation.separator.other.ruby'
   }
   {
     'match': '\\{'
