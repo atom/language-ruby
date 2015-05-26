@@ -16,6 +16,19 @@ describe "Ruby grammar", ->
     {tokens} = grammar.tokenizeLine('self')
     expect(tokens[0]).toEqual value: 'self', scopes: ['source.ruby', 'variable.language.self.ruby']
 
+  it "tokenizes special functions", ->
+    {tokens} = grammar.tokenizeLine('require "."')
+    expect(tokens[0]).toEqual value: 'require', scopes: ['source.ruby', 'meta.require.ruby', 'keyword.other.special-method.ruby']
+
+    {tokens} = grammar.tokenizeLine('Kernel.require "."')
+    expect(tokens[1]).toEqual value: '.', scopes: ['source.ruby', 'punctuation.separator.method.ruby']
+    expect(tokens[2]).toEqual value: 'require ', scopes: ['source.ruby']
+
+    {tokens} = grammar.tokenizeLine('Kernel::require "."')
+    expect(tokens[1]).toEqual value: ':', scopes: ['source.ruby', 'punctuation.separator.other.ruby']
+    expect(tokens[2]).toEqual value: ':', scopes: ['source.ruby', 'punctuation.separator.other.ruby']
+    expect(tokens[3]).toEqual value: 'require ', scopes: ['source.ruby']
+
   it "tokenizes symbols", ->
     {tokens} = grammar.tokenizeLine(':test')
     expect(tokens[0]).toEqual value: ':', scopes: ['source.ruby', 'constant.other.symbol.ruby', 'punctuation.definition.constant.ruby']

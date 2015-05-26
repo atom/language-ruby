@@ -139,7 +139,7 @@
     'name': 'keyword.other.special-method.ruby'
   }
   {
-    'begin': '\\b(require|require_relative|gem)\\b'
+    'begin': '\\b(?<!\\.|::)(require|require_relative|gem)\\b'
     'captures':
       '1':
         'name': 'keyword.other.special-method.ruby'
