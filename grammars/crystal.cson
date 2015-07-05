@@ -105,7 +105,7 @@
   }
   {
     'comment': ' just as above but being not a logical operation'
-    'match': '(?<!\\.)\\b(alias|alias_method|break|next|redo|retry|return|super|undef|yield)\\b(?![?!])|\\bdefined\\?|\\bblock_given\\?'
+    'match': '(?<!\\.)\\b(alias|alias_method|break|next|redo|retry|return|super|type|undef|yield)\\b(?![?!])|\\bdefined\\?|\\bblock_given\\?'
     'name': 'keyword.control.pseudo-method.crystal'
   }
   {
