@@ -52,6 +52,15 @@
   {
     'captures':
       '1':
+        'name': 'keyword.control.enum.crystal'
+      '2':
+        'name': 'entity.name.type.enum.crystal'
+    'match': '^\\s*(enum)\\s+([.\\w\\d_:]+)'
+    'name': 'meta.enum.crystal'
+  }
+  {
+    'captures':
+      '1':
         'name': 'keyword.control.lib.crystal'
       '2':
         'name': 'entity.name.type.lib.crystal'
@@ -186,7 +195,7 @@
     'name': 'variable.other.constant.crystal'
   }
   {
-    'begin': '\\b(?:(private|protected)\\s+)?(def)\\s+(\\S+)\\s*(\\()'
+    'begin': '\\b(?:(private|protected)\\s+)?(def|macro)\\s+(\\S+)\\s*(\\()'
     'beginCaptures':
       '1':
         'name': 'keyword.control.visibility.crystal'
@@ -202,41 +211,6 @@
       '0':
         'name': 'punctuation.definition.parameters.crystal'
     'name': 'meta.function.method.with-arguments.crystal'
-    'patterns': [
-      {
-        'begin': '(?![\\s,)])'
-        'end': '(?=[,)])'
-        'patterns': [
-          {
-            'captures':
-              '1':
-                'name': 'storage.type.variable.crystal'
-              '2':
-                'name': 'variable.parameter.function.crystal'
-            'match': '\\G([&*]?)([_a-zA-Z][_a-zA-Z0-9]*)'
-          }
-          {
-            'include': '$self'
-          }
-        ]
-      }
-    ]
-  }
-  {
-    'begin': '\\b(macro)\\s+(\\S+)\\s*(\\()'
-    'beginCaptures':
-      '1':
-        'name': 'keyword.control.macro.crystal'
-      '2':
-        'name': 'entity.name.function.macro.crystal'
-      '3':
-        'name': 'punctuation.definition.parameters.crystal'
-    'comment': 'The method pattern comes from the symbol pattern. See there for an explanation.'
-    'end': '\\)'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.parameters.crystal'
-    'name': 'meta.macro.method.with-arguments.crystal'
     'patterns': [
       {
         'begin': '(?![\\s,)])'
@@ -295,7 +269,7 @@
     ]
   }
   {
-    'begin': '\\b(?:(private|protected)\\s+)?(def)\\s+(\\S+)'
+    'begin': '\\b(?:(private|protected)\\s+)?(def|macro)\\s+(\\S+)'
     'beginCaptures':
       '1':
         'name': 'keyword.control.visibility.crystal'
@@ -326,35 +300,6 @@
     ]
   }
   {
-    'begin': '\\b(macro)\\s+(\\S+)'
-    'beginCaptures':
-      '1':
-        'name': 'keyword.control.function.macro.crystal'
-      '2':
-        'name': 'entity.name.macro.crystal'
-    'comment': 'same as the previous rule, but without parentheses around the arguments'
-    'end': '$'
-    'name': 'meta.macro.method.with-arguments.crystal'
-    'patterns': [
-      {
-        'begin': '(?![\\s,])'
-        'end': '(?=,|$)'
-        'patterns': [
-          {
-            'captures':
-              '1':
-                'name': 'punctuation.definition.variable.crystal'
-            'match': '\\G([&*]?)[_a-zA-Z][_a-zA-Z0-9]*'
-            'name': 'variable.parameter.function.crystal'
-          }
-          {
-            'include': '$self'
-          }
-        ]
-      }
-    ]
-  }
-  {
     'captures':
       '1':
         'name': 'keyword.control.visibility.crystal'
@@ -363,17 +308,8 @@
       '3':
         'name': 'entity.name.function.crystal'
     'comment': ' the optional name is just to catch the def also without a method-name'
-    'match': '\\b(?:(private|protected)\\s+)?(def)\\s+(\\S+)'
+    'match': '\\b(?:(private|protected)\\s+)?(def|macro)\\s+(\\S+)'
     'name': 'meta.function.method.without-arguments.crystal'
-  }
-  {
-    'captures':
-      '1':
-        'name': 'keyword.control.macro.crystal'
-      '2':
-        'name': 'entity.name.function.macro.crystal'
-    'match': '\\b(macro)\\s+(\\S+)'
-    'name': 'meta.macro.method.without-arguments.crystal'
   }
   {
     'match': '\\b(0[xX]\\h(?>_?\\h)*|\\d(?>_?\\d)*(\\.(?![^[:space:][:digit:]])(?>_?\\d)*)?([eE][-+]?\\d(?>_?\\d)*)?|0[bB][01]+)\\b'
