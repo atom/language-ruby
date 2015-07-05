@@ -254,6 +254,43 @@
     ]
   }
   {
+    'begin': '\\b(fun)\\s+(\\S+)(?:\\s+(=)\\s+(\\S+))?\\s*(\\()'
+    'beginCaptures':
+      '1':
+        'name': 'keyword.control.function.crystal'
+      '2':
+        'name': 'entity.name.function.crystal'
+      '4':
+        'name': 'entity.name.function.crystal'
+      '5':
+        'name': 'punctuation.definition.parameters.crystal'
+    'comment': 'The method pattern comes from the symbol pattern. See there for an explanation.'
+    'end': '\\)'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.parameters.crystal'
+    'name': 'meta.function.method.with-arguments.crystal'
+    'patterns': [
+      {
+        'begin': '(?![\\s,)])'
+        'end': '(?=[,)])'
+        'patterns': [
+          {
+            'captures':
+              '1':
+                'name': 'storage.type.variable.crystal'
+              '2':
+                'name': 'variable.parameter.function.crystal'
+            'match': '\\G([&*]?)([_a-zA-Z][_a-zA-Z0-9]*)'
+          }
+          {
+            'include': '$self'
+          }
+        ]
+      }
+    ]
+  }
+  {
     'begin': '\\b(?:(private|protected)\\s+)?(def)\\s+(\\S+)'
     'beginCaptures':
       '1':
