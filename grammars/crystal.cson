@@ -15,12 +15,16 @@
       '3':
         'name': 'entity.name.type.class.crystal'
       '4':
-        'name': 'entity.name.type.generic.crystal'
+        'name': 'punctuation.section.function.crystal'
       '5':
-        'name': 'punctuation.separator.inheritance.crystal'
+        'name': 'entity.name.type.generic.crystal'
       '6':
+        'name': 'punctuation.section.function.crystal'
+      '7':
+        'name': 'punctuation.separator.inheritance.crystal'
+      '8':
         'name': 'entity.other.inherited-class.crystal'
-    'match': '^\\s*(abstract)?\\s+(class)\\s+(?:([.\\w\\d_:]+)(?:\\(([.\\w\\d_:]+)\\))?(?:\\s+(<)\\s+([.\\w\\d_:]+))?)'
+    'match': '^\\s*(?:(abstract)\\s+)?(class)\\s+([.\\w\\d_:]+)(?:(\\()([.\\w\\d_:]+)(\\)))?(?:\\s+(<)\\s+([.\\w\\d_:]+))?'
     'name': 'meta.class.crystal'
   }
   {
