@@ -7,10 +7,52 @@
 'firstLineMatch': '^#!\\s*/.*\\bcrystal'
 'patterns': [
   {
-    'comment': 'else if is a common mistake carried over from other languages.
-      it works if you put in a second end, but it’s never what you want.'
-    'match': '(?<!\\.)\\belse(\\s)+if\\b'
-    'name': 'invalid.deprecated.crystal'
+    'captures':
+      '1':
+        'name': 'keyword.control.abstract.crystal'
+      '2':
+        'name': 'keyword.control.class.crystal'
+      '3':
+        'name': 'entity.name.type.class.crystal'
+      '4':
+        'name': 'entity.name.type.generic.crystal'
+      '5':
+        'name': 'punctuation.separator.inheritance.crystal'
+      '6':
+        'name': 'entity.other.inherited-class.crystal'
+    'match': '^\\s*(abstract)?\\s+(class)\\s+(?:([.\\w\\d_:]+)(?:\\(([.\\w\\d_:]+)\\))?(?:\\s+(<)\\s+([.\\w\\d_:]+))?)'
+    'name': 'meta.class.crystal'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.control.struct.crystal'
+      '2':
+        'name': 'entity.name.type.struct.crystal'
+      '3':
+        'name': 'punctuation.separator.inheritance.crystal'
+      '4':
+        'name': 'entity.other.inherited-struct.crystal'
+    'match': '^\\s*(struct)\\s+(?:([.\\w\\d_:]+)(?:\\s+(<)\\s+([.\\w\\d_:]+))?)'
+    'name': 'meta.class.crystal'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.control.module.crystal'
+      '2':
+        'name': 'entity.name.type.module.crystal'
+    'match': '^\\s*(module)\\s+([.\\w\\d_:]+)'
+    'name': 'meta.module.crystal'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.control.lib.crystal'
+      '2':
+        'name': 'entity.name.type.lib.crystal'
+    'match': '^\\s*(lib)\\s+([.\\w\\d_]+)'
+    'name': 'meta.module.crystal'
   }
   {
     'captures':
@@ -29,9 +71,8 @@
     'name': 'constant.other.symbol.hashkey.crystal'
   }
   {
-    'comment': 'everything being a reserved word, not a value and needing a
-      \'end\' is a..'
-    'match': '(?<!\\.)\\b(BEGIN|begin|case|class|else|elsif|END|end|ensure|for|if|in|module|rescue|then|unless|until|when|while)\\b(?![?!])'
+    'comment': 'everything being a reserved word, not a value and needing a \'end\' is a..'
+    'match': '(?<!\\.)\\b(BEGIN|begin|case|class|else|elsif|END|end|ensure|for|if|ifdef|in|module|rescue|then|unless|until|when|while)\\b(?![?!])'
     'name': 'keyword.control.crystal'
   }
   {
@@ -45,14 +86,13 @@
     'name': 'meta.syntax.crystal.start-block'
   }
   {
-    'comment': ' as above, just doesn\'t need a \'end\' and does a logic
-      operation'
+    'comment': ' as above, just doesn\'t need a \'end\' and does a logic operation'
     'match': '(?<!\\.)\\b(and|not|or)\\b'
     'name': 'keyword.operator.logical.crystal'
   }
   {
     'comment': ' just as above but being not a logical operation'
-    'match': '(?<!\\.)\\b(alias|alias_method|break|next|redo|retry|return|super|undef|yield|as|with)\\b(?![?!])|\\bdefined\\?|\\bblock_given\\?'
+    'match': '(?<!\\.)\\b(alias|alias_method|break|next|redo|retry|return|super|undef|yield)\\b(?![?!])|\\bdefined\\?|\\bblock_given\\?'
     'name': 'keyword.control.pseudo-method.crystal'
   }
   {
@@ -72,16 +112,11 @@
     'name': 'variable.language.self.crystal'
   }
   {
-    'comment': ' everything being a method but having a special function is a..'
-    'match': '\\b(initialize|new|loop|include|extend|prepend|raise|fail|catch|throw|module_function|sizeof|instance_sizeof|pointerof)\\b(?![?!])'
+    'match': '\\b(initialize|new|loop|include|extend|prepend|raise|fail|getter(?:[?])?|setter(?:[?])?|property(?:[?])?|catch|throw)\\s+'
     'name': 'keyword.other.special-method.crystal'
   }
   {
-    'match': '(getter|setter|property)(\\!|\\?)?'
-    'name': 'keyword.other.object-properties.crystal'
-  }
-  {
-    'begin': '\\b(require)\\b'
+    'begin': '\\b(?<!\\.|::)(require)\\b'
     'captures':
       '1':
         'name': 'keyword.other.special-method.crystal'
@@ -147,17 +182,17 @@
     'name': 'variable.other.constant.crystal'
   }
   {
-    'begin':
-      '((?:(?:private|protected|macro)\\s+)?def)\\s+([^\\s\\(]+)(?:\\()(.+)'
+    'begin': '\\b(?:(private|protected)\\s+)?(def)\\s+(\\S+)'
     'beginCaptures':
       '1':
-        'name': 'keyword.control.def.crystal'
+        'name': 'keyword.control.visibility.crystal'
       '2':
-        'name': 'entity.name.function.crystal'
+        'name': 'keyword.control.def.crystal'
       '3':
+        'name': 'entity.name.function.crystal'
+      '4':
         'name': 'punctuation.definition.parameters.crystal'
-    'comment': 'the method pattern comes from the symbol pattern, see there for
-      a explaination'
+    'comment': 'The method pattern comes from the symbol pattern. See there for an explanation.'
     'end': '\\)'
     'endCaptures':
       '0':
@@ -184,15 +219,15 @@
     ]
   }
   {
-    'begin':
-      '((?:(?:private|protected|macro)\\s+)?def)\\s+(\\S+)(?:\\s+)(.+)'
+    'begin': '\\b(?:(private|protected)\\s+)?(def)\\s+(\\S+)'
     'beginCaptures':
+      '1':
+        'name': 'keyword.control.visibility.crystal'
       '1':
         'name': 'keyword.control.def.crystal'
       '2':
         'name': 'entity.name.function.crystal'
-    'comment': 'same as the previous rule, but without parentheses around the
-      arguments'
+    'comment': 'same as the previous rule, but without parentheses around the arguments'
     'end': '$'
     'name': 'meta.function.method.with-arguments.crystal'
     'patterns': [
@@ -217,18 +252,36 @@
   {
     'captures':
       '1':
-        'name': 'keyword.control.def.crystal'
+        'name': 'keyword.control.visibility.crystal'
       '2':
+        'name': 'keyword.control.def.crystal'
+      '3':
         'name': 'entity.name.function.crystal'
-    'comment': ' the optional name is just to catch the def also without a
-      method-name'
-    'match':
-      '((?:(?:private|protected|macro)\\s+)?def)\\s+([^\\s\\(]+)(\\(\\))?'
+    'comment': ' the optional name is just to catch the def also without a method-name'
+    'match': '\\b(?:(private|protected)\\s+)?(def)\\s+(\\S+)'
     'name': 'meta.function.method.without-arguments.crystal'
   }
   {
     'match': '\\b(0[xX]\\h(?>_?\\h)*|\\d(?>_?\\d)*(\\.(?![^[:space:][:digit:]])(?>_?\\d)*)?([eE][-+]?\\d(?>_?\\d)*)?|0[bB][01]+)\\b'
     'name': 'constant.numeric.crystal'
+  }
+  {
+    'begin': ':\''
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.symbol.begin.crystal'
+    'comment': "symbol literal with '' delimitor"
+    'end': '\''
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.symbol.end.crystal'
+    'name': 'constant.other.symbol.crystal'
+    'patterns': [
+      {
+        'match': '\\\\[\'\\\\]'
+        'name': 'constant.character.escape.crystal'
+      }
+    ]
   }
   {
     'begin': ':"'
@@ -259,13 +312,13 @@
     'begin': '\''
     'beginCaptures':
       '0':
-        'name': 'punctuation.definition.char.begin.crystal'
-    'comment': "char literal with '' delimitor"
+        'name': 'punctuation.definition.string.begin.crystal'
+    'comment': "string literal with '' delimitor"
     'end': '\''
     'endCaptures':
       '0':
-        'name': 'punctuation.definition.char.end.crystal'
-    'name': 'string.literal.char.crystal'
+        'name': 'punctuation.definition.string.end.crystal'
+    'name': 'string.quoted.single.crystal'
     'patterns': [
       {
         'match': '\\\\\'|\\\\\\\\'
@@ -426,7 +479,7 @@
     ]
   }
   {
-    'begin': '(?<![\\w)])((/))(?![*+?])(?=(?:\\\\/|[^/])*/[eimnosux]*\\s*([\\]#).,?:}]|$|\\|\\||&&))'
+    'begin': '(?<![\\w)])((/))(?![*+?])(?=(?:\\\\/|[^/])*/[eimnosux]*\\s*([\\]#).,?:}]|$|\\|\\||&&|<=>|=>|==|=~|!~|!=|;|if|else|elsif|then|do|end|unless|while|until|or|and))'
     'captures':
       '1':
         'name': 'string.regexp.interpolated.crystal'
@@ -635,8 +688,7 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.crystal'
-    'comment': 'array of symbols literal with interpolation and wildcard
-      delimitor'
+    'comment': 'array of symbols literal with interpolation and wildcard delimitor'
     'end': '\\1'
     'endCaptures':
       '0':
@@ -850,8 +902,7 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.crystal'
-    'comment': 'array of strings literal with interpolation and wildcard
-      delimitor'
+    'comment': 'array of strings literal with interpolation and wildcard delimitor'
     'end': '\\1'
     'endCaptures':
       '0':
@@ -1168,29 +1219,6 @@
       }
     ]
   }
-  # I've disabled this syntax because it conflicts with Crystal's macro Syntax.
-  # I may altogether remove this section if it does not cause further issue down
-  #   the road.
-  #{
-  #  'begin': '%([^\\w\\s=])'
-  #  'beginCaptures':
-  #    '0':
-  #      'name': 'punctuation.definition.string.begin.crystal'
-  #  'comment': 'string literal with interpolation and wildcard delimitor'
-  #  'end': '\\1'
-  #  'endCaptures':
-  #    '0':
-  #      'name': 'punctuation.definition.string.end.crystal'
-  #  'name': 'string.quoted.other.interpolated.crystal'
-  #  'patterns': [
-  #    {
-  #      'include': '#interpolated_crystal'
-  #    }
-  #    {
-  #      'include': '#escaped_char'
-  #    }
-  #  ]
-  #}
   {
     'begin': '%q\\('
     'beginCaptures':
@@ -1396,8 +1424,11 @@
     ]
   }
   {
+    'captures':
+      '1':
+        'name': 'punctuation.definition.constant.crystal'
     'comment': 'symbols'
-    'match': ' :(?:\\S[^,]+)'
+    'match': '(?<!:)(:)(?>[$a-zA-Z_]\\w*(?>[?!]|=(?![>=]))?|===?|<=>|>[>=]?|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[\\]=?|@@?[a-zA-Z_]\\w*)'
     'name': 'constant.other.symbol.crystal'
   }
   {
@@ -1432,7 +1463,7 @@
     ]
   }
   {
-    'comment': '\n\t\t\tmatches questionmark-letters.\n\n\t\t\texamples(1st alternation = hex):\n\t\t\t?\\x1     ?\\x61\n\n\t\t\texamples (2nd alternation = octal):\n\t\t\t?\\0      ?\\07     ?\\017\n\n\t\t\texamples (3rd alternation = escaped):\n\t\t\t?\\n      ?\\b\n\n\t\t\texamples (4th alternation = meta-ctrl):\n\t\t\t?\\C-a    ?\\M-a    ?\\C-\\M-\\C-\\M-a\n\n\t\t\texamples (4th alternation = normal):\n\t\t\t?a       ?A       ?0 \n\t\t\t?*       ?"       ?( \n\t\t\t?.       ?#\n\t\t\t\n\t\t\t\n\t\t\tthe negative lookbehind prevents against matching\n\t\t\tp(42.tainted?)\n\t\t\t'
+    'comment': '\n\t\t\tmatches questionmark-letters.\n\n\t\t\texamples (1st alternation = hex):\n\t\t\t?\\x1     ?\\x61\n\n\t\t\texamples (2nd alternation = octal):\n\t\t\t?\\0      ?\\07     ?\\017\n\n\t\t\texamples (3rd alternation = escaped):\n\t\t\t?\\n      ?\\b\n\n\t\t\texamples (4th alternation = meta-ctrl):\n\t\t\t?\\C-a    ?\\M-a    ?\\C-\\M-\\C-\\M-a\n\n\t\t\texamples (4th alternation = normal):\n\t\t\t?a       ?A       ?0 \n\t\t\t?*       ?"       ?( \n\t\t\t?.       ?#\n\t\t\t\n\t\t\t\n\t\t\tthe negative lookbehind prevents against matching\n\t\t\tp(42.tainted?)\n\t\t\t'
     'match': '(?<!\\w)\\?(\\\\(x\\h{1,2}(?!\\h)\\b|0[0-7]{0,2}(?![0-7])\\b|[^x0MC])|(\\\\[MC]-)+\\w|[^\\s\\\\])'
     'name': 'constant.numeric.crystal'
   }
@@ -1583,13 +1614,6 @@
           {
             'include': '#interpolated_crystal'
           }
-
-          # TODO: remove once new language-c package is released with the
-          # 'source.cpp' scope name
-          {
-            'include': 'source.c++'
-          }
-
           {
             'include': 'source.cpp'
           }
@@ -1895,10 +1919,6 @@
     'name': 'keyword.operator.other.crystal'
   }
   {
-    'match': ':'
-    'name': 'punctuation.separator.other.crystal'
-  }
-  {
     'match': '\\;'
     'name': 'punctuation.separator.statement.crystal'
   }
@@ -1907,8 +1927,23 @@
     'name': 'punctuation.separator.object.crystal'
   }
   {
-    'match': '\\.|::'
-    'name': 'punctuation.separator.method.crystal'
+    'comment': 'Mark as namespace separator if double colons followed by capital letter'
+    'match': '(::)\\s*(?=[A-Z])'
+    'captures':
+      '1':
+        'name': 'punctuation.separator.namespace.crystal'
+  }
+  {
+    'comment': 'Mark as method separator if double colons not followed by capital letter'
+    'match': '(\\.|::)\\s*(?![A-Z])'
+    'captures':
+      '1':
+        'name': 'punctuation.separator.method.crystal'
+  }
+  {
+    'comment': 'Must come after method and constant separators to prefer double colons'
+    'match': ':'
+    'name': 'punctuation.separator.other.crystal'
   }
   {
     'match': '\\{'
@@ -1929,23 +1964,6 @@
   {
     'match': '\\(|\\)'
     'name': 'punctuation.section.function.crystal'
-  }
-  {
-    'captures':
-      '1':
-        'name': 'entity.class.crystal'
-      '2':
-        'name': 'punctuation.seperator.inheritance.crystal'
-    'match': '(?:([A-Z][^\\s\\W:]+)(::)?)'
-    'name': 'meta.object.crystal'
-  }
-  {
-    'captures':
-      '1':
-        'name': 'keyword.control.object.crystal'
-    'match':
-      '((?:abstract\\s)?class|module|enum|struct|lib)\\s+(?:[A-Z][^\\s\\W:]+)'
-    'name': 'meta.definition.object.crystal'
   }
 ]
 'repository':
@@ -2258,9 +2276,7 @@
         'beginCaptures':
           '1':
             'name': 'punctuation.definition.comment.crystal'
-        'comment': 'We are restrictive in what we allow to go after the comment
-          character to avoid false positives, since the availability of comments
-          depend on regexp flags.'
+        'comment': 'We are restrictive in what we allow to go after the comment character to avoid false positives, since the availability of comments depend on regexp flags.'
         'end': '$\\n?'
         'endCaptures':
           '0':
