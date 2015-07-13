@@ -244,3 +244,7 @@ describe "Crystal grammar", ->
     {tokens} = grammar.tokenizeLine('# This is a comment')
     expect(tokens[0]).toEqual value: '#', scopes: ['source.crystal', 'comment.line.number-sign.crystal', 'punctuation.definition.comment.crystal']
     expect(tokens[1]).toEqual value: ' This is a comment', scopes: ['source.crystal', 'comment.line.number-sign.crystal']
+
+  it "tokenizes `nil`", ->
+    {tokens} = grammar.tokenizeLine('nil')
+    expect(tokens[0]).toEqual value: 'nil', scopes: ['source.crystal', 'constant.language.nil.crystal']
