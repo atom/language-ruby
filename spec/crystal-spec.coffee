@@ -231,3 +231,11 @@ describe "Crystal grammar", ->
     expect(tokens[2]).toEqual value: '"', scopes: ['source.crystal', 'string.quoted.double.crystal', 'punctuation.definition.string.begin.crystal']
     expect(tokens[3]).toEqual value: 'Hello world!', scopes: ['source.crystal', 'string.quoted.double.crystal']
     expect(tokens[4]).toEqual value: '"', scopes: ['source.crystal', 'string.quoted.double.crystal', 'punctuation.definition.string.end.crystal']
+
+  it "tokenizes requires", ->
+    {tokens} = grammar.tokenizeLine('require "http/server"')
+    expect(tokens[0]).toEqual value: 'require', scopes: ['source.crystal', 'meta.require.crystal', 'keyword.other.special-method.crystal']
+    expect(tokens[1]).toEqual value: ' ', scopes: ['source.crystal', 'meta.require.crystal']
+    expect(tokens[2]).toEqual value: '"', scopes: ['source.crystal', 'meta.require.crystal', 'string.quoted.double.crystal', 'punctuation.definition.string.begin.crystal']
+    expect(tokens[3]).toEqual value: 'http/server', scopes: ['source.crystal', 'meta.require.crystal', 'string.quoted.double.crystal']
+    expect(tokens[4]).toEqual value: '"', scopes: ['source.crystal', 'meta.require.crystal', 'string.quoted.double.crystal', 'punctuation.definition.string.end.crystal']
