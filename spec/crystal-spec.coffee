@@ -239,3 +239,8 @@ describe "Crystal grammar", ->
     expect(tokens[2]).toEqual value: '"', scopes: ['source.crystal', 'meta.require.crystal', 'string.quoted.double.crystal', 'punctuation.definition.string.begin.crystal']
     expect(tokens[3]).toEqual value: 'http/server', scopes: ['source.crystal', 'meta.require.crystal', 'string.quoted.double.crystal']
     expect(tokens[4]).toEqual value: '"', scopes: ['source.crystal', 'meta.require.crystal', 'string.quoted.double.crystal', 'punctuation.definition.string.end.crystal']
+
+  it "tokenizes comments", ->
+    {tokens} = grammar.tokenizeLine('# This is a comment')
+    expect(tokens[0]).toEqual value: '#', scopes: ['source.crystal', 'comment.line.number-sign.crystal', 'punctuation.definition.comment.crystal']
+    expect(tokens[1]).toEqual value: ' This is a comment', scopes: ['source.crystal', 'comment.line.number-sign.crystal']
