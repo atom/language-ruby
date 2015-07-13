@@ -362,12 +362,11 @@ patterns: [
     begin: '\''
     beginCaptures:
       0:
-        name: 'punctuation.definition.string.begin.crystal'
-    comment: "string literal with '' delimitor"
+        name: 'punctuation.definition.char.begin.crystal'
     end: '\''
     endCaptures:
       0:
-        name: 'punctuation.definition.string.end.crystal'
+        name: 'punctuation.definition.char.end.crystal'
     name: 'string.quoted.single.crystal'
     patterns: [
       {
@@ -381,12 +380,11 @@ patterns: [
     beginCaptures:
       0:
         name: 'punctuation.definition.string.begin.crystal'
-    comment: 'string literal with interpolation and "" delimitor'
     end: '"'
     endCaptures:
       0:
         name: 'punctuation.definition.string.end.crystal'
-    name: 'string.quoted.double.interpolated.crystal'
+    name: 'string.quoted.double.crystal'
     patterns: [
       {
         include: '#interpolated_crystal'

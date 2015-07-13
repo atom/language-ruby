@@ -214,7 +214,8 @@ describe "Crystal grammar", ->
     expect(tokens[7]).toEqual value: '3', scopes: ['source.crystal', 'constant.numeric.crystal']
 
     {tokens} = grammar.tokenizeLine('1 / 2/ 3')
-    expect(tokens[0]).toEqual value: '1', scopes: ['source.crystal', 'constant.numeric.crystal']
+    expect(tokens[0]).toEqual
+      value: '1', scopes: ['source.crystal', 'constant.numeric.crystal']
     expect(tokens[1]).toEqual value: ' ', scopes: ['source.crystal']
     expect(tokens[2]).toEqual value: '/', scopes: ['source.crystal', 'keyword.operator.arithmetic.crystal']
     expect(tokens[3]).toEqual value: ' ', scopes: ['source.crystal']
@@ -222,3 +223,11 @@ describe "Crystal grammar", ->
     expect(tokens[5]).toEqual value: '/', scopes: ['source.crystal', 'keyword.operator.arithmetic.crystal']
     expect(tokens[6]).toEqual value: ' ', scopes: ['source.crystal']
     expect(tokens[7]).toEqual value: '3', scopes: ['source.crystal', 'constant.numeric.crystal']
+
+  it "tokenizes the 'Hello World' example", ->
+    {tokens} = grammar.tokenizeLine('puts "Hello world!"')
+    expect(tokens[0]).toEqual value: 'puts', scopes: ['source.crystal', 'support.function.kernel.crystal']
+    expect(tokens[1]).toEqual value: ' ', scopes: ['source.crystal']
+    expect(tokens[2]).toEqual value: '"', scopes: ['source.crystal', 'string.quoted.double.crystal', 'punctuation.definition.string.begin.crystal']
+    expect(tokens[3]).toEqual value: 'Hello world!', scopes: ['source.crystal', 'string.quoted.double.crystal']
+    expect(tokens[4]).toEqual value: '"', scopes: ['source.crystal', 'string.quoted.double.crystal', 'punctuation.definition.string.end.crystal']
