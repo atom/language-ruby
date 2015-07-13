@@ -248,3 +248,11 @@ describe "Crystal grammar", ->
   it "tokenizes `nil`", ->
     {tokens} = grammar.tokenizeLine('nil')
     expect(tokens[0]).toEqual value: 'nil', scopes: ['source.crystal', 'constant.language.nil.crystal']
+
+  it "tokenizes `true`", ->
+    {tokens} = grammar.tokenizeLine('true')
+    expect(tokens[0]).toEqual value: 'true', scopes: ['source.crystal', 'constant.language.boolean.crystal']
+
+  it "tokenizes `false`", ->
+    {tokens} = grammar.tokenizeLine('false')
+    expect(tokens[0]).toEqual value: 'false', scopes: ['source.crystal', 'constant.language.boolean.crystal']
