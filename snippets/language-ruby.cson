@@ -138,9 +138,12 @@
   'directory()':
     'prefix': 'dir'
     'body': 'File.dirname(__FILE__)'
-  'Insert do |variable| … end':
+  'Insert do … end':
     'prefix': 'do'
-    'body': 'do${1: |${2:variable}|}\n\t$0\nend'
+    'body': 'do\n\t$0\nend'
+  'Insert do |variable| … end':
+    'prefix': 'dop'
+    'body': 'do |${1:variable}|\n\t$0\nend'
   'each { |e| .. }':
     'prefix': 'ea'
     'body': 'each { |${1:e}| $0 }'
