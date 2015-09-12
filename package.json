@@ -1,6 +1,6 @@
 {
   "name": "language-crystal-actual",
-  "version": "0.28.1",
+  "version": "0.28.2",
   "description": "Crystal language support in Atom",
   "engines": {
     "atom": "*",
