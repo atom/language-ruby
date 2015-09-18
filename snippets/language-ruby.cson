@@ -114,6 +114,9 @@
   'def … end':
     'prefix': 'def'
     'body': 'def ${1:method_name}\n\t$0\nend'
+  'initialize':
+    'prefix': 'init'
+    'body': 'def initialize${1:(${2:arguments, …})}\n\t$0\nend'
   'def method_missing .. end':
     'prefix': 'defmm'
     'body': 'def method_missing(meth, *args, &blk)\n\t$0\nend'
