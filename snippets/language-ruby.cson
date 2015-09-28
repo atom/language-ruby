@@ -309,6 +309,9 @@
   'pry':
     'prefix': 'pry'
     'body': 'binding.pry'
+  'Insert curly braces block':
+    'prefix': '{'
+    'body': '{ ${1:|${2:variable}|} $0 '
 '.source.ruby .comment':
   ':yields:':
     'prefix': 'y'
