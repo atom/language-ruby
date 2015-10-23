@@ -1896,12 +1896,12 @@
     ]
   }
   {
-    'begin': '(?><<-(\\w+))'
+    'begin': '(?>((<<-(\\w+),\\s?)*<<-(\\w+)))'
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
-    'comment': 'heredoc with indented terminator'
-    'end': '\\s*\\1$'
+    'comment': 'heredoc with multiple inputs and indented terminator'
+    'end': '\\s*\\4$'
     'endCaptures':
       '0':
         'name': 'punctuation.definition.string.end.ruby'
