@@ -320,6 +320,12 @@
   'erb_render_block':
     'prefix': '='
     'body': '<%= $1 %>'
+  'erb_render_block_after_tag':
+    'prefix': '\>='
+    'body': '\><%= $1 %>'
   'erb_exec_block':
     'prefix': '-'
     'body': '<% $1 %>'
+  'erb_exec_block_after_tag':
+    'prefix': '\>-'
+    'body': '\><% $1 %>'
