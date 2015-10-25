@@ -1924,8 +1924,11 @@
     'captures':
       '1':
         'name': 'punctuation.separator.variable.ruby'
-    'end': '(\\|)'
+    'end': '([^\\|]([\\|])[^\\|])'
     'patterns': [
+      {
+        'include': 'source.ruby'
+      }
       {
         'match': '[_a-zA-Z][_a-zA-Z0-9]*'
         'name': 'variable.other.block.ruby'
