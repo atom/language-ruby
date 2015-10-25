@@ -532,3 +532,26 @@ describe "Ruby grammar", ->
     expect(tokens[6]).toEqual value: 'Array#[](0), Array', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby']
     expect(tokens[7]).toEqual value: ']', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby', 'comment.line.punctuation.yard.ruby']
     expect(tokens[8]).toEqual value: ' comment', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.string.yard.ruby']
+
+  it "tokenizes a method with *args properly", ->
+    {tokens} = grammar.tokenizeLine('def method(*args)')
+    expect(tokens[0]).toEqual value: 'def', scopes: [ 'source.ruby', 'meta.function.method.with-arguments.ruby', 'keyword.control.def.ruby' ]
+    expect(tokens[2]).toEqual value: 'method', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'entity.name.function.ruby']
+    expect(tokens[3]).toEqual value: '(', scopes: [ 'source.ruby', 'meta.function.method.with-arguments.ruby', 'punctuation.definition.parameters.ruby' ]
+    expect(tokens[4]).toEqual value: '*', scopes: [ 'source.ruby', 'meta.function.method.with-arguments.ruby', 'storage.type.variable.ruby' ]
+    expect(tokens[5]).toEqual value: 'args', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'variable.parameter.function.ruby']
+    expect(tokens[6]).toEqual value: ')', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'punctuation.definition.parameters.ruby']
+
+    {tokens} = grammar.tokenizeLine('def method(args)')
+    expect(tokens[0]).toEqual value: 'def', scopes: [ 'source.ruby', 'meta.function.method.with-arguments.ruby', 'keyword.control.def.ruby' ]
+    expect(tokens[2]).toEqual value: 'method', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'entity.name.function.ruby']
+    expect(tokens[3]).toEqual value: '(', scopes: [ 'source.ruby', 'meta.function.method.with-arguments.ruby', 'punctuation.definition.parameters.ruby' ]
+    expect(tokens[4]).toEqual value: 'args', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'variable.parameter.function.ruby']
+    expect(tokens[5]).toEqual value: ')', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'punctuation.definition.parameters.ruby']
+
+    {tokens} = grammar.tokenizeLine('def method *args')
+    expect(tokens[0]).toEqual value: 'def', scopes: [ 'source.ruby', 'meta.function.method.with-arguments.ruby', 'keyword.control.def.ruby' ]
+    expect(tokens[2]).toEqual value: 'method', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'entity.name.function.ruby']
+    expect(tokens[3]).toEqual value: ' ', scopes: [ 'source.ruby', 'meta.function.method.with-arguments.ruby']
+    expect(tokens[4]).toEqual value: '*', scopes: [ 'source.ruby', 'meta.function.method.with-arguments.ruby', 'storage.type.variable.ruby' ]
+    expect(tokens[5]).toEqual value: 'args', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'variable.parameter.function.ruby']

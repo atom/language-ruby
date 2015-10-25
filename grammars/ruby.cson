@@ -258,9 +258,10 @@
           {
             'captures':
               '1':
-                'name': 'punctuation.definition.variable.ruby'
-            'match': '\\G([&*]?)[_a-zA-Z][_a-zA-Z0-9]*'
-            'name': 'variable.parameter.function.ruby'
+                'name': 'storage.type.variable.ruby'
+              '2':
+                'name': 'variable.parameter.function.ruby'
+            'match': '\\G([&*]?)([_a-zA-Z][_a-zA-Z0-9]*)'
           }
           {
             'include': '$self'
