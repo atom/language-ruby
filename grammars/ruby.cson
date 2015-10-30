@@ -223,7 +223,7 @@
     'patterns': [
       {
         'begin': '(?![\\s,)])'
-        'end': '(?=[,)])'
+        'end': '(?=\\,|\\)\\s*$)'
         'patterns': [
           {
             'captures':
