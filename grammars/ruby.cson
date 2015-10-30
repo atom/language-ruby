@@ -230,7 +230,7 @@
               '1':
                 'name': 'storage.type.variable.ruby'
               '2':
-                'name': 'constant.other.symbol.hashkey.ruby'
+                'name': 'constant.other.symbol.hashkey.parameter.function.ruby'
               '3':
                 'name': 'punctuation.definition.constant.hashkey.ruby'
               '4':
@@ -264,7 +264,7 @@
               '1':
                 'name': 'storage.type.variable.ruby'
               '2':
-                'name': 'constant.other.symbol.hashkey.ruby'
+                'name': 'constant.other.symbol.hashkey.parameter.function.ruby'
               '3':
                 'name': 'punctuation.definition.constant.hashkey.ruby'
               '4':

@@ -561,7 +561,14 @@ describe "Ruby grammar", ->
     expect(tokens[0]).toEqual value: 'def', scopes: [ 'source.ruby', 'meta.function.method.with-arguments.ruby', 'keyword.control.def.ruby' ]
     expect(tokens[2]).toEqual value: 'method', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'entity.name.function.ruby']
     expect(tokens[3]).toEqual value: '(', scopes: [ 'source.ruby', 'meta.function.method.with-arguments.ruby', 'punctuation.definition.parameters.ruby' ]
-    expect(tokens[4]).toEqual value: 'red', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'constant.other.symbol.hashkey.ruby']
+    expect(tokens[4]).toEqual value: 'red', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'constant.other.symbol.hashkey.parameter.function.ruby']
+    expect(tokens[7]).toEqual value: '2', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'constant.numeric.ruby']
+
+  it "tokenizes a method with symbol: arg (no paren) properly", ->
+    {tokens} = grammar.tokenizeLine('def method red: 2')
+    expect(tokens[0]).toEqual value: 'def', scopes: [ 'source.ruby', 'meta.function.method.with-arguments.ruby', 'keyword.control.def.ruby' ]
+    expect(tokens[2]).toEqual value: 'method', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'entity.name.function.ruby']
+    expect(tokens[4]).toEqual value: 'red', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'constant.other.symbol.hashkey.parameter.function.ruby']
     expect(tokens[7]).toEqual value: '2', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'constant.numeric.ruby']
 
   it "tokenizes a method with (symbol: arg(paren), symbol: arg2(paren)...) properly", ->
@@ -569,9 +576,20 @@ describe "Ruby grammar", ->
     expect(tokens[0]).toEqual value: 'def', scopes: [ 'source.ruby', 'meta.function.method.with-arguments.ruby', 'keyword.control.def.ruby' ]
     expect(tokens[2]).toEqual value: 'method', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'entity.name.function.ruby']
     expect(tokens[3]).toEqual value: '(', scopes: [ 'source.ruby', 'meta.function.method.with-arguments.ruby', 'punctuation.definition.parameters.ruby' ]
-    expect(tokens[4]).toEqual value: 'red', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'constant.other.symbol.hashkey.ruby']
+    expect(tokens[4]).toEqual value: 'red', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'constant.other.symbol.hashkey.parameter.function.ruby']
     expect(tokens[7]).toEqual value: 'rand', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'support.function.kernel.ruby']
     expect(tokens[9]).toEqual value: '2', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'constant.numeric.ruby']
-    expect(tokens[12]).toEqual value: 'green', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'constant.other.symbol.hashkey.ruby']
+    expect(tokens[12]).toEqual value: 'green', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'constant.other.symbol.hashkey.parameter.function.ruby']
+    expect(tokens[15]).toEqual value: 'rand', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'support.function.kernel.ruby']
+    expect(tokens[17]).toEqual value: '3', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'constant.numeric.ruby']
+
+  it "tokenizes a method with symbol: arg(paren), symbol: arg2(paren)... (no outer parens) properly", ->
+    {tokens} = grammar.tokenizeLine('def method red: rand(2), green: rand(3), blue: rand(4)')
+    expect(tokens[0]).toEqual value: 'def', scopes: [ 'source.ruby', 'meta.function.method.with-arguments.ruby', 'keyword.control.def.ruby' ]
+    expect(tokens[2]).toEqual value: 'method', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'entity.name.function.ruby']
+    expect(tokens[4]).toEqual value: 'red', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'constant.other.symbol.hashkey.parameter.function.ruby']
+    expect(tokens[7]).toEqual value: 'rand', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'support.function.kernel.ruby']
+    expect(tokens[9]).toEqual value: '2', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'constant.numeric.ruby']
+    expect(tokens[12]).toEqual value: 'green', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'constant.other.symbol.hashkey.parameter.function.ruby']
     expect(tokens[15]).toEqual value: 'rand', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'support.function.kernel.ruby']
     expect(tokens[17]).toEqual value: '3', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'constant.numeric.ruby']
