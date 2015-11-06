@@ -593,3 +593,7 @@ describe "Ruby grammar", ->
     expect(tokens[12]).toEqual value: 'green', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'constant.other.symbol.hashkey.parameter.function.ruby']
     expect(tokens[15]).toEqual value: 'rand', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'support.function.kernel.ruby']
     expect(tokens[17]).toEqual value: '3', scopes: ['source.ruby', 'meta.function.method.with-arguments.ruby', 'constant.numeric.ruby']
+
+  it "tokenizes a stabby lambda properly", ->
+    {tokens} = grammar.tokenizeLine('method_name -> { puts "A message"} do')
+    expect(tokens[1]).toEqual value: '->', scopes: [ 'source.ruby', 'keyword.operator.lambda.ruby' ]
