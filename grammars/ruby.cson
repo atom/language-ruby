@@ -1952,6 +1952,10 @@
     'name': 'punctuation.separator.key-value'
   }
   {
+    'match': '->'
+    'name': 'keyword.operator.lambda.ruby'
+  }
+  {
     'match': '<<=|%=|&{1,2}=|\\*=|\\*\\*=|\\+=|\\-=|\\^=|\\|{1,2}=|<<'
     'name': 'keyword.operator.assignment.augmented.ruby'
   }
