@@ -114,7 +114,7 @@
   }
   {
     'comment': ' as above, just doesn\'t need a \'end\' and does a logic operation'
-    'match': '(?<!\\.)\\b(and|not|or)\\b'
+    'match': '(?<!\\.)\\b(and|not|or)\\b(?![?!])'
     'name': 'keyword.operator.logical.ruby'
   }
   {
@@ -144,7 +144,7 @@
     'name': 'keyword.other.special-method.ruby'
   }
   {
-    'begin': '\\b(?<!\\.|::)(require|require_relative|gem)\\b'
+    'begin': '\\b(?<!\\.|::)(require|require_relative|gem)\\b(?![?!])'
     'captures':
       '1':
         'name': 'keyword.other.special-method.ruby'
