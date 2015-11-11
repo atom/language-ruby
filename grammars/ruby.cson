@@ -1953,7 +1953,7 @@
   }
   {
     'match': '->'
-    'name': 'keyword.operator.lambda.ruby'
+    'name': 'support.function.kernel.ruby'
   }
   {
     'match': '<<=|%=|&{1,2}=|\\*=|\\*\\*=|\\+=|\\-=|\\^=|\\|{1,2}=|<<'

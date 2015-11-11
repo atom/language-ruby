@@ -614,4 +614,4 @@ describe "Ruby grammar", ->
 
   it "tokenizes a stabby lambda properly", ->
     {tokens} = grammar.tokenizeLine('method_name -> { puts "A message"} do')
-    expect(tokens[1]).toEqual value: '->', scopes: ['source.ruby', 'keyword.operator.lambda.ruby']
+    expect(tokens[1]).toEqual value: '->', scopes: ['source.ruby', 'support.function.kernel.ruby']
