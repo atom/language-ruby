@@ -16,7 +16,7 @@
     'prefix': 'case'
     'body': 'case ${1:object}\nwhen ${2:condition}\n\t$0\nend'
   'begin … rescue … end':
-    'prefix': 'bre'
+    'prefix': 'beg'
     'body': 'begin\n\t$1\nrescue ${2:ExceptionName}\n\t$3\nend'
   'Add ‘# =>’ Marker':
     'prefix': '#'
