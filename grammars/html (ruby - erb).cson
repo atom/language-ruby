@@ -71,8 +71,8 @@
         'beginCaptures':
           '0':
             'name': 'punctuation.section.embedded.begin.erb'
-        'contentName': 'source.ruby'
-        'end': '(-?%)>'
+        'contentName': 'source.ruby.embedded.erb'
+        'end': '-?%>'
         'endCaptures':
           '0':
             'name': 'punctuation.section.embedded.end.erb'
@@ -97,8 +97,8 @@
         'beginCaptures':
           '0':
             'name': 'punctuation.section.embedded.begin.erb'
-        'contentName': 'source.ruby'
-        'end': '(-?%)>'
+        'contentName': 'source.ruby.embedded.erb'
+        'end': '-?%>'
         'endCaptures':
           '0':
             'name': 'punctuation.section.embedded.end.erb'
