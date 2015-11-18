@@ -532,30 +532,3 @@ describe "Ruby grammar", ->
     expect(tokens[6]).toEqual value: 'Array#[](0), Array', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby']
     expect(tokens[7]).toEqual value: ']', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby', 'comment.line.punctuation.yard.ruby']
     expect(tokens[8]).toEqual value: ' comment', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.string.yard.ruby']
-
-describe "HTML (Ruby - ERB) grammar", ->
-  grammar = null
-
-  beforeEach ->
-    waitsForPromise ->
-      atom.packages.activatePackage("language-ruby")
-
-    runs ->
-      grammar = atom.grammars.grammarForScopeName("text.html.erb")
-
-  it "parses the grammar", ->
-    expect(grammar).toBeTruthy()
-    expect(grammar.scopeName).toBe "text.html.erb"
-
-  it "tokenizes embedded ruby", ->
-    {tokens} = grammar.tokenizeLine('<%= self %>')
-    expect(tokens[0]).toEqual value: '<%=', scopes: ['text.html.erb', 'meta.embedded.line.erb', 'punctuation.section.embedded.begin.erb']
-    expect(tokens[1]).toEqual value: ' ', scopes: ['text.html.erb', 'meta.embedded.line.erb', 'source.ruby.embedded']
-    expect(tokens[2]).toEqual value: 'self', scopes: ['text.html.erb', 'meta.embedded.line.erb', 'source.ruby.embedded', 'variable.language.self.ruby']
-    expect(tokens[3]).toEqual value: ' ', scopes: ['text.html.erb', 'meta.embedded.line.erb', 'source.ruby.embedded']
-    expect(tokens[4]).toEqual value: '%>', scopes: ['text.html.erb', 'meta.embedded.line.erb', 'punctuation.section.embedded.end.erb']
-
-    lines = grammar.tokenizeLines('<%=\nself\n%>')
-    expect(lines[0][0]).toEqual value: '<%=', scopes: ['text.html.erb', 'meta.embedded.block.erb', 'punctuation.section.embedded.begin.erb']
-    expect(lines[1][0]).toEqual value: 'self', scopes: ['text.html.erb', 'meta.embedded.block.erb', 'source.ruby.embedded', 'variable.language.self.ruby']
-    expect(lines[2][0]).toEqual value: '%>', scopes: ['text.html.erb', 'meta.embedded.block.erb', 'punctuation.section.embedded.end.erb']
