@@ -118,8 +118,8 @@
     'prefix': 'def'
     'body': 'def ${1:method_name}\n\t$0\nend'
   'initialize':
-    'prefix': 'init'
-    'body': 'def initialize${1:(${2:argument})}\n\t$0\nend'
+    'prefix': 'defi'
+    'body': 'def initialize${1:(${2:argument})}\n\t\@${2:argument} = ${2:argument}$0\nend'
   'def method_missing .. end':
     'prefix': 'defmm'
     'body': 'def method_missing(meth, *args, &blk)\n\t$0\nend'
@@ -323,6 +323,18 @@
   'erb_render_block':
     'prefix': '='
     'body': '<%= $1 %>'
+  'erb_render_block_after_tag':
+    'prefix': '\>='
+    'body': '\><%= $1 %>'
+  'erb_render_block_after_quote':
+    'prefix': '\"='
+    'body': '\"<%= $1 %>'
   'erb_exec_block':
     'prefix': '-'
     'body': '<% $1 %>'
+  'erb_exec_block_after_tag':
+    'prefix': '\>-'
+    'body': '\><% $1 %>'
+  'erb_exec_block_after_quote':
+    'prefix': '\"-'
+    'body': '\"<% $1 %>'

@@ -227,15 +227,19 @@
     'patterns': [
       {
         'begin': '(?![\\s,)])'
-        'end': '(?=[,)])'
+        'end': '(?=\\,|\\)\\s*$)'
         'patterns': [
           {
             'captures':
               '1':
                 'name': 'storage.type.variable.ruby'
               '2':
+                'name': 'constant.other.symbol.hashkey.parameter.function.ruby'
+              '3':
+                'name': 'punctuation.definition.constant.hashkey.ruby'
+              '4':
                 'name': 'variable.parameter.function.ruby'
-            'match': '\\G([&*]?)([_a-zA-Z][_a-zA-Z0-9]*)'
+            'match': '\\G([&*]?)(?:([_a-zA-Z]\\w*(:))|([_a-zA-Z]\\w*))'
           }
           {
             'include': '$self'
@@ -262,9 +266,14 @@
           {
             'captures':
               '1':
-                'name': 'punctuation.definition.variable.ruby'
-            'match': '\\G([&*]?)[_a-zA-Z][_a-zA-Z0-9]*'
-            'name': 'variable.parameter.function.ruby'
+                'name': 'storage.type.variable.ruby'
+              '2':
+                'name': 'constant.other.symbol.hashkey.parameter.function.ruby'
+              '3':
+                'name': 'punctuation.definition.constant.hashkey.ruby'
+              '4':
+                'name': 'variable.parameter.function.ruby'
+            'match': '\\G([&*]?)(?:([_a-zA-Z]\\w*(:))|([_a-zA-Z]\\w*))'
           }
           {
             'include': '$self'
@@ -1900,12 +1909,12 @@
     ]
   }
   {
-    'begin': '(?><<-(\\w+))'
+    'begin': '(?>((<<-(\\w+),\\s?)*<<-(\\w+)))'
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
-    'comment': 'heredoc with indented terminator'
-    'end': '\\s*\\1$'
+    'comment': 'heredoc with multiple inputs and indented terminator'
+    'end': '\\s*\\4$'
     'endCaptures':
       '0':
         'name': 'punctuation.definition.string.end.ruby'
@@ -1927,8 +1936,11 @@
     'captures':
       '1':
         'name': 'punctuation.separator.variable.ruby'
-    'end': '(\\|)'
+    'end': '([^\\|]([\\|])[^\\|])'
     'patterns': [
+      {
+        'include': 'source.ruby'
+      }
       {
         'match': '[_a-zA-Z][_a-zA-Z0-9]*'
         'name': 'variable.other.block.ruby'
@@ -1942,6 +1954,10 @@
   {
     'match': '=>'
     'name': 'punctuation.separator.key-value'
+  }
+  {
+    'match': '->'
+    'name': 'support.function.kernel.ruby'
   }
   {
     'match': '<<=|%=|&{1,2}=|\\*=|\\*\\*=|\\+=|\\-=|\\^=|\\|{1,2}=|<<'
