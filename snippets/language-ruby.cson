@@ -18,6 +18,12 @@
   'begin … rescue … end':
     'prefix': 'beg'
     'body': 'begin\n\t$1\nrescue ${2:ExceptionName}\n\t$3\nend'
+  'refine … end':
+    'prefix': 'ref'
+    'body': 'refine ${1:ClassName} do\n\t$2\nend'
+  'using':
+    'prefix': 'usi'
+    'body': 'using ${1:ClassName}'
   'Add ‘# =>’ Marker':
     'prefix': '#'
     'body': '# => '
