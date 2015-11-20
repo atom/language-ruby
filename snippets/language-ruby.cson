@@ -23,7 +23,7 @@
     'body': 'refine ${1:ClassName} do\n\t$2\nend'
   'using':
     'prefix': 'usi'
-    'body': 'using ${1:ClassName}'
+    'body': 'using ${1:ModuleName}'
   'Add ‘# =>’ Marker':
     'prefix': '#'
     'body': '# => '
