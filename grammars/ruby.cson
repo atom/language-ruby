@@ -1936,7 +1936,7 @@
     'captures':
       '1':
         'name': 'punctuation.separator.variable.ruby'
-    'end': '(?<=[^\\|])(\\|)(?=[^\\|])'
+    'end': '(?<!\\|)(\\|)(?!\\|)'
     'patterns': [
       {
         'include': 'source.ruby'
