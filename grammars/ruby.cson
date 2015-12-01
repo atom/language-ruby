@@ -2364,10 +2364,13 @@
       {
         'include': '#yard_types'
       }
+      {
+        'include': '#yard_directive'
+      }
     ]
   'yard_comment':
     'comment': 'For YARD tags that follow the tag-comment pattern'
-    'match': '(@)(abstract|api|author|deprecated|example|note|since|todo|version)(?=\\s)(.*)$'
+    'match': '(@)(abstract|api|author|deprecated|example|note|overload|since|todo|version)(?=\\s)(.*)$'
     'captures':
       '1':
         'name': 'comment.line.keyword.punctuation.yard.ruby'
@@ -2377,7 +2380,7 @@
         'name': 'comment.line.string.yard.ruby'
   'yard_name_types':
     'comment': 'For YARD tags that follow the tag-name-types-comment pattern'
-    'match': '(@)(attr|attr_reader|attr_writer|param|see|yieldparam)(?=\\s)(\\s+([a-z_][a-zA-Z_]*))?(\\s+((\\[).+(\\])))?(.*)$'
+    'match': '(@)(attr|attr_reader|attr_writer|option|param|see|yieldparam)(?=\\s)(\\s+([a-z_][a-zA-Z_]*))?(\\s+((\\[).+(\\])))?(.*)$'
     'captures':
       '1':
         'name': 'comment.line.keyword.punctuation.yard.ruby'
@@ -2407,7 +2410,25 @@
         'name': 'comment.line.keyword.yard.ruby'
   'yard_types':
     'comment': 'For YARD tags that follow the tag-types-comment pattern'
-    'match': '(@)(raise|return|yieldreturn)(?=\\s)(\\s+((\\[).+(\\])))?(.*)$'
+    'match': '(@)(raise|return|yield|yieldreturn)(?=\\s)(\\s+((\\[).+(\\])))?(.*)$'
+    'captures':
+      '1':
+        'name': 'comment.line.keyword.punctuation.yard.ruby'
+      '2':
+        'name': 'comment.line.keyword.yard.ruby'
+      '3':
+        'name': 'comment.line.yard.ruby'
+      '4':
+        'name': 'comment.line.type.yard.ruby'
+      '5':
+        'name': 'comment.line.punctuation.yard.ruby'
+      '6':
+        'name': 'comment.line.punctuation.yard.ruby'
+      '7':
+        'name': 'comment.line.string.yard.ruby'
+  'yard_directive':
+    'comment': 'For YARD directives'
+    'match': '(@!)(attribute|endgroup|group|macro|method|parse|scope|visibility)(\\s+((\\[).+(\\])))?(?=\\s)(.*)$'
     'captures':
       '1':
         'name': 'comment.line.keyword.punctuation.yard.ruby'
