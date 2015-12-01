@@ -2410,7 +2410,7 @@
         'name': 'comment.line.keyword.yard.ruby'
   'yard_types':
     'comment': 'For YARD tags that follow the tag-types-comment pattern'
-    'match': '(@)(raise|return|yield|yieldreturn)(?=\\s)(\\s+((\\[).+(\\])))?(.*)$'
+    'match': '(@)(raise|return|yield(?:return)?)(?=\\s)(\\s+((\\[).+(\\])))?(.*)$'
     'captures':
       '1':
         'name': 'comment.line.keyword.punctuation.yard.ruby'
