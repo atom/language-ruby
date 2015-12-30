@@ -28,6 +28,10 @@ describe "Ruby grammar", ->
     expect(tokens[1]).toEqual value: '::', scopes: ['source.ruby', 'punctuation.separator.method.ruby']
     expect(tokens[2]).toEqual value: 'require ', scopes: ['source.ruby']
 
+    {tokens} = grammar.tokenizeLine('thing&.call')
+    expect(tokens[1]).toEqual value: '&.', scopes: ['source.ruby', 'punctuation.separator.method.ruby']
+    expect(tokens[2]).toEqual value: 'call', scopes: ['source.ruby']
+
   it "tokenizes symbols", ->
     {tokens} = grammar.tokenizeLine(':test')
     expect(tokens[0]).toEqual value: ':', scopes: ['source.ruby', 'constant.other.symbol.ruby', 'punctuation.definition.constant.ruby']
