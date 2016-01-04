@@ -1972,6 +1972,13 @@
     'name': 'keyword.operator.logical.ruby'
   }
   {
+    'comment': 'Safe navigation operator'
+    'match': '(&\\.)\\s*(?![A-Z])'
+    'captures':
+      '1':
+        'name': 'punctuation.separator.method.ruby'
+  }
+  {
     'match': '(%|&|\\*\\*|\\*|\\+|\\-|/)'
     'name': 'keyword.operator.arithmetic.ruby'
   }
