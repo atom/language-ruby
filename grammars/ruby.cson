@@ -3,6 +3,7 @@
 'fileTypes': [
   'Appfile'
   'Appraisals'
+  'arb'
   'Berksfile'
   'cap'
   'Capfile'
