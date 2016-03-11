@@ -667,3 +667,15 @@ describe "Ruby grammar", ->
     lines = grammar.tokenizeLines('<<~EOS\nThis is text\nEOS')
     expect(lines[0][0]).toEqual value: '<<~EOS', scopes: ['source.ruby', 'string.unquoted.heredoc.ruby', 'punctuation.definition.string.begin.ruby']
     expect(lines[2][0]).toEqual value: 'EOS', scopes: ['source.ruby', 'string.unquoted.heredoc.ruby', 'punctuation.definition.string.end.ruby']
+
+  it "tokenizes Kernel support functions autoload? and exit!", ->
+    lines = grammar.tokenizeLines('p autoload?(:test)\nexit!\nat_exit!')
+    expect(lines[0][2]).toEqual value: 'autoload?', scopes: ['source.ruby', 'support.function.kernel.ruby']
+    expect(lines[1][0]).toEqual value: 'exit!', scopes: ['source.ruby', 'support.function.kernel.ruby']
+    expect(lines[2][0]).toEqual value: 'at_exit!', scopes: ['source.ruby']
+
+  it "tokenizes iterator? the same way as block_given?", ->
+    lines = grammar.tokenizeLines('p iterator?\np block_given?')
+    expect(lines[0][2].value).toEqual 'iterator?'
+    expect(lines[1][2].value).toEqual 'block_given?'
+    expect(lines[0][2].scopes).toEqual lines[1][2].scopes
