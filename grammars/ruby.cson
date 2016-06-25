@@ -108,7 +108,7 @@
   }
   {
     'comment': 'contextual smart pair support for block parameters'
-    'match': '(?<!\\.)\\bdo\\b\\s*'
+    'match': '(?<!\\.)\\bdo\\b'
     'name': 'keyword.control.start-block.ruby'
   }
   {
