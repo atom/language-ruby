@@ -632,31 +632,31 @@ describe "Ruby grammar", ->
 
   it "tokenizes a simple do block properly", ->
     {tokens} = grammar.tokenizeLine('do |foo| ')
-    expect(tokens[0]).toEqual value: 'do ', scopes: ['source.ruby', 'keyword.control.start-block.ruby']
-    expect(tokens[1]).toEqual value: '|', scopes: ['source.ruby', 'punctuation.separator.variable.ruby']
-    expect(tokens[2]).toEqual value: 'foo', scopes: ['source.ruby', 'variable.other.block.ruby']
-    expect(tokens[3]).toEqual value: '|', scopes: ['source.ruby', 'punctuation.separator.variable.ruby']
+    expect(tokens[0]).toEqual value: 'do', scopes: ['source.ruby', 'keyword.control.start-block.ruby']
+    expect(tokens[2]).toEqual value: '|', scopes: ['source.ruby', 'punctuation.separator.variable.ruby']
+    expect(tokens[3]).toEqual value: 'foo', scopes: ['source.ruby', 'variable.other.block.ruby']
+    expect(tokens[4]).toEqual value: '|', scopes: ['source.ruby', 'punctuation.separator.variable.ruby']
 
   it "tokenizes a complex do block properly", ->
     {tokens} = grammar.tokenizeLine('do |key = (a || b), hash = config, create: false|')
-    expect(tokens[0]).toEqual value: 'do ', scopes: ['source.ruby', 'keyword.control.start-block.ruby']
-    expect(tokens[1]).toEqual value: '|', scopes: ['source.ruby', 'punctuation.separator.variable.ruby']
-    expect(tokens[2]).toEqual value: 'key', scopes: ['source.ruby', 'variable.other.block.ruby']
-    expect(tokens[4]).toEqual value: '=', scopes: ['source.ruby', 'keyword.operator.assignment.ruby']
-    expect(tokens[6]).toEqual value: '(', scopes: ['source.ruby', 'punctuation.section.function.ruby']
-    expect(tokens[7]).toEqual value: 'a', scopes: ['source.ruby', 'variable.other.block.ruby']
-    expect(tokens[9]).toEqual value: '||', scopes: ['source.ruby', 'keyword.operator.logical.ruby']
-    expect(tokens[11]).toEqual value: 'b', scopes: ['source.ruby', 'variable.other.block.ruby']
-    expect(tokens[12]).toEqual value: ')', scopes: ['source.ruby', 'punctuation.section.function.ruby']
-    expect(tokens[13]).toEqual value: ',', scopes: ['source.ruby', 'punctuation.separator.object.ruby']
-    expect(tokens[15]).toEqual value: 'hash', scopes: ['source.ruby', 'variable.other.block.ruby']
-    expect(tokens[17]).toEqual value: '=', scopes: ['source.ruby', 'keyword.operator.assignment.ruby']
-    expect(tokens[19]).toEqual value: 'config', scopes: ['source.ruby', 'variable.other.block.ruby']
-    expect(tokens[20]).toEqual value: ',', scopes: ['source.ruby', 'punctuation.separator.object.ruby']
-    expect(tokens[22]).toEqual value: 'create', scopes: ['source.ruby', 'constant.other.symbol.hashkey.ruby']
-    expect(tokens[23]).toEqual value: ':', scopes: ['source.ruby', 'constant.other.symbol.hashkey.ruby', 'punctuation.definition.constant.hashkey.ruby']
-    expect(tokens[25]).toEqual value: 'false', scopes: ['source.ruby', 'constant.language.boolean.ruby']
-    expect(tokens[26]).toEqual value: '|', scopes: ['source.ruby', 'punctuation.separator.variable.ruby']
+    expect(tokens[0]).toEqual value: 'do', scopes: ['source.ruby', 'keyword.control.start-block.ruby']
+    expect(tokens[2]).toEqual value: '|', scopes: ['source.ruby', 'punctuation.separator.variable.ruby']
+    expect(tokens[3]).toEqual value: 'key', scopes: ['source.ruby', 'variable.other.block.ruby']
+    expect(tokens[5]).toEqual value: '=', scopes: ['source.ruby', 'keyword.operator.assignment.ruby']
+    expect(tokens[7]).toEqual value: '(', scopes: ['source.ruby', 'punctuation.section.function.ruby']
+    expect(tokens[8]).toEqual value: 'a', scopes: ['source.ruby', 'variable.other.block.ruby']
+    expect(tokens[10]).toEqual value: '||', scopes: ['source.ruby', 'keyword.operator.logical.ruby']
+    expect(tokens[12]).toEqual value: 'b', scopes: ['source.ruby', 'variable.other.block.ruby']
+    expect(tokens[13]).toEqual value: ')', scopes: ['source.ruby', 'punctuation.section.function.ruby']
+    expect(tokens[14]).toEqual value: ',', scopes: ['source.ruby', 'punctuation.separator.object.ruby']
+    expect(tokens[16]).toEqual value: 'hash', scopes: ['source.ruby', 'variable.other.block.ruby']
+    expect(tokens[18]).toEqual value: '=', scopes: ['source.ruby', 'keyword.operator.assignment.ruby']
+    expect(tokens[20]).toEqual value: 'config', scopes: ['source.ruby', 'variable.other.block.ruby']
+    expect(tokens[21]).toEqual value: ',', scopes: ['source.ruby', 'punctuation.separator.object.ruby']
+    expect(tokens[23]).toEqual value: 'create', scopes: ['source.ruby', 'constant.other.symbol.hashkey.ruby']
+    expect(tokens[24]).toEqual value: ':', scopes: ['source.ruby', 'constant.other.symbol.hashkey.ruby', 'punctuation.definition.constant.hashkey.ruby']
+    expect(tokens[26]).toEqual value: 'false', scopes: ['source.ruby', 'constant.language.boolean.ruby']
+    expect(tokens[27]).toEqual value: '|', scopes: ['source.ruby', 'punctuation.separator.variable.ruby']
 
   it "tokenizes <<- heredoc", ->
     lines = grammar.tokenizeLines('<<-EOS\nThis is text\nEOS')
