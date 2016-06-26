@@ -231,7 +231,7 @@
     'patterns': [
       {
         'begin': '(?![\\s,)])'
-        'end': '(?=\\,|\\)\\s*$)'
+        'end': '(?=,|\\)\\s*$)'
         'patterns': [
           {
             'captures':
@@ -1995,7 +1995,7 @@
     'name': 'keyword.operator.other.ruby'
   }
   {
-    'match': '\\;'
+    'match': ';'
     'name': 'punctuation.separator.statement.ruby'
   }
   {
