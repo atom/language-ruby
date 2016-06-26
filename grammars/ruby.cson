@@ -1891,7 +1891,7 @@
     ]
   }
   {
-    'begin': '(?>\\=\\s*<<(\\w+))'
+    'begin': '(?>=\\s*<<(\\w+))'
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
@@ -1964,7 +1964,7 @@
     'name': 'support.function.kernel.ruby'
   }
   {
-    'match': '<<=|%=|&{1,2}=|\\*=|\\*\\*=|\\+=|\\-=|\\^=|\\|{1,2}=|<<'
+    'match': '<<=|%=|&{1,2}=|\\*=|\\*\\*=|\\+=|-=|\\^=|\\|{1,2}=|<<'
     'name': 'keyword.operator.assignment.augmented.ruby'
   }
   {
@@ -1983,7 +1983,7 @@
         'name': 'punctuation.separator.method.ruby'
   }
   {
-    'match': '(%|&|\\*\\*|\\*|\\+|\\-|/)'
+    'match': '(%|&|\\*\\*|\\*|\\+|-|/)'
     'name': 'keyword.operator.arithmetic.ruby'
   }
   {
