@@ -484,6 +484,10 @@ describe "Ruby grammar", ->
     {tokens} = grammar.tokenizeLine('!foo')
     expect(tokens[0]).toEqual value: '!', scopes: ['source.ruby', 'keyword.operator.logical.ruby']
 
+  it "tokenizes != as comparison operator", ->
+    {tokens} = grammar.tokenizeLine('foo != bar')
+    expect(tokens[1]).toEqual value: '!=', scopes: ['source.ruby', 'keyword.operator.comparison.ruby']
+
   it "tokenizes yard documentation comments", ->
     {tokens} = grammar.tokenizeLine('# @private')
     expect(tokens[0]).toEqual value: '#', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'punctuation.definition.comment.ruby']
