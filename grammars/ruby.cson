@@ -117,12 +117,6 @@
     'name': 'meta.syntax.ruby.start-block'
   }
   {
-    'comment': ' as above, just doesn\'t need a \'end\' and does a logic operation'
-    'match': '(?<!\\.)\\b(and|not|or)\\b(?![?!])'
-    'name': 'keyword.operator.logical.ruby'
-  }
-  {
-    'comment': ' just as above but being not a logical operation'
     'match': '(?<!\\.)\\b(alias|alias_method|break|next|redo|retry|return|super|undef|yield)\\b(?![?!])|\\bdefined\\?|\\b(block_given|iterator)\\?'
     'name': 'keyword.control.pseudo-method.ruby'
   }
@@ -1972,7 +1966,12 @@
     'name': 'keyword.operator.comparison.ruby'
   }
   {
-    'match': '(?<=[ \\t])!+|\\bnot\\b|&&|\\band\\b|\\|\\||\\bor\\b|\\^'
+    'match': '(?<!\\.)\\b(and|not|or)\\b(?![?!])'
+    'name': 'keyword.operator.logical.ruby'
+  }
+  {
+    # Make sure this goes after assignment and comparison
+    'match': '(?<=^|[ \\t])!|&&|\\|\\||\\^'
     'name': 'keyword.operator.logical.ruby'
   }
   {
