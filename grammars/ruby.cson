@@ -1055,7 +1055,7 @@
     ]
   }
   {
-    'begin': '%Q\\('
+    'begin': '%Q?\\('
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
@@ -1078,7 +1078,7 @@
     ]
   }
   {
-    'begin': '%Q\\['
+    'begin': '%Q?\\['
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
@@ -1101,30 +1101,7 @@
     ]
   }
   {
-    'begin': '%Q<'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.ruby'
-    'comment': 'string literal with interpolation and <> delimitor'
-    'end': '>'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.ruby'
-    'name': 'string.quoted.other.interpolated.ruby'
-    'patterns': [
-      {
-        'include': '#interpolated_ruby'
-      }
-      {
-        'include': '#escaped_char'
-      }
-      {
-        'include': '#nest_ltgt_i'
-      }
-    ]
-  }
-  {
-    'begin': '%Q{'
+    'begin': '%Q?{'
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
@@ -1147,6 +1124,29 @@
     ]
   }
   {
+    'begin': '%Q?<'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.ruby'
+    'comment': 'string literal with interpolation and <> delimitor'
+    'end': '>'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.ruby'
+    'name': 'string.quoted.other.interpolated.ruby'
+    'patterns': [
+      {
+        'include': '#interpolated_ruby'
+      }
+      {
+        'include': '#escaped_char'
+      }
+      {
+        'include': '#nest_ltgt_i'
+      }
+    ]
+  }
+  {
     'begin': '%Q([^\\w])'
     'beginCaptures':
       '0':
@@ -1163,94 +1163,6 @@
       }
       {
         'include': '#escaped_char'
-      }
-    ]
-  }
-  {
-    'begin': '%{'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.ruby'
-    'end': '}'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.ruby'
-    'name': 'string.quoted.other.interpolated.ruby'
-    'patterns': [
-      {
-        'include': '#interpolated_ruby'
-      }
-      {
-        'include': '#escaped_char'
-      }
-      {
-        'include': '#nest_curly'
-      }
-    ]
-  }
-  {
-    'begin': '%\\['
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.ruby'
-    'end': ']'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.ruby'
-    'name': 'string.quoted.other.interpolated.ruby'
-    'patterns': [
-      {
-        'include': '#interpolated_ruby'
-      }
-      {
-        'include': '#escaped_char'
-      }
-      {
-        'include': '#nest_brackets'
-      }
-    ]
-  }
-  {
-    'begin': '%\\('
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.ruby'
-    'end': '\\)'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.ruby'
-    'name': 'string.quoted.other.interpolated.ruby'
-    'patterns': [
-      {
-        'include': '#interpolated_ruby'
-      }
-      {
-        'include': '#escaped_char'
-      }
-      {
-        'include': '#nest_parens'
-      }
-    ]
-  }
-  {
-    'begin': '%<'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.ruby'
-    'end': '>'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.ruby'
-    'name': 'string.quoted.other.interpolated.ruby'
-    'patterns': [
-      {
-        'include': '#interpolated_ruby'
-      }
-      {
-        'include': '#escaped_char'
-      }
-      {
-        'include': '#nest_ltgt'
       }
     ]
   }
