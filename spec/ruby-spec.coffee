@@ -162,6 +162,14 @@ describe "Ruby grammar", ->
     expect(tokens[5]).toEqual value: 't', scopes: ['source.ruby', 'string.quoted.other.interpolated.ruby']
     expect(tokens[6]).toEqual value: ')', scopes: ['source.ruby', 'string.quoted.other.interpolated.ruby', 'punctuation.definition.string.end.ruby']
 
+  it "tokenizes %x!! style strings", ->
+    {tokens} = grammar.tokenizeLine('%x!\#\{"l" + "s"\}!')
+
+    expect(tokens[0]).toEqual value: '%x!', scopes: ['source.ruby', 'string.quoted.other.interpolated.ruby', 'punctuation.definition.string.begin.ruby']
+    expect(tokens[1]).toEqual value: '#{', scopes: ['source.ruby', 'string.quoted.other.interpolated.ruby', 'meta.embedded.line.ruby', 'punctuation.section.embedded.begin.ruby']
+    expect(tokens[11]).toEqual value: '}', scopes: ['source.ruby', 'string.quoted.other.interpolated.ruby', 'meta.embedded.line.ruby', 'punctuation.section.embedded.end.ruby']
+    expect(tokens[12]).toEqual value: '!', scopes: ['source.ruby', 'string.quoted.other.interpolated.ruby', 'punctuation.definition.string.end.ruby']
+
   it "tokenizes regular expressions", ->
     {tokens} = grammar.tokenizeLine('/test/')
 
