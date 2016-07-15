@@ -465,6 +465,29 @@ describe "Ruby grammar", ->
     expect(tokens[7]).toEqual value: ' ', scopes: ['source.ruby']
     expect(tokens[8]).toEqual value: '2', scopes: ['source.ruby', 'constant.numeric.ruby']
 
+  it "tokenizes 'not' when used as method name", ->
+    {tokens} = grammar.tokenizeLine('foo.not(bar)')
+    expect(tokens[2]).toEqual value: 'not', scopes: ['source.ruby']
+
+    {tokens} = grammar.tokenizeLine('not?(Array)')
+    expect(tokens[0]).toEqual value: 'not?', scopes: ['source.ruby']
+
+  it "tokenizes 'not' as logical operator", ->
+    {tokens} = grammar.tokenizeLine('not true')
+    expect(tokens[0]).toEqual value: 'not', scopes: ['source.ruby', 'keyword.operator.logical.ruby']
+
+  it "tokenizes ! when used in method name", ->
+    {tokens} = grammar.tokenizeLine('sort!')
+    expect(tokens[0]).toEqual value: 'sort!', scopes: ['source.ruby']
+
+  it "tokenizes ! as logical operator", ->
+    {tokens} = grammar.tokenizeLine('!foo')
+    expect(tokens[0]).toEqual value: '!', scopes: ['source.ruby', 'keyword.operator.logical.ruby']
+
+  it "tokenizes != as comparison operator", ->
+    {tokens} = grammar.tokenizeLine('foo != bar')
+    expect(tokens[1]).toEqual value: '!=', scopes: ['source.ruby', 'keyword.operator.comparison.ruby']
+
   it "tokenizes yard documentation comments", ->
     {tokens} = grammar.tokenizeLine('# @private')
     expect(tokens[0]).toEqual value: '#', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'punctuation.definition.comment.ruby']
