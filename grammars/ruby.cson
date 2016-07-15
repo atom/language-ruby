@@ -396,118 +396,6 @@
     ]
   }
   {
-    'begin': '%x{'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.ruby'
-    'comment': 'execute string (allow for interpolation)'
-    'end': '}'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.ruby'
-    'name': 'string.interpolated.ruby'
-    'patterns': [
-      {
-        'include': '#interpolated_ruby'
-      }
-      {
-        'include': '#escaped_char'
-      }
-      {
-        'include': '#nest_curly_i'
-      }
-    ]
-  }
-  {
-    'begin': '%x\\['
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.ruby'
-    'comment': 'execute string (allow for interpolation)'
-    'end': ']'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.ruby'
-    'name': 'string.interpolated.ruby'
-    'patterns': [
-      {
-        'include': '#interpolated_ruby'
-      }
-      {
-        'include': '#escaped_char'
-      }
-      {
-        'include': '#nest_brackets_i'
-      }
-    ]
-  }
-  {
-    'begin': '%x<'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.ruby'
-    'comment': 'execute string (allow for interpolation)'
-    'end': '>'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.ruby'
-    'name': 'string.interpolated.ruby'
-    'patterns': [
-      {
-        'include': '#interpolated_ruby'
-      }
-      {
-        'include': '#escaped_char'
-      }
-      {
-        'include': '#nest_ltgt_i'
-      }
-    ]
-  }
-  {
-    'begin': '%x\\('
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.ruby'
-    'comment': 'execute string (allow for interpolation)'
-    'end': '\\)'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.ruby'
-    'name': 'string.interpolated.ruby'
-    'patterns': [
-      {
-        'include': '#interpolated_ruby'
-      }
-      {
-        'include': '#escaped_char'
-      }
-      {
-        'include': '#nest_parens_i'
-      }
-    ]
-  }
-  {
-    'begin': '%x([^\\w])'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.ruby'
-    'comment': 'execute string (allow for interpolation)'
-    'end': '\\1'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.ruby'
-    'name': 'string.interpolated.ruby'
-    'patterns': [
-      {
-        'include': '#interpolated_ruby'
-      }
-      {
-        'include': '#escaped_char'
-      }
-    ]
-  }
-  {
     'begin': '(?<![\\w)])((/))(?![*+?])(?=(?:\\\\/|[^/])*/[eimnosux]*\\s*([\\]#).,?:}]|$|\\|\\||&&|<=>|=>|==|=~|!~|!=|;|if|else|elsif|then|do|end|unless|while|until|or|and))'
     'captures':
       '1':
@@ -528,7 +416,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.regexp.begin.ruby'
-    'comment': 'regular expression literal with interpolation and {} delimitor'
     'end': '}[eimnosux]*'
     'endCaptures':
       '0':
@@ -548,7 +435,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.regexp.begin.ruby'
-    'comment': 'regular expression literal with interpolation and [] delimitor'
     'end': '][eimnosux]*'
     'endCaptures':
       '0':
@@ -568,7 +454,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.regexp.begin.ruby'
-    'comment': 'regular expression literal with interpolation and () delimitor'
     'end': '\\)[eimnosux]*'
     'endCaptures':
       '0':
@@ -588,7 +473,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.regexp.begin.ruby'
-    'comment': 'regular expression literal with interpolation and <> delimitor'
     'end': '>[eimnosux]*'
     'endCaptures':
       '0':
@@ -608,7 +492,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.regexp.begin.ruby'
-    'comment': 'regular expression literal with interpolation and {} delimitor'
     'end': '\\1[eimnosux]*'
     'endCaptures':
       '0':
@@ -625,7 +508,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.ruby'
-    'comment': 'array of symbols literal with interpolation and [] delimitor'
     'end': ']'
     'endCaptures':
       '0':
@@ -648,7 +530,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.ruby'
-    'comment': 'array of symbols literal with interpolation and () delimitor'
     'end': '\\)'
     'endCaptures':
       '0':
@@ -671,7 +552,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.ruby'
-    'comment': 'array of symbols literal with interpolation and <> delimitor'
     'end': '>'
     'endCaptures':
       '0':
@@ -694,7 +574,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.ruby'
-    'comment': 'array of symbols literal with interpolation and {} delimitor'
     'end': '}'
     'endCaptures':
       '0':
@@ -717,7 +596,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.ruby'
-    'comment': 'array of symbols literal with interpolation and wildcard delimitor'
     'end': '\\1'
     'endCaptures':
       '0':
@@ -737,7 +615,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.ruby'
-    'comment': 'array of symbols literal with [] delimitor'
     'end': ']'
     'endCaptures':
       '0':
@@ -758,7 +635,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.ruby'
-    'comment': 'array of symbols literal with () delimitor'
     'end': '\\)'
     'endCaptures':
       '0':
@@ -779,7 +655,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.ruby'
-    'comment': 'array of symbols literal with <> delimitor'
     'end': '>'
     'endCaptures':
       '0':
@@ -800,7 +675,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.ruby'
-    'comment': 'array of symbols literal with {} delimitor'
     'end': '}'
     'endCaptures':
       '0':
@@ -821,7 +695,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.ruby'
-    'comment': 'array of symbols literal with wildcard delimitor'
     'end': '\\1'
     'endCaptures':
       '0':
@@ -839,7 +712,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.ruby'
-    'comment': 'array of strings literal with interpolation and [] delimitor'
     'end': ']'
     'endCaptures':
       '0':
@@ -862,7 +734,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.ruby'
-    'comment': 'array of strings literal with interpolation and () delimitor'
     'end': '\\)'
     'endCaptures':
       '0':
@@ -885,7 +756,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.ruby'
-    'comment': 'array of strings literal with interpolation and <> delimitor'
     'end': '>'
     'endCaptures':
       '0':
@@ -908,7 +778,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.ruby'
-    'comment': 'array of strings literal with interpolation and {} delimitor'
     'end': '}'
     'endCaptures':
       '0':
@@ -931,7 +800,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.ruby'
-    'comment': 'array of strings literal with interpolation and wildcard delimitor'
     'end': '\\1'
     'endCaptures':
       '0':
@@ -951,7 +819,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.ruby'
-    'comment': 'array of strings literal with [] delimitor'
     'end': ']'
     'endCaptures':
       '0':
@@ -972,7 +839,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.ruby'
-    'comment': 'array of strings literal with () delimitor'
     'end': '\\)'
     'endCaptures':
       '0':
@@ -993,7 +859,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.ruby'
-    'comment': 'array of strings literal with <> delimitor'
     'end': '>'
     'endCaptures':
       '0':
@@ -1014,7 +879,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.ruby'
-    'comment': 'array of strings literal with {} delimitor'
     'end': '}'
     'endCaptures':
       '0':
@@ -1035,7 +899,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.array.begin.ruby'
-    'comment': 'array of strings literal with wildcard delimitor'
     'end': '\\1'
     'endCaptures':
       '0':
@@ -1049,11 +912,10 @@
     ]
   }
   {
-    'begin': '%Q\\('
+    'begin': '%[Qx]?\\('
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
-    'comment': 'string literal with interpolation and () delimitor'
     'end': '\\)'
     'endCaptures':
       '0':
@@ -1072,11 +934,10 @@
     ]
   }
   {
-    'begin': '%Q\\['
+    'begin': '%[Qx]?\\['
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
-    'comment': 'string literal with interpolation and [] delimitor'
     'end': ']'
     'endCaptures':
       '0':
@@ -1095,34 +956,10 @@
     ]
   }
   {
-    'begin': '%Q<'
+    'begin': '%[Qx]?{'
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
-    'comment': 'string literal with interpolation and <> delimitor'
-    'end': '>'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.ruby'
-    'name': 'string.quoted.other.interpolated.ruby'
-    'patterns': [
-      {
-        'include': '#interpolated_ruby'
-      }
-      {
-        'include': '#escaped_char'
-      }
-      {
-        'include': '#nest_ltgt_i'
-      }
-    ]
-  }
-  {
-    'begin': '%Q{'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.ruby'
-    'comment': 'string literal with interpolation and {} delimitor'
     'end': '}'
     'endCaptures':
       '0':
@@ -1141,93 +978,7 @@
     ]
   }
   {
-    'begin': '%Q([^\\w])'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.ruby'
-    'comment': 'string literal with interpolation and wildcard delimitor'
-    'end': '\\1'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.ruby'
-    'name': 'string.quoted.other.interpolated.ruby'
-    'patterns': [
-      {
-        'include': '#interpolated_ruby'
-      }
-      {
-        'include': '#escaped_char'
-      }
-    ]
-  }
-  {
-    'begin': '%{'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.ruby'
-    'end': '}'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.ruby'
-    'name': 'string.quoted.other.interpolated.ruby'
-    'patterns': [
-      {
-        'include': '#interpolated_ruby'
-      }
-      {
-        'include': '#escaped_char'
-      }
-      {
-        'include': '#nest_curly'
-      }
-    ]
-  }
-  {
-    'begin': '%\\['
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.ruby'
-    'end': ']'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.ruby'
-    'name': 'string.quoted.other.interpolated.ruby'
-    'patterns': [
-      {
-        'include': '#interpolated_ruby'
-      }
-      {
-        'include': '#escaped_char'
-      }
-      {
-        'include': '#nest_brackets'
-      }
-    ]
-  }
-  {
-    'begin': '%\\('
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.ruby'
-    'end': '\\)'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.ruby'
-    'name': 'string.quoted.other.interpolated.ruby'
-    'patterns': [
-      {
-        'include': '#interpolated_ruby'
-      }
-      {
-        'include': '#escaped_char'
-      }
-      {
-        'include': '#nest_parens'
-      }
-    ]
-  }
-  {
-    'begin': '%<'
+    'begin': '%[Qx]?<'
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
@@ -1244,7 +995,26 @@
         'include': '#escaped_char'
       }
       {
-        'include': '#nest_ltgt'
+        'include': '#nest_ltgt_i'
+      }
+    ]
+  }
+  {
+    'begin': '%[Qx]([^\\w])'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.ruby'
+    'end': '\\1'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.ruby'
+    'name': 'string.quoted.other.interpolated.ruby'
+    'patterns': [
+      {
+        'include': '#interpolated_ruby'
+      }
+      {
+        'include': '#escaped_char'
       }
     ]
   }
@@ -1253,7 +1023,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
-    'comment': 'string literal with interpolation and wildcard delimitor'
     'end': '\\1'
     'endCaptures':
       '0':
@@ -1273,7 +1042,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
-    'comment': 'string literal with () delimitor'
     'end': '\\)'
     'endCaptures':
       '0':
@@ -1294,7 +1062,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
-    'comment': 'string literal with <> delimitor'
     'end': '>'
     'endCaptures':
       '0':
@@ -1315,7 +1082,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
-    'comment': 'string literal with [] delimitor'
     'end': ']'
     'endCaptures':
       '0':
@@ -1336,7 +1102,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
-    'comment': 'string literal with {} delimitor'
     'end': '}'
     'endCaptures':
       '0':
@@ -1357,7 +1122,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
-    'comment': 'string literal with wildcard delimitor'
     'end': '\\1'
     'endCaptures':
       '0':
@@ -1375,7 +1139,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.symbol.begin.ruby'
-    'comment': 'symbol literal with () delimitor'
     'end': '\\)'
     'endCaptures':
       '0':
@@ -1396,7 +1159,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.symbol.begin.ruby'
-    'comment': 'symbol literal with <> delimitor'
     'end': '>'
     'endCaptures':
       '0':
@@ -1417,7 +1179,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.symbol.begin.ruby'
-    'comment': 'symbol literal with [] delimitor'
     'end': ']'
     'endCaptures':
       '0':
@@ -1438,7 +1199,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.symbol.begin.ruby'
-    'comment': 'symbol literal with {} delimitor'
     'end': '}'
     'endCaptures':
       '0':
@@ -1459,7 +1219,6 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.symbol.begin.ruby'
-    'comment': 'symbol literal with wildcard delimitor'
     'end': '\\1'
     'endCaptures':
       '0':
@@ -2056,19 +1815,15 @@
   'interpolated_ruby':
     'patterns': [
       {
-        'begin': '(#{)'
+        'begin': '#{'
         'beginCaptures':
           '0':
             'name': 'punctuation.section.embedded.begin.ruby'
-          '1':
-            'name': 'source.ruby'
         'contentName': 'source.ruby'
-        'end': '(})'
+        'end': '}'
         'endCaptures':
           '0':
             'name': 'punctuation.section.embedded.end.ruby'
-          '1':
-            'name': 'source.ruby'
         'name': 'meta.embedded.line.ruby'
         'patterns': [
           {
