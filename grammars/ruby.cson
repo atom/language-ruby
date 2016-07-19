@@ -56,7 +56,17 @@
         'name': 'variable.other.object.ruby'
       '7':
         'name': 'punctuation.definition.variable.ruby'
-    'match': '^\\s*(class)\\s+(([.a-zA-Z0-9_:]+(\\s*(<)\\s*[.a-zA-Z0-9_:]+)?)|((<<)\\s*[.a-zA-Z0-9_:]+))'
+    'match': '''(?x)
+      ^\\s*(class)\\s+
+      (
+        (
+          [.a-zA-Z0-9_:]+
+          (\\s*(<)\\s*[.a-zA-Z0-9_:]+)?   # class A < B
+        )
+        |
+        ((<<)\\s*[.a-zA-Z0-9_:]+)         # class << C
+      )
+    '''
     'name': 'meta.class.ruby'
   }
   {
@@ -77,7 +87,15 @@
         'name': 'entity.other.inherited-class.module.third.ruby'
       '8':
         'name': 'punctuation.separator.inheritance.ruby'
-    'match': '^\\s*(module)\\s+(([A-Z]\\w*(::))?([A-Z]\\w*(::))?([A-Z]\\w*(::))*[A-Z]\\w*)'
+    'match': '''(?x)
+      ^\\s*(module)\\s+
+      (
+        ([A-Z]\\w*(::))?
+        ([A-Z]\\w*(::))?
+        ([A-Z]\\w*(::))*
+        [A-Z]\\w*
+      )
+    '''
     'name': 'meta.module.ruby'
   }
   {
@@ -208,7 +226,19 @@
     'name': 'variable.other.constant.ruby'
   }
   {
-    'begin': '(?x)\n\t\t\t         (?=def\\b)                                                      # an optimization to help Oniguruma fail fast\n\t\t\t         (?<=^|\\s)(def)\\s+                                              # the def keyword\n\t\t\t         ( (?>[a-zA-Z_]\\w*(?>\\.|::))?                                   # a method name prefix\n\t\t\t           (?>[a-zA-Z_]\\w*(?>[?!]|=(?!>))?                              # the method name\n\t\t\t           |===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?) )  # …or an operator method\n\t\t\t         \\s*(\\()                                                        # the openning parenthesis for arguments\n\t\t\t        '
+    'begin': '''(?x)
+      (?=def\\b)                          # optimization to help Oniguruma fail fast
+      (?<=^|\\s)(def)\\s+
+      (
+        (?>[a-zA-Z_]\\w*(?>\\.|::))?      # method prefix
+        (?>                               # method name
+          [a-zA-Z_]\\w*(?>[?!]|=(?!>))?
+          |
+          ===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?
+        )
+      )
+      \\s*(\\()
+    '''
     'beginCaptures':
       '1':
         'name': 'keyword.control.def.ruby'
@@ -247,7 +277,20 @@
     ]
   }
   {
-    'begin': '(?x)\n\t\t\t         (?=def\\b)                                                      # an optimization to help Oniguruma fail fast\n\t\t\t         (?<=^|\\s)(def)\\s+                                              # the def keyword\n\t\t\t         ( (?>[a-zA-Z_]\\w*(?>\\.|::))?                                   # a method name prefix\n\t\t\t           (?>[a-zA-Z_]\\w*(?>[?!]|=(?!>))?                              # the method name\n\t\t\t           |===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?) )  # …or an operator method\n\t\t\t         [ \\t]                                                          # the space separating the arguments\n\t\t\t         (?=[ \\t]*[^\\s#;])                                              # make sure arguments and not a comment follow\n\t\t\t        '
+    'begin': '''(?x)
+      (?=def\\b)                          # optimization to help Oniguruma fail fast
+      (?<=^|\\s)(def)\\s+
+      (
+        (?>[a-zA-Z_]\\w*(?>\\.|::))?      # method prefix
+        (?>                               # method name
+          [a-zA-Z_]\\w*(?>[?!]|=(?!>))?
+          |
+          ===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?
+        )
+      )
+      [ \\t]
+      (?=[ \\t]*[^\\s#;])                 # make sure the following is not comment
+    '''
     'beginCaptures':
       '1':
         'name': 'keyword.control.def.ruby'
@@ -287,11 +330,36 @@
       '3':
         'name': 'entity.name.function.ruby'
     'comment': ' the optional name is just to catch the def also without a method-name'
-    'match': '(?x)\n\t\t\t         (?=def\\b)                                                           # an optimization to help Oniguruma fail fast\n\t\t\t         (?<=^|\\s)(def)\\b                                                    # the def keyword\n\t\t\t         ( \\s+                                                               # an optional group of whitespace followed by…\n\t\t\t           ( (?>[a-zA-Z_]\\w*(?>\\.|::))?                                      # a method name prefix\n\t\t\t             (?>[a-zA-Z_]\\w*(?>[?!]|=(?!>))?                                 # the method name\n\t\t\t             |===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?) ) )?  # …or an operator method\n\t\t\t        '
+    'match': '''(?x)
+      (?=def\\b)                            # optimization to help Oniguruma fail fast
+      (?<=^|\\s)(def)\\b
+      (
+        \\s+
+        (
+          (?>[a-zA-Z_]\\w*(?>\\.|::))?      # method prefix
+          (?>                               # method name
+            [a-zA-Z_]\\w*(?>[?!]|=(?!>))?
+            |
+            ===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?
+          )
+        )
+      )?
+    '''
     'name': 'meta.function.method.without-arguments.ruby'
   }
   {
-    'match': '\\b(0[xX]\\h(?>_?\\h)*|\\d(?>_?\\d)*(\\.(?![^[:space:][:digit:]])(?>_?\\d)*)?([eE][-+]?\\d(?>_?\\d)*)?|0[bB][01]+)\\b'
+    'match': '''(?x)
+      \\b
+      (
+        \\d(?>_?\\d)*                               # 100_000
+        (\\.(?![^[:space:][:digit:]])(?>_?\\d)*)?   # fractional part
+        ([eE][-+]?\\d(?>_?\\d)*)?                   # 1.23e-4
+        |
+        0[xX]\\h(?>_?\\h)*
+        |
+        0[bB][01]+
+      )\\b
+    '''
     'name': 'constant.numeric.ruby'
   }
   {
@@ -396,7 +464,19 @@
     ]
   }
   {
-    'begin': '(?<![\\w)])((/))(?![*+?])(?=(?:\\\\/|[^/])*/[eimnosux]*\\s*([\\]#).,?:}]|$|\\|\\||&&|<=>|=>|==|=~|!~|!=|;|if|else|elsif|then|do|end|unless|while|until|or|and))'
+    'begin': '''(?x)
+      (?<![\\w)])((/))(?![*+?])
+      (?=
+        (?:\\\\/|[^/])*/[eimnosux]*\\s*
+        (
+          [\\]#).,?:}]
+          |
+          $|\\|\\||&&|<=>|=>|==|=~|!~|!=|;
+          |
+          if|else|elsif|then|do|end|unless|while|until|or|and
+        )
+      )
+    '''
     'captures':
       '1':
         'name': 'string.regexp.interpolated.ruby'
@@ -1236,7 +1316,16 @@
       '1':
         'name': 'punctuation.definition.constant.ruby'
     'comment': 'symbols'
-    'match': '(?<!:)(:)(?>[$a-zA-Z_]\\w*(?>[?!]|=(?![>=]))?|===?|<=>|>[>=]?|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?|@@?[a-zA-Z_]\\w*)'
+    'match': '''(?x)
+      (?<!:)(:)
+      (?>
+        [$a-zA-Z_]\\w*(?>[?!]|=(?![>=]))?
+        |
+        ===?|<=>|>[>=]?|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?
+        |
+        @@?[a-zA-Z_]\\w*
+      )
+    '''
     'name': 'constant.other.symbol.ruby'
   }
   {
