@@ -87,7 +87,15 @@
         'name': 'entity.other.inherited-class.module.third.ruby'
       '8':
         'name': 'punctuation.separator.inheritance.ruby'
-    'match': '^\\s*(module)\\s+(([A-Z]\\w*(::))?([A-Z]\\w*(::))?([A-Z]\\w*(::))*[A-Z]\\w*)'
+    'match': '''(?x)
+      ^\\s*(module)\\s+
+      (
+        ([A-Z]\\w*(::))?
+        ([A-Z]\\w*(::))?
+        ([A-Z]\\w*(::))*
+        [A-Z]\\w*
+      )
+    '''
     'name': 'meta.module.ruby'
   }
   {
