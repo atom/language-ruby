@@ -56,7 +56,17 @@
         'name': 'variable.other.object.ruby'
       '7':
         'name': 'punctuation.definition.variable.ruby'
-    'match': '^\\s*(class)\\s+(([.a-zA-Z0-9_:]+(\\s*(<)\\s*[.a-zA-Z0-9_:]+)?)|((<<)\\s*[.a-zA-Z0-9_:]+))'
+    'match': '''(?x)
+      ^\\s*(class)\\s+
+      (
+        (
+          [.a-zA-Z0-9_:]+
+          (\\s*(<)\\s*[.a-zA-Z0-9_:]+)?   # class A < B
+        )
+        |
+        ((<<)\\s*[.a-zA-Z0-9_:]+)         # class << C
+      )
+    '''
     'name': 'meta.class.ruby'
   }
   {
