@@ -348,7 +348,18 @@
     'name': 'meta.function.method.without-arguments.ruby'
   }
   {
-    'match': '\\b(0[xX]\\h(?>_?\\h)*|\\d(?>_?\\d)*(\\.(?![^[:space:][:digit:]])(?>_?\\d)*)?([eE][-+]?\\d(?>_?\\d)*)?|0[bB][01]+)\\b'
+    'match': '''(?x)
+      \\b
+      (
+        \\d(?>_?\\d)*                               # 100_000
+        (\\.(?![^[:space:][:digit:]])(?>_?\\d)*)?   # fractional part
+        ([eE][-+]?\\d(?>_?\\d)*)?                   # 1.23e-4
+        |
+        0[xX]\\h(?>_?\\h)*
+        |
+        0[bB][01]+
+      )\\b
+    '''
     'name': 'constant.numeric.ruby'
   }
   {
