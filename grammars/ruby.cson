@@ -330,7 +330,21 @@
       '3':
         'name': 'entity.name.function.ruby'
     'comment': ' the optional name is just to catch the def also without a method-name'
-    'match': '(?x)\n\t\t\t         (?=def\\b)                                                           # an optimization to help Oniguruma fail fast\n\t\t\t         (?<=^|\\s)(def)\\b                                                    # the def keyword\n\t\t\t         ( \\s+                                                               # an optional group of whitespace followed by…\n\t\t\t           ( (?>[a-zA-Z_]\\w*(?>\\.|::))?                                      # a method name prefix\n\t\t\t             (?>[a-zA-Z_]\\w*(?>[?!]|=(?!>))?                                 # the method name\n\t\t\t             |===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?) ) )?  # …or an operator method\n\t\t\t        '
+    'match': '''(?x)
+      (?=def\\b)                            # optimization to help Oniguruma fail fast
+      (?<=^|\\s)(def)\\b
+      (
+        \\s+
+        (
+          (?>[a-zA-Z_]\\w*(?>\\.|::))?      # method prefix
+          (?>                               # method name
+            [a-zA-Z_]\\w*(?>[?!]|=(?!>))?
+            |
+            ===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?
+          )
+        )
+      )?
+    '''
     'name': 'meta.function.method.without-arguments.ruby'
   }
   {
