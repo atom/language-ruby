@@ -351,13 +351,17 @@
     'match': '''(?x)
       \\b
       (
-        \\d(?>_?\\d)*                               # 100_000
+        [1-9](?>_?\\d)*                             # 100_000
         (\\.(?![^[:space:][:digit:]])(?>_?\\d)*)?   # fractional part
         ([eE][-+]?\\d(?>_?\\d)*)?                   # 1.23e-4
         |
-        0[xX]\\h(?>_?\\h)*
-        |
-        0[bB][01]+
+        0
+        (?:
+          [xX]\\h(?>_?\\h)*|
+          [oO]?[0-7](?>_?[0-7])*|
+          [bB][01](?>_?[01])*|
+          [dD]\\d(?>_?\\d)*
+        )                                           # A base indicator can only be used with an integer
       )\\b
     '''
     'name': 'constant.numeric.ruby'

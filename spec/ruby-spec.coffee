@@ -32,6 +32,40 @@ describe "Ruby grammar", ->
     expect(tokens[1]).toEqual value: '&.', scopes: ['source.ruby', 'punctuation.separator.method.ruby']
     expect(tokens[2]).toEqual value: 'call', scopes: ['source.ruby']
 
+  it "tokenizes decimal numbers", ->
+    {tokens} = grammar.tokenizeLine('100_000')
+    expect(tokens[0]).toEqual value: '100_000', scopes: ['source.ruby', 'constant.numeric.ruby']
+
+    {tokens} = grammar.tokenizeLine('1.23')
+    expect(tokens[0]).toEqual value: '1.23', scopes: ['source.ruby', 'constant.numeric.ruby']
+
+    {tokens} = grammar.tokenizeLine('1.23e-4')
+    expect(tokens[0]).toEqual value: '1.23e-4', scopes: ['source.ruby', 'constant.numeric.ruby']
+
+    {tokens} = grammar.tokenizeLine('0d100_000')
+    expect(tokens[0]).toEqual value: '0d100_000', scopes: ['source.ruby', 'constant.numeric.ruby']
+
+  it "tokenizes hexadecimal numbers", ->
+    {tokens} = grammar.tokenizeLine('0xAFFF')
+    expect(tokens[0]).toEqual value: '0xAFFF', scopes: ['source.ruby', 'constant.numeric.ruby']
+
+    {tokens} = grammar.tokenizeLine('0XA_FFF')
+    expect(tokens[0]).toEqual value: '0XA_FFF', scopes: ['source.ruby', 'constant.numeric.ruby']
+
+  it "tokenizes octal numbers", ->
+    {tokens} = grammar.tokenizeLine('01_777')
+    expect(tokens[0]).toEqual value: '01_777', scopes: ['source.ruby', 'constant.numeric.ruby']
+
+    {tokens} = grammar.tokenizeLine('0o1_777')
+    expect(tokens[0]).toEqual value: '0o1_777', scopes: ['source.ruby', 'constant.numeric.ruby']
+
+  it "tokenizes binary numbers", ->
+    {tokens} = grammar.tokenizeLine('0b100_000')
+    expect(tokens[0]).toEqual value: '0b100_000', scopes: ['source.ruby', 'constant.numeric.ruby']
+
+    {tokens} = grammar.tokenizeLine('0B00100')
+    expect(tokens[0]).toEqual value: '0B00100', scopes: ['source.ruby', 'constant.numeric.ruby']
+
   it "tokenizes symbols", ->
     {tokens} = grammar.tokenizeLine(':test')
     expect(tokens[0]).toEqual value: ':', scopes: ['source.ruby', 'constant.other.symbol.ruby', 'punctuation.definition.constant.ruby']
