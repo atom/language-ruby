@@ -45,6 +45,13 @@ describe "Ruby grammar", ->
     {tokens} = grammar.tokenizeLine('0d100_000')
     expect(tokens[0]).toEqual value: '0d100_000', scopes: ['source.ruby', 'constant.numeric.ruby']
 
+  it "tokenizes hexadecimal numbers", ->
+    {tokens} = grammar.tokenizeLine('0xAFFF')
+    expect(tokens[0]).toEqual value: '0xAFFF', scopes: ['source.ruby', 'constant.numeric.ruby']
+
+    {tokens} = grammar.tokenizeLine('0XA_FFF')
+    expect(tokens[0]).toEqual value: '0XA_FFF', scopes: ['source.ruby', 'constant.numeric.ruby']
+
   it "tokenizes octal numbers", ->
     {tokens} = grammar.tokenizeLine('01_777')
     expect(tokens[0]).toEqual value: '01_777', scopes: ['source.ruby', 'constant.numeric.ruby']
