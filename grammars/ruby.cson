@@ -357,7 +357,7 @@
         |
         0[xX]\\h(?>_?\\h)*
         |
-        0[bB][01]+
+        0[bB][01](?>_?[01])*
       )\\b
     '''
     'name': 'constant.numeric.ruby'
