@@ -360,6 +360,8 @@
         0[oO]?[0-7](?>_?[0-7])*
         |
         0[bB][01](?>_?[01])*
+        |
+        0[dD]\\d(?>_?\\d)*                          # A base indicator can only be used with an integer
       )\\b
     '''
     'name': 'constant.numeric.ruby'
