@@ -479,6 +479,8 @@
           |
           if|else|elsif|then|do|end|unless|while|until|or|and
         )
+        |
+        $
       )
     '''
     'captures':
