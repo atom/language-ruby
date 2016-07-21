@@ -470,6 +470,22 @@ describe "Ruby grammar", ->
     expect(tokens[6]).toEqual value: ' ', scopes: ['source.ruby']
     expect(tokens[7]).toEqual value: '1', scopes: ['source.ruby', 'constant.numeric.ruby']
 
+  it "tokenizes multiline regular expressions", ->
+    tokens = grammar.tokenizeLines '''
+      regexp = /
+        foo|
+        bar
+      /ix
+    '''
+
+    expect(tokens[0][0]).toEqual value: 'regexp ', scopes: ['source.ruby']
+    expect(tokens[0][1]).toEqual value: '=', scopes: ['source.ruby', 'keyword.operator.assignment.ruby']
+    expect(tokens[0][2]).toEqual value: ' ', scopes: ['source.ruby']
+    expect(tokens[0][3]).toEqual value: '/', scopes: ['source.ruby', 'string.regexp.interpolated.ruby', 'punctuation.section.regexp.ruby']
+    expect(tokens[1][0]).toEqual value: '  foo|', scopes: ['source.ruby', 'string.regexp.interpolated.ruby']
+    expect(tokens[2][0]).toEqual value: '  bar', scopes: ['source.ruby', 'string.regexp.interpolated.ruby']
+    expect(tokens[3][0]).toEqual value: '/ix', scopes: ['source.ruby', 'string.regexp.interpolated.ruby', 'punctuation.section.regexp.ruby']
+
   it "tokenizes the / arithmetic operator", ->
     {tokens} = grammar.tokenizeLine('call/me/maybe')
     expect(tokens[0]).toEqual value: 'call', scopes: ['source.ruby']
