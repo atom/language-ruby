@@ -114,9 +114,6 @@
   'class_from_name()':
     'prefix': 'clafn'
     'body': 'split("::").inject(Object) { |par, const| par.const_get(const) }'
-  'classify { |e| .. }':
-    'prefix': 'cl'
-    'body': 'classify { |${1:e}| $0 }'
   'collect { |e| .. }':
     'prefix': 'col'
     'body': 'collect { |${1:e}| $0 }'
