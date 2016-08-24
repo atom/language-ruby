@@ -36,6 +36,9 @@ describe "Ruby grammar", ->
     {tokens} = grammar.tokenizeLine('100_000')
     expect(tokens[0]).toEqual value: '100_000', scopes: ['source.ruby', 'constant.numeric.ruby']
 
+    {tokens} = grammar.tokenizeLine('0')
+    expect(tokens[0]).toEqual value: '0', scopes: ['source.ruby', 'constant.numeric.ruby']
+
     {tokens} = grammar.tokenizeLine('1.23')
     expect(tokens[0]).toEqual value: '1.23', scopes: ['source.ruby', 'constant.numeric.ruby']
 
