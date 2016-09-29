@@ -769,3 +769,116 @@ describe "Ruby grammar", ->
     expect(lines[0][2].value).toEqual 'iterator?'
     expect(lines[1][2].value).toEqual 'block_given?'
     expect(lines[0][2].scopes).toEqual lines[1][2].scopes
+
+  describe "firstLineMatch", ->
+    it "recognises interpreter directives", ->
+      valid = """
+        #!/usr/sbin/ruby foo
+        #!/usr/bin/rake foo=bar/
+        #!/usr/sbin/jruby
+        #!/usr/sbin/rbx foo bar baz
+        #!/usr/bin/rake perl
+        #!/usr/bin/macruby bin/perl
+        #!/usr/bin/rbx
+        #!/bin/rbx
+        #!/usr/bin/ruby --script=usr/bin
+        #! /usr/bin/env A=003 B=149 C=150 D=xzd E=base64 F=tar G=gz H=head I=tail rbx
+        #!\t/usr/bin/env --foo=bar ruby --quu=quux
+        #! /usr/bin/ruby
+        #!/usr/bin/env ruby
+      """
+      for line in valid.split /\n/
+        expect(grammar.firstLineRegex.scanner.findNextMatchSync(line)).not.toBeNull()
+
+      invalid = """
+        \x20#!/usr/sbin/ruby
+        \t#!/usr/sbin/rake
+        #!/usr/bin/env-ruby/node-env/
+        #!/usr/bin/env-ruby
+        #! /usr/binrake
+        #!\t/usr/bin/env --ruby=bar
+      """
+      for line in invalid.split /\n/
+        expect(grammar.firstLineRegex.scanner.findNextMatchSync(line)).toBeNull()
+
+    it "recognises Emacs modelines", ->
+      valid = """
+        #-*- Ruby -*-
+        #-*- mode: Ruby -*-
+        /* -*-ruby-*- */
+        // -*- RUBY -*-
+        /* -*- mode:RUBY -*- */
+        // -*- font:bar;mode:Ruby -*-
+        // -*- font:bar;mode:ruby;foo:bar; -*-
+        // -*-font:mode;mode:Ruby-*-
+        // -*- foo:bar mode: ruby bar:baz -*-
+        " -*-foo:bar;mode:ruby;bar:foo-*- ";
+        " -*-font-mode:foo;mode:ruby;foo-bar:quux-*-"
+        "-*-font:x;foo:bar; mode : ruby; bar:foo;foooooo:baaaaar;fo:ba;-*-";
+        "-*- font:x;foo : bar ; mode : RUBY ; bar : foo ; foooooo:baaaaar;fo:ba-*-";
+      """
+      for line in valid.split /\n/
+        expect(grammar.firstLineRegex.scanner.findNextMatchSync(line)).not.toBeNull()
+
+      invalid = """
+        /* --*ruby-*- */
+        /* -*-- ruby -*-
+        /* -*- -- RUBY -*-
+        /* -*- RUBY -;- -*-
+        // -*- iRUBY -*-
+        // -*- ruby; -*-
+        // -*- ruby-stuff -*-
+        /* -*- model:ruby -*-
+        /* -*- indent-mode:ruby -*-
+        // -*- font:mode;Ruby -*-
+        // -*- mode: -*- Ruby
+        // -*- mode: i-named-my-dog-ruby -*-
+        // -*-font:mode;mode:ruby--*-
+      """
+      for line in invalid.split /\n/
+        expect(grammar.firstLineRegex.scanner.findNextMatchSync(line)).toBeNull()
+
+    it "recognises Vim modelines", ->
+      valid = """
+        vim: se filetype=ruby:
+        # vim: se ft=ruby:
+        # vim: set ft=Ruby:
+        # vim: set filetype=RUBY:
+        # vim: ft=RUBY
+        # vim: syntax=Ruby
+        # vim: se syntax=ruBy:
+        # ex: syntax=rUBy
+        # vim:ft=RubY
+        # vim600: ft=ruby
+        # vim>600: set ft=ruby:
+        # vi:noai:sw=3 ts=6 ft=ruby
+        # vi::::::::::noai:::::::::::: ft=ruby
+        # vim:ts=4:sts=4:sw=4:noexpandtab:ft=ruby
+        # vi:: noai : : : : sw   =3 ts   =6 ft  =ruby
+        # vim: ts=4: pi sts=4: ft=ruby: noexpandtab: sw=4:
+        # vim: ts=4 sts=4: ft=ruby noexpandtab:
+        # vim:noexpandtab sts=4 ft=ruby ts=4
+        # vim:noexpandtab:ft=RUBY
+        # vim:ts=4:sts=4 ft=ruby:noexpandtab:\x20
+        # vim:noexpandtab titlestring=hi\|there\\\\ ft=ruby ts=4
+      """
+      for line in valid.split /\n/
+        expect(grammar.firstLineRegex.scanner.findNextMatchSync(line)).not.toBeNull()
+
+      invalid = """
+        ex: se filetype=ruby:
+        _vi: se filetype=ruby:
+         vi: se filetype=ruby
+        # vim set ft=rubyy
+        # vim: soft=ruby
+        # vim: clean-syntax=ruby:
+        # vim set ft=ruby:
+        # vim: setft=ruby:
+        # vim: se ft=ruby backupdir=tmp
+        # vim: set ft=ruby set cmdheight=1
+        # vim:noexpandtab sts:4 ft:ruby ts:4
+        # vim:noexpandtab titlestring=hi\\|there\\ ft=ruby ts=4
+        # vim:noexpandtab titlestring=hi\\|there\\\\\\ ft=ruby ts=4
+      """
+      for line in invalid.split /\n/
+        expect(grammar.firstLineRegex.scanner.findNextMatchSync(line)).toBeNull()
