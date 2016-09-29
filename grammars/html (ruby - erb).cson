@@ -1,3 +1,5 @@
+'name': 'HTML (Ruby - ERB)'
+'scopeName': 'text.html.erb'
 'fileTypes': [
   'erb'
   'rhtml'
@@ -43,7 +45,6 @@
         'include': '#tags'
       }
     ]
-'name': 'HTML (Ruby - ERB)'
 'patterns': [
   {
     'include': 'text.html.basic'
@@ -119,4 +120,3 @@
         ]
       }
     ]
-'scopeName': 'text.html.erb'
