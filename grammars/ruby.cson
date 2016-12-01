@@ -240,7 +240,7 @@
     'name': 'support.function.kernel.ruby'
   }
   {
-    'match': '\\b[A-Z]\\w*\\b'
+    'match': '\\b[_A-Z]\\w*\\b'
     'name': 'variable.other.constant.ruby'
   }
   {

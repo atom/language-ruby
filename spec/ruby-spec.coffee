@@ -32,6 +32,13 @@ describe "Ruby grammar", ->
     expect(tokens[1]).toEqual value: '&.', scopes: ['source.ruby', 'punctuation.separator.method.ruby']
     expect(tokens[2]).toEqual value: 'call', scopes: ['source.ruby']
 
+  it "tokenizes variable constants", ->
+    {tokens} = grammar.tokenizeLine('VAR1 = 100')
+    expect(tokens[0]).toEqual value: 'VAR1', scopes: ['source.ruby', 'variable.other.constant.ruby']
+
+    {tokens} = grammar.tokenizeLine('_VAR2 = 200')
+    expect(tokens[0]).toEqual value: '_VAR2', scopes: ['source.ruby', 'variable.other.constant.ruby']
+
   it "tokenizes decimal numbers", ->
     {tokens} = grammar.tokenizeLine('100_000')
     expect(tokens[0]).toEqual value: '100_000', scopes: ['source.ruby', 'constant.numeric.ruby']
