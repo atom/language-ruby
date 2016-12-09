@@ -1,7 +1,6 @@
 'name': 'HTML (Ruby - ERB)'
 'scopeName': 'text.html.erb'
 'fileTypes': [
-  'erb'
   'rhtml'
   'html.erb'
 ]
