@@ -1836,7 +1836,7 @@
     'name': 'keyword.operator.comparison.ruby'
   }
   {
-    'match': '(?<!\\.)\\b(and|not|or)\\b(?![?!])'
+    'match': '(?<!\\.)\\b(not)\\b(?![?!])'
     'name': 'keyword.operator.logical.ruby'
   }
   {
