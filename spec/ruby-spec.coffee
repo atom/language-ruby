@@ -456,7 +456,7 @@ describe "Ruby grammar", ->
     expect(tokens[1]).toEqual value: 'test', scopes: ['source.ruby', 'string.regexp.interpolated.ruby']
     expect(tokens[2]).toEqual value: '/', scopes: ['source.ruby', 'string.regexp.interpolated.ruby', 'punctuation.section.regexp.ruby']
     expect(tokens[3]).toEqual value: ' ', scopes: ['source.ruby']
-    expect(tokens[4]).toEqual value: 'or', scopes: ['source.ruby', 'keyword.operator.logical.ruby']
+    expect(tokens[4]).toEqual value: 'or', scopes: ['source.ruby', 'keyword.control.pseudo-method.ruby']
     expect(tokens[5]).toEqual value: ' ', scopes: ['source.ruby']
     expect(tokens[6]).toEqual value: 'return', scopes: ['source.ruby', 'keyword.control.pseudo-method.ruby']
 
@@ -466,7 +466,7 @@ describe "Ruby grammar", ->
     expect(tokens[1]).toEqual value: 'test', scopes: ['source.ruby', 'string.regexp.interpolated.ruby']
     expect(tokens[2]).toEqual value: '/', scopes: ['source.ruby', 'string.regexp.interpolated.ruby', 'punctuation.section.regexp.ruby']
     expect(tokens[3]).toEqual value: ' ', scopes: ['source.ruby']
-    expect(tokens[4]).toEqual value: 'and', scopes: ['source.ruby', 'keyword.operator.logical.ruby']
+    expect(tokens[4]).toEqual value: 'and', scopes: ['source.ruby', 'keyword.control.pseudo-method.ruby']
     expect(tokens[5]).toEqual value: ' ', scopes: ['source.ruby']
     expect(tokens[6]).toEqual value: 'return', scopes: ['source.ruby', 'keyword.control.pseudo-method.ruby']
 
