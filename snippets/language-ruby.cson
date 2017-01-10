@@ -81,18 +81,26 @@
   'application { .. }':
     'prefix': 'app'
     'body': 'if __FILE__ == \\$PROGRAM_NAME\n\t$0\nend'
-  'assert_nothing_raised(..) { .. }':
-    'prefix': 'asnr'
-    'body': 'assert_nothing_raised(${1:Exception}) { $0 }'
-  'assert_nothing_thrown { .. }':
-    'prefix': 'asnt'
-    'body': 'assert_nothing_thrown { $0 }'
-  'assert_raise(..) { .. }':
+  'assert':
+    'prefix': 'as'
+    'body': 'assert ${1:test}'
+    'leftLabel': 'minitest'
+    'description': 'Ensures that `test` is true'
+  'assert_empty':
+    'prefix': 'ase'
+    'body': 'assert_empty ${1:object}'
+    'leftLabel': 'minitest'
+    'description': 'Ensures that `object` is `empty?`'
+  'assert_raise':
     'prefix': 'asr'
     'body': 'assert_raise(${1:Exception}) { $0 }'
-  'assert_throws(..) { .. }':
+    'leftLabel': 'minitest'
+    'description': 'Ensures that the given block raises one of the given exceptions'
+  'assert_throws':
     'prefix': 'ast'
-    'body': 'assert_throws(:${1:expected}) { $0 }'
+    'body': 'assert_throws(:${1:symbol}) { $0 }'
+    'leftLabel': 'minitest'
+    'description': 'Ensures that the given block throws the `symbol`'
   'attr_accessor ..':
     'prefix': 'rw'
     'body': 'attr_accessor :${0:attr_names}'
