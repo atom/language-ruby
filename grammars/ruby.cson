@@ -1476,6 +1476,40 @@
     ]
   }
   {
+    'begin': '(?=(?><<[-~]("?)((?:[_\\w]+_|)GRAPHQL)\\b\\1))'
+    'comment': 'Heredoc with embedded GraphQL'
+    'end': '(?!\\G)'
+    'name': 'meta.embedded.block.graphql'
+    'patterns': [
+      {
+        'begin': '(?><<[-~]("?)((?:[_\\w]+_|)GRAPHQL)\\b\\1)'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.ruby'
+        'contentName': 'source.graphql'
+        'end': '\\s*\\2$\\n?'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.ruby'
+        'name': 'string.unquoted.heredoc.ruby'
+        'patterns': [
+          {
+            'include': '#heredoc'
+          }
+          {
+            'include': '#interpolated_ruby'
+          }
+          {
+            'include': 'source.graphql'
+          }
+          {
+            'include': '#escaped_char'
+          }
+        ]
+      }
+    ]
+  }
+  {
     'begin': '(?=(?><<[-~]("?)((?:[_\\w]+_|)CSS)\\b\\1))'
     'comment': 'Heredoc with embedded css'
     'end': '(?!\\G)'
