@@ -178,7 +178,7 @@
     'name': 'keyword.other.special-method.ruby'
   }
   {
-    'begin': '\\b(?<!\\.|::)(require|require_relative|gem|source)\\b(?![?!])'
+    'begin': '\\b(?<!\\.|::)(group|require|require_relative|gem|source)\\b(?![?!])'
     'captures':
       '1':
         'name': 'keyword.other.special-method.ruby'
