@@ -44,3 +44,11 @@ describe "Gemfile grammar", ->
     {tokens} = grammar.tokenizeLine(':foo')
     expect(tokens[0]).toEqual value: ':', scopes: ['source.ruby.gemfile', 'constant.other.symbol.ruby', 'punctuation.definition.constant.ruby']
     expect(tokens[1]).toEqual value: 'foo', scopes: ['source.ruby.gemfile', 'constant.other.symbol.ruby']
+
+  it "tokenizes group properly in ruby code", ->
+    {tokens} = grammar.tokenizeLine('do |group|')
+    expect(tokens[0]).toEqual value: 'do', scopes: ['source.ruby.gemfile', 'keyword.control.start-block.ruby']
+    expect(tokens[1]).toEqual value: ' ', scopes: ['source.ruby.gemfile']
+    expect(tokens[2]).toEqual value: '|', scopes: ['source.ruby.gemfile', 'punctuation.separator.variable.ruby']
+    expect(tokens[3]).toEqual value: 'group', scopes: ['source.ruby.gemfile', 'variable.other.block.ruby']
+    expect(tokens[4]).toEqual value: '|', scopes: ['source.ruby.gemfile', 'punctuation.separator.variable.ruby']
