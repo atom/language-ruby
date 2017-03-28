@@ -111,6 +111,9 @@
   'class .. end':
     'prefix': 'cla'
     'body': 'class ${1:ClassName}\n\t$0\nend'
+  'class … end':
+    'prefix': 'class'
+    'body': 'class ${1:ClassName}\n\t$0\nend'
   'class_from_name()':
     'prefix': 'clafn'
     'body': 'split("::").inject(Object) { |par, const| par.const_get(const) }'
@@ -236,6 +239,9 @@
     'body': 'module $1\n\tmodule_function\n\t\n\t$0\nend'
   'module .. end':
     'prefix': 'mod'
+    'body': 'module ${1:ModuleName}\n\t$0\nend'
+  'module … end':
+    'prefix': 'module'
     'body': 'module ${1:ModuleName}\n\t$0\nend'
   'namespace :.. do .. end':
     'prefix': 'nam'
