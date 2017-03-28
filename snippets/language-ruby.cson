@@ -207,9 +207,9 @@
   'grep(/pattern/) { |match| .. }':
     'prefix': 'gre'
     'body': 'grep(${1:/${2:pattern}/}) { |${3:match}| $0 }'
-  'Hash Pair — :key => "value"':
+  'Hash Pair — key: "value"':
     'prefix': 'hp'
-    'body': ':${1:key} => ${2:"${3:value}"}${4:, }'
+    'body': '${1:key}: ${2:"${3:value}"}${4:, }'
   'include Comparable ..':
     'prefix': 'Comp'
     'body': 'include Comparable\n\ndef <=>(other)\n\t$0\nend'
