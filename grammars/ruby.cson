@@ -42,7 +42,7 @@
 'firstLineMatch': '''(?x)
   # Hashbang
   ^\\#!.*(?:\\s|\\/)
-    (?:ruby|macruby|rake|jruby|rbx)
+    (?:ruby|macruby|rake|jruby|rbx|ruby_executable_hooks)
   (?:$|\\s)
   |
   # Modeline
