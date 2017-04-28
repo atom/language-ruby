@@ -788,6 +788,7 @@ describe "Ruby grammar", ->
         #!/usr/bin/macruby bin/perl
         #!/usr/bin/rbx
         #!/bin/rbx
+        #!/bin/env ruby_executable_hooks
         #!/usr/bin/ruby --script=usr/bin
         #! /usr/bin/env A=003 B=149 C=150 D=xzd E=base64 F=tar G=gz H=head I=tail rbx
         #!\t/usr/bin/env --foo=bar ruby --quu=quux
