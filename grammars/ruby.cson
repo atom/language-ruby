@@ -1418,7 +1418,7 @@
           '0':
             'name': 'punctuation.definition.string.begin.ruby'
         'contentName': 'text.html'
-        'end': '\\s*\\2$\\n?'
+        'end': '^\\s*\\2$\\n?'
         'endCaptures':
           '0':
             'name': 'punctuation.definition.string.end.ruby'
@@ -1452,7 +1452,7 @@
           '0':
             'name': 'punctuation.definition.string.begin.ruby'
         'contentName': 'text.xml'
-        'end': '\\s*\\2$\\n?'
+        'end': '^\\s*\\2$\\n?'
         'endCaptures':
           '0':
             'name': 'punctuation.definition.string.end.ruby'
@@ -1486,7 +1486,7 @@
           '0':
             'name': 'punctuation.definition.string.begin.ruby'
         'contentName': 'source.sql'
-        'end': '\\s*\\2$\\n?'
+        'end': '^\\s*\\2$\\n?'
         'endCaptures':
           '0':
             'name': 'punctuation.definition.string.end.ruby'
@@ -1520,7 +1520,7 @@
           '0':
             'name': 'punctuation.definition.string.begin.ruby'
         'contentName': 'source.graphql'
-        'end': '\\s*\\2$\\n?'
+        'end': '^\\s*\\2$\\n?'
         'endCaptures':
           '0':
             'name': 'punctuation.definition.string.end.ruby'
@@ -1554,7 +1554,7 @@
           '0':
             'name': 'punctuation.definition.string.begin.ruby'
         'contentName': 'source.css'
-        'end': '\\s*\\2$\\n?'
+        'end': '^\\s*\\2$\\n?'
         'endCaptures':
           '0':
             'name': 'punctuation.definition.string.end.ruby'
@@ -1588,7 +1588,7 @@
           '0':
             'name': 'punctuation.definition.string.begin.ruby'
         'contentName': 'source.cpp'
-        'end': '\\s*\\2$\\n?'
+        'end': '^\\s*\\2$\\n?'
         'endCaptures':
           '0':
             'name': 'punctuation.definition.string.end.ruby'
@@ -1629,7 +1629,7 @@
           '0':
             'name': 'punctuation.definition.string.begin.ruby'
         'contentName': 'source.c'
-        'end': '\\s*\\2$\\n?'
+        'end': '^\\s*\\2$\\n?'
         'endCaptures':
           '0':
             'name': 'punctuation.definition.string.end.ruby'
@@ -1663,7 +1663,7 @@
           '0':
             'name': 'punctuation.definition.string.begin.ruby'
         'contentName': 'source.js'
-        'end': '\\s*\\2$\\n?'
+        'end': '^\\s*\\2$\\n?'
         'endCaptures':
           '0':
             'name': 'punctuation.definition.string.end.ruby'
@@ -1697,7 +1697,7 @@
           '0':
             'name': 'punctuation.definition.string.begin.ruby'
         'contentName': 'source.js.jquery'
-        'end': '\\s*\\2$\\n?'
+        'end': '^\\s*\\2$\\n?'
         'endCaptures':
           '0':
             'name': 'punctuation.definition.string.end.ruby'
@@ -1731,7 +1731,7 @@
           '0':
             'name': 'punctuation.definition.string.begin.ruby'
         'contentName': 'source.shell'
-        'end': '\\s*\\2$\\n?'
+        'end': '^\\s*\\2$\\n?'
         'endCaptures':
           '0':
             'name': 'punctuation.definition.string.end.ruby'
@@ -1765,7 +1765,7 @@
           '0':
             'name': 'punctuation.definition.string.begin.ruby'
         'contentName': 'source.lua'
-        'end': '\\s*\\2$\\n?'
+        'end': '^\\s*\\2$\\n?'
         'endCaptures':
           '0':
             'name': 'punctuation.definition.string.end.ruby'
@@ -1799,7 +1799,7 @@
           '0':
             'name': 'punctuation.definition.string.begin.ruby'
         'contentName': 'source.ruby'
-        'end': '\\s*\\2$\\n?'
+        'end': '^\\s*\\2$\\n?'
         'endCaptures':
           '0':
             'name': 'punctuation.definition.string.end.ruby'
@@ -1849,7 +1849,7 @@
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
     'comment': 'heredoc with multiple inputs and indented terminator'
-    'end': '\\s*\\4$'
+    'end': '^\\s*\\4$'
     'endCaptures':
       '0':
         'name': 'punctuation.definition.string.end.ruby'

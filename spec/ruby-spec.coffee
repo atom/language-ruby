@@ -765,6 +765,11 @@ describe "Ruby grammar", ->
     expect(lines[0][0]).toEqual value: '<<~EOS', scopes: ['source.ruby', 'string.unquoted.heredoc.ruby', 'punctuation.definition.string.begin.ruby']
     expect(lines[2][0]).toEqual value: 'EOS', scopes: ['source.ruby', 'string.unquoted.heredoc.ruby', 'punctuation.definition.string.end.ruby']
 
+  it "tokenizes heredoc which includes identifier in end of a line", ->
+    lines = grammar.tokenizeLines('<<-EOS\nThis is text\nThis is Not EOS\nEOS')
+    expect(lines[0][0]).toEqual value: '<<-EOS', scopes: ['source.ruby', 'string.unquoted.heredoc.ruby', 'punctuation.definition.string.begin.ruby']
+    expect(lines[3][0]).toEqual value: 'EOS', scopes: ['source.ruby', 'string.unquoted.heredoc.ruby', 'punctuation.definition.string.end.ruby']
+
   it "tokenizes Kernel support functions autoload? and exit!", ->
     lines = grammar.tokenizeLines('p autoload?(:test)\nexit!\nat_exit!')
     expect(lines[0][2]).toEqual value: 'autoload?', scopes: ['source.ruby', 'support.function.kernel.ruby']
