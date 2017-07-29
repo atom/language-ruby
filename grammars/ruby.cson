@@ -1600,13 +1600,6 @@
           {
             'include': '#interpolated_ruby'
           }
-
-          # TODO: remove once new language-c package is released with the
-          # 'source.cpp' scope name
-          {
-            'include': 'source.c++'
-          }
-
           {
             'include': 'source.cpp'
           }
