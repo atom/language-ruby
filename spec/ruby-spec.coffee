@@ -755,6 +755,12 @@ describe "Ruby grammar", ->
     expect(tokens[26]).toEqual value: 'false', scopes: ['source.ruby', 'constant.language.boolean.ruby']
     expect(tokens[27]).toEqual value: '|', scopes: ['source.ruby', 'punctuation.separator.variable.ruby']
 
+  it "does not erroneously tokenize a variable ending in `do` followed by a pipe as a block", ->
+    {tokens} = grammar.tokenizeLine('sudo ||= true')
+    expect(tokens[0]).toEqual value: 'sudo ', scopes: ['source.ruby']
+    expect(tokens[1]).toEqual value: '||=', scopes: ['source.ruby', 'keyword.operator.assignment.augmented.ruby']
+    expect(tokens[3]).toEqual value: 'true', scopes: ['source.ruby', 'constant.language.boolean.ruby']
+
   it "tokenizes <<- heredoc", ->
     lines = grammar.tokenizeLines('<<-EOS\nThis is text\nEOS')
     expect(lines[0][0]).toEqual value: '<<-EOS', scopes: ['source.ruby', 'string.unquoted.heredoc.ruby', 'punctuation.definition.string.begin.ruby']

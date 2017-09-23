@@ -1860,7 +1860,7 @@
     ]
   }
   {
-    'begin': '(?<={|do|{\\s|do\\s)(\\|)'
+    'begin': '(?<={|{\\s|[^A-Za-z0-9_]do|^do|[^A-Za-z0-9_]do\\s|^do\\s)(\\|)'
     'captures':
       '1':
         'name': 'punctuation.separator.variable.ruby'
