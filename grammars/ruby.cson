@@ -486,16 +486,16 @@
   }
   {
     'begin': '''(?x)
-      (?<![\\w)])((/))(?![*+?])
+      (?<![\\w)])((/))(?![?*+])
       (?=
-        (?:\\\\/|[^/])*/[eimnosux]*\\s*
-        (
-          [\\]#).,?:}]
-          |
-          $|\\|\\||&&|<=>|=>|==|=~|!~|!=|;
-          |
+        (?:\\\\/|[^/])*+          # Do NOT change the order
+        /[eimnosux]*\\s*
+        (?:
+          [)\\]}#.,?:]|\\|\\||&&|<=>|=>|==|=~|!~|!=|;|$|
           if|else|elsif|then|do|end|unless|while|until|or|and
         )
+        |
+        $
       )
     '''
     'captures':
@@ -505,7 +505,7 @@
         'name': 'punctuation.section.regexp.ruby'
     'comment': 'regular expression literal with interpolation'
     'contentName': 'string.regexp.interpolated.ruby'
-    'end': '((/[eimnosux]*))(?=[^eimnosux])'
+    'end': '((/[eimnosux]*))'
     'patterns': [
       {
         'include': '#regex_sub'
