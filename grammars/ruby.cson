@@ -439,8 +439,7 @@
     'name': 'string.quoted.single.ruby'
     'patterns': [
       {
-        'match': '\\\\\'|\\\\\\\\'
-        'name': 'constant.character.escape.ruby'
+        'include': '#single_quoted_escape_chars'
       }
     ]
   }
@@ -1837,6 +1836,26 @@
     ]
   }
   {
+    'begin': '(?>=\\s*<<\'(\\w+)\')'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.ruby'
+    'comment': 'heredoc with single-quoted input'
+    'end': '^\\1$'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.ruby'
+    'name': 'string.quoted.single.ruby'
+    'patterns': [
+      {
+        'include': '#heredoc'
+      }
+      {
+        'include': '#single_quoted_escape_chars'
+      }
+    ]
+  }
+  {
     'begin': '(?>((<<[-~](\\w+),\\s?)*<<[-~](\\w+)))'
     'beginCaptures':
       '0':
@@ -1972,6 +1991,9 @@
   }
 ]
 'repository':
+  'single_quoted_escape_chars':
+    'match': '\\\\\'|\\\\\\\\'
+    'name': 'constant.character.escape.ruby'
   'escaped_char':
     'match': '\\\\(?:[0-7]{1,3}|x[\\da-fA-F]{1,2}|.)'
     'name': 'constant.character.escape.ruby'
