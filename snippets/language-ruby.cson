@@ -344,3 +344,8 @@
   'erb_exec_block_after_quote':
     'prefix': '\"-'
     'body': '\"<% $1 %>'
+
+'.string.quoted.double.ruby:not(.string .source), .string.quoted.double.ruby:not(.string .source)':
+  'Interpolated Code':
+    'prefix': '#'
+    'body': '#{$1}$2'
