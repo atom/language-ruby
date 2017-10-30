@@ -189,6 +189,12 @@
   'each_with_index { |e, i| .. }':
     'prefix': 'eawi'
     'body': 'each_with_index { |${1:e}, ${2:i}| $0 }'
+  'each_with_object(obj) { |*args, memo_obj| .. }':
+    'prefix': 'eawo'
+    'body': 'each_with_object(${1:obj}) { |${2:arg}, ${3:memo}| $0 }'
+  'each_with_object(obj) do |*args, memo_obj| .. end':
+    'prefix': 'eawoml'
+    'body': 'each_with_object(${1:obj}) do |${2:arg}, ${3:memo}|\n\t$0\nend'
   'elsif ...':
     'prefix': 'elsif'
     'body': 'elsif ${1:condition}\n\t$0'
@@ -207,6 +213,12 @@
   'grep(/pattern/) { |match| .. }':
     'prefix': 'gre'
     'body': 'grep(${1:/${2:pattern}/}) { |${3:match}| $0 }'
+  'gsub':
+    'prefix': 'gsub'
+    'body': 'gsub$1(${2:pattern}, ${3:replacement})'
+  'gsub with block':
+    'prefix': 'gsubb'
+    'body': 'gsub$1(${2:pattern}) { |${3:match}| $0 }'
   'Hash Pair — :key => "value"':
     'prefix': 'hp'
     'body': ':${1:key} => ${2:"${3:value}"}${4:, }'
@@ -216,6 +228,30 @@
   'include Enumerable ..':
     'prefix': 'Enum'
     'body': 'include Enumerable\n\ndef each(&block)\n\t$0\nend'
+  'inject':
+    'prefix': 'inj'
+    'body': 'inject { |${1:memo}, ${2:obj}| $0 }'
+  'inject(initial) &block':
+    'prefix': 'inji'
+    'body': 'inject(${1:initial}) { |${2:memo}, ${3:obj}| $0 }'
+  'inject(sym)':
+    'prefix': 'injs'
+    'body': 'inject(:${1:sym})'
+  'inject(initial, sym)':
+    'prefix': 'injis'
+    'body': 'inject(${1:initial}, :${2:sym})'
+  'inject multiline':
+    'prefix': 'injml'
+    'body': 'inject do |${1:memo}, ${2:obj}|\n\t$0\nend'
+  'join':
+    'prefix': 'join'
+    'body': 'join(${1:sep})'
+  'join comma':
+    'prefix': 'joinc'
+    'body': 'join(\',$1\')'
+  'join hyphen':
+    'prefix': 'joinh'
+    'body': 'join(\'-\')'
   'loop { .. }':
     'prefix': 'loo'
     'body': 'loop { $0 }'
@@ -249,6 +285,21 @@
   'randomize()':
     'prefix': 'ran'
     'body': 'sort_by { rand }'
+  'reduce':
+    'prefix': 'red'
+    'body': 'reduce { |${1:memo}, ${2:obj}| $0 }'
+  'reduce(initial) &block':
+    'prefix': 'redi'
+    'body': 'reduce(${1:initial}) { |${2:memo}, ${3:obj}| $0 }'
+  'reduce(sym)':
+    'prefix': 'reds'
+    'body': 'reduce(:${1:sym})'
+  'reduce(initial, sym)':
+    'prefix': 'redis'
+    'body': 'reduce(${1:initial}, :${2:sym})'
+  'reduce multiline':
+    'prefix': 'redml'
+    'body': 'reduce do |${1:memo}, ${2:obj}|\n\t$0\nend'
   'reject { |e| .. }':
     'prefix': 'rej'
     'body': 'reject { |${1:e}| $0 }'
@@ -282,6 +333,15 @@
   'sort_by { |e| .. }':
     'prefix': 'sorb'
     'body': 'sort_by { |${1:e}| $0 }'
+  'sub':
+    'prefix': 'sub'
+    'body': 'sub$1(${2:pattern}, ${3:replacement})'
+  'sub with block':
+    'prefix': 'subb'
+    'body': 'sub$1(${2:pattern}) { |${3:match}| $0 }'
+  'tap { |x| .. }':
+    'prefix': 'tap'
+    'body': 'tap { |${1:x}| $0 }'
   'task :task_name => [:dependent, :tasks] do .. end':
     'prefix': 'tas'
     'body': 'desc "${1:Task description}"\ntask :${2:${3:task_name} => ${4:[:${5:dependent, :tasks}]}} do\n\t$0\nend'
@@ -318,6 +378,9 @@
   'pry':
     'prefix': 'pry'
     'body': 'binding.pry'
+  'irb':
+    'prefix': 'irb'
+    'body': 'binding.irb'
   'Insert curly braces block':
     'prefix': '{'
     'body': '{ ${1:|${2:variable}| }$0 '
