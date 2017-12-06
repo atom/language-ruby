@@ -139,7 +139,7 @@ describe "TextMate Ruby grammar", ->
     expect(tokens[8]).toEqual value: '<', scopes: ['source.ruby', 'meta.class.ruby', 'punctuation.separator.inheritance.ruby']
     expect(tokens[10]).toEqual value: '::', scopes: ['source.ruby', 'meta.class.ruby', 'entity.other.inherited-class.ruby', 'punctuation.separator.namespace.ruby']
     expect(tokens[11]).toEqual value: 'D', scopes: ['source.ruby', 'meta.class.ruby', 'entity.other.inherited-class.ruby', 'entity.name.type.class.ruby']
-    expect(tokens[12]).toEqual value: '::', scopes: ['source.ruby', 'meta.class.ruby','entity.other.inherited-class.ruby', 'punctuation.separator.namespace.ruby']
+    expect(tokens[12]).toEqual value: '::', scopes: ['source.ruby', 'meta.class.ruby', 'entity.other.inherited-class.ruby', 'punctuation.separator.namespace.ruby']
     expect(tokens[13]).toEqual value: 'E', scopes: ['source.ruby', 'meta.class.ruby', 'entity.other.inherited-class.ruby', 'entity.name.type.class.ruby']
 
     {tokens} = grammar.tokenizeLine('class << A::B')
