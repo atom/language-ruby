@@ -291,6 +291,10 @@
           }
         ]
       }
+      {
+        'match': ','
+        'name': 'punctuation.separator.object.ruby'
+      }
     ]
   }
   {
@@ -337,6 +341,10 @@
             'include': '$self'
           }
         ]
+      }
+      {
+        'match': ','
+        'name': 'punctuation.separator.object.ruby'
       }
     ]
   }
