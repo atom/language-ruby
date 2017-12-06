@@ -60,60 +60,88 @@
 '''
 'patterns': [
   {
+    'begin': '\\bclass\\b'
     'captures':
-      '1':
+      '0':
         'name': 'keyword.control.class.ruby'
-      '2':
-        'name': 'entity.name.type.class.ruby'
-      '4':
-        'name': 'entity.other.inherited-class.ruby'
-      '5':
-        'name': 'punctuation.separator.inheritance.ruby'
-      '6':
-        'name': 'variable.other.object.ruby'
-      '7':
-        'name': 'punctuation.definition.variable.ruby'
-    'match': '''(?x)
-      ^\\s*(class)\\s+
-      (
-        (
-          [.a-zA-Z0-9_:]+
-          (\\s*(<)\\s*[.a-zA-Z0-9_:]+)?   # class A < B
-        )
-        |
-        ((<<)\\s*[.a-zA-Z0-9_:]+)         # class << C
-      )
-    '''
+    'end': '\\s*$|(?![\\s\\w.:<])'
     'name': 'meta.class.ruby'
+    'patterns': [
+      {
+        'match': '[A-Z]\\w*'
+        'name': 'entity.name.type.class.ruby'
+      }
+      {
+        'include': '#separators'
+      }
+      {
+        'begin': '<<'
+        'captures':
+          '0':
+            'name': 'punctuation.definition.variable.ruby'
+        'end': '(?=$)|(?![\\s\\w.:])'
+        'patterns': [
+          {
+            'begin': '\\s*'
+            'end': '(?=$)|(?![\\s\\w.:])'
+            'contentName': 'variable.other.object.ruby'
+            'patterns': [
+              {
+                'match': '[A-Z]\\w*'
+                'name': 'entity.name.type.class.ruby'
+              }
+              {
+                'include': '#separators'
+              }
+            ]
+          }
+        ]
+      }
+      {
+        'begin': '<'
+        'captures':
+          '0':
+            'name': 'punctuation.separator.inheritance.ruby'
+        'end': '(?=$)|(?![\\s\\w.:])'
+        'patterns': [
+          {
+            'begin': '\\s*'
+            'end': '(?=$)|(?![\\s\\w.:])'
+            'contentName': 'entity.other.inherited-class.ruby'
+            'patterns': [
+              {
+                'match': '[A-Z]\\w*'
+                'name': 'entity.name.type.class.ruby'
+              }
+              {
+                'include': '#separators'
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
   {
+    'begin': '^\\bmodule\\b'
     'captures':
-      '1':
+      '0':
         'name': 'keyword.control.module.ruby'
-      '2':
-        'name': 'entity.name.type.module.ruby'
-      '3':
-        'name': 'entity.other.inherited-class.module.first.ruby'
-      '4':
-        'name': 'punctuation.separator.inheritance.ruby'
-      '5':
-        'name': 'entity.other.inherited-class.module.second.ruby'
-      '6':
-        'name': 'punctuation.separator.inheritance.ruby'
-      '7':
-        'name': 'entity.other.inherited-class.module.third.ruby'
-      '8':
-        'name': 'punctuation.separator.inheritance.ruby'
-    'match': '''(?x)
-      ^\\s*(module)\\s+
-      (
-        ([A-Z]\\w*(::))?
-        ([A-Z]\\w*(::))?
-        ([A-Z]\\w*(::))*
-        [A-Z]\\w*
-      )
-    '''
+    'end': '\\s*$|(?![\\s\\w.:])'
     'name': 'meta.module.ruby'
+    'patterns': [
+      {
+        'match': '[A-Z]\\w*(?=::)'
+        'name': 'entity.other.inherited-class.module.ruby'
+      }
+      {
+        'match': '[A-Z]\\w*'
+        'name': 'entity.name.type.module.ruby'
+      }
+      {
+        'include': '#separators'
+      }
+    ]
   }
   {
     'comment': 'else if is a common mistake carried over from other languages. it works if you put in a second end, but it’s never what you want.'
