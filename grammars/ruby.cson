@@ -275,7 +275,8 @@
       (?=def\\b)                          # optimization to help Oniguruma fail fast
       (?<=^|\\s)(def)\\s+
       (
-        (?>[a-zA-Z_]\\w*(?>\\.|::))?      # method prefix
+        (?:(self)(\\.|::))?
+        (?>[a-zA-Z_]\\w*(?>(\\.|::)))*    # method prefix
         (?>                               # method name
           [a-zA-Z_]\\w*(?>[?!]|=(?!>))?
           |
@@ -290,6 +291,13 @@
       '2':
         'name': 'entity.name.function.ruby'
       '3':
+        'name': 'variable.language.self.ruby'
+      '4':
+        'name': 'punctuation.separator.method.ruby'
+      '5':
+        'comment': 'Unfortunately, the repeated pattern (\\.|::)* only captures the last occurring separator'
+        'name': 'punctuation.separator.method.ruby'
+      '6':
         'name': 'punctuation.definition.parameters.ruby'
     'comment': 'The method pattern comes from the symbol pattern. See there for an explanation.'
     'end': '\\)'
@@ -330,7 +338,8 @@
       (?=def\\b)                          # optimization to help Oniguruma fail fast
       (?<=^|\\s)(def)\\s+
       (
-        (?>[a-zA-Z_]\\w*(?>\\.|::))?      # method prefix
+        (?:(self)(\\.|::))?
+        (?>[a-zA-Z_]\\w*(?>(\\.|::)))*    # method prefix
         (?>                               # method name
           [a-zA-Z_]\\w*(?>[?!]|=(?!>))?
           |
@@ -345,6 +354,13 @@
         'name': 'keyword.control.def.ruby'
       '2':
         'name': 'entity.name.function.ruby'
+      '3':
+        'name': 'variable.language.self.ruby'
+      '4':
+        'name': 'punctuation.separator.method.ruby'
+      '5':
+        'comment': 'Unfortunately, the repeated pattern (\\.|::)* only captures the last occurring separator'
+        'name': 'punctuation.separator.method.ruby'
     'comment': 'same as the previous rule, but without parentheses around the arguments'
     'end': '$'
     'name': 'meta.function.method.with-arguments.ruby'
@@ -382,6 +398,13 @@
         'name': 'keyword.control.def.ruby'
       '3':
         'name': 'entity.name.function.ruby'
+      '4':
+        'name': 'variable.language.self.ruby'
+      '5':
+        'name': 'punctuation.separator.method.ruby'
+      '6':
+        'comment': 'Unfortunately, the repeated pattern (\\.|::)* only captures the last occurring separator'
+        'name': 'punctuation.separator.method.ruby'
     'comment': ' the optional name is just to catch the def also without a method-name'
     'match': '''(?x)
       (?=def\\b)                            # optimization to help Oniguruma fail fast
@@ -389,7 +412,8 @@
       (
         \\s+
         (
-          (?>[a-zA-Z_]\\w*(?>\\.|::))?      # method prefix
+          (?:(self)(\\.|::))?
+          (?>[a-zA-Z_]\\w*(?>(\\.|::)))*    # method prefix
           (?>                               # method name
             [a-zA-Z_]\\w*(?>[?!]|=(?!>))?
             |
