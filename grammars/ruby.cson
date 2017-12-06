@@ -1878,8 +1878,7 @@
     ]
   }
   {
-    'match': '=>'
-    'name': 'punctuation.separator.key-value'
+    'include': '#separators'
   }
   {
     'match': '->'
@@ -1903,13 +1902,6 @@
     'name': 'keyword.operator.logical.ruby'
   }
   {
-    'comment': 'Safe navigation operator'
-    'match': '(&\\.)\\s*(?![A-Z])'
-    'captures':
-      '1':
-        'name': 'punctuation.separator.method.ruby'
-  }
-  {
     'match': '(%|&|\\*\\*|\\*|\\+|-|/)'
     'name': 'keyword.operator.arithmetic.ruby'
   }
@@ -1920,33 +1912,6 @@
   {
     'match': '\\||~|>>'
     'name': 'keyword.operator.other.ruby'
-  }
-  {
-    'match': ';'
-    'name': 'punctuation.separator.statement.ruby'
-  }
-  {
-    'match': ','
-    'name': 'punctuation.separator.object.ruby'
-  }
-  {
-    'comment': 'Mark as namespace separator if double colons followed by capital letter'
-    'match': '(::)\\s*(?=[A-Z])'
-    'captures':
-      '1':
-        'name': 'punctuation.separator.namespace.ruby'
-  }
-  {
-    'comment': 'Mark as method separator if double colons not followed by capital letter'
-    'match': '(\\.|::)\\s*(?![A-Z])'
-    'captures':
-      '1':
-        'name': 'punctuation.separator.method.ruby'
-  }
-  {
-    'comment': 'Must come after method and constant separators to prefer double colons'
-    'match': ':'
-    'name': 'punctuation.separator.other.ruby'
   }
   {
     'match': '{'
@@ -2281,6 +2246,35 @@
           '0':
             'name': 'punctuation.definition.comment.ruby'
         'name': 'comment.line.number-sign.ruby'
+      }
+    ]
+  'separators':
+    'patterns': [
+      {
+        'match': '=>'
+        'name': 'punctuation.separator.key-value.ruby'
+      }
+      {
+        'match': ';'
+        'name': 'punctuation.separator.statement.ruby'
+      }
+      {
+        'match': ','
+        'name': 'punctuation.separator.object.ruby'
+      }
+      {
+        'match': '(::)\\s*(?=[A-Z])'
+        'captures':
+          '1':
+            'name': 'punctuation.separator.namespace.ruby'
+      }
+      {
+        'match': '&?\\.|::'
+        'name': 'punctuation.separator.method.ruby'
+      }
+      {
+        'match': ':'
+        'name': 'punctuation.separator.other.ruby'
       }
     ]
   'yard':
