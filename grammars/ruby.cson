@@ -1942,7 +1942,7 @@
   }
   {
     'match': '->'
-    'name': 'support.function.kernel.ruby'
+    'name': 'support.function.kernel.arrow.ruby'
   }
   {
     'match': '<<=|%=|&{1,2}=|\\*=|\\*\\*=|\\+=|-=|\\^=|\\|{1,2}=|<<'
