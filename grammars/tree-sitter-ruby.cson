@@ -1,0 +1,123 @@
+id: 'ruby'
+name: 'Ruby'
+type: 'tree-sitter'
+parser: 'tree-sitter-ruby'
+
+fileTypes: [
+  'rb'
+]
+
+comments:
+  start: '# '
+
+folds: [
+  {
+    type: ['block', 'do_block']
+    start: {type: 'block_parameters'}
+    end: {index: -1}
+  }
+  {
+    type: 'begin'
+    start: {index: 0}
+    end: {type: 'rescue'}
+  }
+  {
+    type: 'heredoc_end'
+  }
+  {
+    type: [
+      'hash'
+      'array'
+      'begin'
+      'block'
+      'do_block'
+    ]
+    start: {index: 0}
+    end: {index: -1}
+  }
+  {
+    type: 'argument_list'
+    start: {index: 0, type: '('}
+    end: {index: -1}
+  }
+  {
+    type: 'class'
+    start: {type: 'superclass'}
+    end: {index: -1}
+  }
+  {
+    type: 'class'
+    start: {index: 1}
+    end: {index: -1}
+  }
+  {
+    type: ['method', 'singleton_method']
+    start: {type: 'method_parameters'}
+    end: {index: -1}
+  }
+  {
+    type: ['method', 'singleton_method']
+    start: {index: 1}
+    end: {index: -1}
+  }
+  {
+    type: ['if', 'unless', 'elsif']
+    start: {index: 1}
+    end: {type: 'else'}
+  }
+  {
+    type: ['if', 'unless', 'elsif']
+    start: {index: 1}
+    end: {type: 'elsif'}
+  }
+  {
+    type: ['if', 'unless']
+    start: {index: 1}
+    end: {index: -1}
+  }
+  {
+    type: 'else'
+    start: {index: 0}
+  }
+]
+
+scopes:
+  '"if"': 'keyword.control'
+  '"unless"': 'keyword.control'
+  '"def"': 'keyword.control'
+  '"do"': 'keyword.control'
+  '"end"': 'keyword.control'
+  '"else"': 'keyword.control'
+  '"elsif"': 'keyword.control'
+  '"class"': 'keyword.control'
+  '"module"': 'keyword.control'
+  '"begin"': 'keyword.control'
+  '"rescue"': 'keyword.control'
+  '"ensure"': 'keyword.control'
+  '"return"': 'keyword.control'
+  '"yield"': 'keyword.control'
+  '"case"': 'keyword.control'
+  '"when"': 'keyword.control'
+
+  'constant': 'entity.name.type.class'
+
+  'self': 'variable.other'
+
+  'method > identifier': 'entity.name.function'
+  'call > identifier:nth-child(2)': 'entity.name.function'
+  'method_call > identifier:nth-child(0)': 'entity.name.function'
+
+  'class_variable': 'variable.other.object.property'
+  'instance_variable': 'variable.other.object.property'
+  'symbol': 'constant.other'
+
+  'comment': 'comment'
+  'string': 'string'
+  'regex': 'string.regex'
+  'heredoc_beginning': 'string'
+  'heredoc_end': 'string'
+  'integer': 'constant.numeric'
+
+  'nil': 'constant.language.nil'
+  'true': 'constant.language.true'
+  'false': 'constant.language.false'
