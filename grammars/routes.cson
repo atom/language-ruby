@@ -1,0 +1,23 @@
+'name': 'Routes'
+'scopeName': 'source.ruby.routes'
+'fileTypes': [
+  'routes.rb'
+]
+'patterns': [
+  {
+    'include': 'source.ruby'
+  }
+  {
+    'begin': '\\b(?<!\\.|::)(authenticate|constraints|root|get|post|put|patch|delete|resource|resources|namespace|mount|collection|member)\\b(?![?!])'
+    'captures':
+     '1':
+       'name': 'keyword.other.special-method.ruby.gemfile'
+    'end': '$|(?=#|})'
+    'name': 'meta.declaration.ruby.gemfile'
+    'patterns': [
+      {
+       'include': '$self'
+      }
+    ]
+  }
+]

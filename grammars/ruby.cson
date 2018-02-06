@@ -152,7 +152,7 @@
     'name': 'meta.syntax.ruby.start-block'
   }
   {
-    'match': '(?<!\\.)\\b(alias|alias_method|break|next|redo|retry|return|super|undef|yield)\\b(?![?!])|\\bdefined\\?|\\b(block_given|iterator)\\?'
+    'match': '(?<!\\.)\\b(alias|alias_method|break|next|redo|retry|return|super|undef|yield|scope|delegate|define|and|or|not)\\b(?![?!])|\\bdefined\\?|\\b(block_given|iterator)\\?'
     'name': 'keyword.control.pseudo-method.ruby'
   }
   {
@@ -173,7 +173,7 @@
   }
   {
     'comment': ' everything being a method but having a special function is a..'
-    'match': '\\b(initialize|new|loop|include|extend|prepend|raise|fail|attr_reader|attr_writer|attr_accessor|attr|catch|throw|private|private_class_method|module_function|public|public_class_method|protected|refine|using)\\b(?![?!])'
+    'match': '\\b(belongs_to|has_many|has_one|validate|validates|validates_presence_of|accepts_nested_attributes_for|after_create|before_create|before_update|before_save|before_destroy|after_update|after_destroy|after_save|before_validation|initialize|new|loop|include|extend|prepend|raise|fail|attr_reader|attr_writer|attr_accessor|attr|cattr_accessor|catch|throw|private|private_class_method|module_function|public|public_class_method|protected|refine|using)\\b(?![?!])'
     'name': 'keyword.other.special-method.ruby'
   }
   {
@@ -239,7 +239,7 @@
     'name': 'support.function.kernel.ruby'
   }
   {
-    'match': '\\b[_A-Z]\\w*\\b'
+    'match': '\\b[_A-Z]\\w*\\??'
     'name': 'variable.other.constant.ruby'
   }
   {
@@ -284,7 +284,7 @@
                 'name': 'punctuation.definition.constant.hashkey.ruby'
               '4':
                 'name': 'variable.parameter.function.ruby'
-            'match': '\\G([&*]?)(?:([_a-zA-Z]\\w*(:))|([_a-zA-Z]\\w*))'
+            'match': '\\G(\\&|\\*|\\*\\*|)(?:([_a-zA-Z]\\w*(:))|([_a-zA-Z]\\w*))'
           }
           {
             'include': '$self'
@@ -331,7 +331,7 @@
                 'name': 'punctuation.definition.constant.hashkey.ruby'
               '4':
                 'name': 'variable.parameter.function.ruby'
-            'match': '\\G([&*]?)(?:([_a-zA-Z]\\w*(:))|([_a-zA-Z]\\w*))'
+            'match': '\\G(\\&|\\*|\\*\\*|)(?:([_a-zA-Z]\\w*(:))|([_a-zA-Z]\\w*))'
           }
           {
             'include': '$self'
@@ -1885,7 +1885,7 @@
   }
   {
     'match': '->'
-    'name': 'support.function.kernel.ruby'
+    'name': 'keyword.control.pseudo-method.ruby'
   }
   {
     'match': '<<=|%=|&{1,2}=|\\*=|\\*\\*=|\\+=|-=|\\^=|\\|{1,2}=|<<'
@@ -1902,7 +1902,7 @@
   {
     # Make sure this goes after assignment and comparison
     'match': '(?<=^|[ \\t])!|&&|\\|\\||\\^'
-    'name': 'keyword.operator.logical.ruby'
+    'name': 'keyword.control.pseudo-method.ruby'
   }
   {
     'comment': 'Safe navigation operator'
@@ -1987,6 +1987,26 @@
     'patterns': [
       {
         'begin': '#{'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.section.embedded.begin.ruby'
+        'contentName': 'source.ruby'
+        'end': '}'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.section.embedded.end.ruby'
+        'name': 'meta.embedded.line.ruby'
+        'patterns': [
+          {
+            'include': '#nest_curly_and_self'
+          }
+          {
+            'include': '$self'
+          }
+        ]
+      }
+      {
+        'begin': '%{'
         'beginCaptures':
           '0':
             'name': 'punctuation.section.embedded.begin.ruby'
@@ -2306,7 +2326,7 @@
     ]
   'yard_comment':
     'comment': 'For YARD tags that follow the tag-comment pattern'
-    'match': '(@)(abstract|api|author|deprecated|example|note|overload|since|todo|version)(?=\\s)(.*)$'
+    'match': '(@)(abstract|api|author|deprecated|example|note|overload|since|todo|version|eg|structure|CAUTION!|\\?|!|fixme)(?=\\s)(.*)$'
     'captures':
       '1':
         'name': 'comment.line.keyword.punctuation.yard.ruby'
@@ -2316,7 +2336,7 @@
         'name': 'comment.line.string.yard.ruby'
   'yard_name_types':
     'comment': 'For YARD tags that follow the tag-name-types-comment pattern'
-    'match': '(@)(attr|attr_reader|attr_writer|option|param|see|yieldparam)(?=\\s)(\\s+([a-z_][a-zA-Z_]*))?(\\s+((\\[).+(])))?(.*)$'
+    'match': '(@)(attr|attr_reader|attr_writer|option|param|path|response|see|yieldparam)(?=\\s)(\\s+([a-z_][a-zA-Z_]*))?(\\s+((\\[).+(])))?(.*)$'
     'captures':
       '1':
         'name': 'comment.line.keyword.punctuation.yard.ruby'
@@ -2338,7 +2358,7 @@
         'name': 'comment.line.string.yard.ruby'
   'yard_tag':
     'comment': 'For YARD tags that are just the tag'
-    'match': '(@)(private)$'
+    'match': '(@)(private|Constants|Attributes|Associations|Validations|Callbacks|Macros|Traits|Transient)$'
     'captures':
       '1':
         'name': 'comment.line.keyword.punctuation.yard.ruby'
@@ -2364,7 +2384,7 @@
         'name': 'comment.line.string.yard.ruby'
   'yard_directive':
     'comment': 'For YARD directives'
-    'match': '(@!)(attribute|endgroup|group|macro|method|parse|scope|visibility)(\\s+((\\[).+(])))?(?=\\s)(.*)$'
+    'match': '(@!)(attribute|endgroup|group|macro|method|parse|scope|visibility)(?=\\s)(\\s+([a-z_][a-zA-Z_]*))?(\\s+((\\[).+(])))?(.*)$'
     'captures':
       '1':
         'name': 'comment.line.keyword.punctuation.yard.ruby'
@@ -2373,10 +2393,14 @@
       '3':
         'name': 'comment.line.yard.ruby'
       '4':
-        'name': 'comment.line.type.yard.ruby'
+        'name': 'comment.line.parameter.yard.ruby'
       '5':
-        'name': 'comment.line.punctuation.yard.ruby'
+        'name': 'comment.line.yard.ruby'
       '6':
-        'name': 'comment.line.punctuation.yard.ruby'
+        'name': 'comment.line.type.yard.ruby'
       '7':
+        'name': 'comment.line.punctuation.yard.ruby'
+      '8':
+        'name': 'comment.line.punctuation.yard.ruby'
+      '9':
         'name': 'comment.line.string.yard.ruby'
