@@ -2304,7 +2304,7 @@
       }
       {
         'match': ';'
-        'name': 'punctuation.separator.statement.ruby'
+        'name': 'punctuation.terminator.statement.ruby'
       }
       {
         'match': ','

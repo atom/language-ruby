@@ -433,7 +433,7 @@ describe "TextMate Ruby grammar", ->
     expect(tokens[8]).toEqual value: '/', scopes: ['source.ruby', 'string.regexp.interpolated.ruby', 'punctuation.section.regexp.ruby']
     expect(tokens[9]).toEqual value: 'test', scopes: ['source.ruby', 'string.regexp.interpolated.ruby']
     expect(tokens[10]).toEqual value: '/', scopes: ['source.ruby', 'string.regexp.interpolated.ruby', 'punctuation.section.regexp.ruby']
-    expect(tokens[11]).toEqual value: ';', scopes: ['source.ruby', 'punctuation.separator.statement.ruby']
+    expect(tokens[11]).toEqual value: ';', scopes: ['source.ruby', 'punctuation.terminator.statement.ruby']
 
     {tokens} = grammar.tokenizeLine('/test/ =~ "test"')
 
@@ -653,7 +653,7 @@ describe "TextMate Ruby grammar", ->
     expect(tokens[1]).toEqual value: '/', scopes: ['source.ruby', 'keyword.operator.arithmetic.ruby']
     expect(tokens[2]).toEqual value: ' ', scopes: ['source.ruby']
     expect(tokens[3]).toEqual value: '2', scopes: ['source.ruby', 'constant.numeric.ruby']
-    expect(tokens[4]).toEqual value: ';', scopes: ['source.ruby', 'punctuation.separator.statement.ruby']
+    expect(tokens[4]).toEqual value: ';', scopes: ['source.ruby', 'punctuation.terminator.statement.ruby']
     expect(tokens[6]).toEqual value: '/=', scopes: ['source.ruby', 'keyword.operator.assignment.augmented.ruby']
     expect(tokens[7]).toEqual value: ' ', scopes: ['source.ruby']
     expect(tokens[8]).toEqual value: '2', scopes: ['source.ruby', 'constant.numeric.ruby']
