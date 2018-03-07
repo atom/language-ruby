@@ -61,7 +61,7 @@
 'patterns': [
   {
     'begin': '\\bclass\\b'
-    'captures':
+    'beginCaptures':
       '0':
         'name': 'keyword.control.class.ruby'
     'end': '\\s*$|(?![\\s\\w.:<])'
@@ -75,48 +75,36 @@
         'include': '#separators'
       }
       {
-        'begin': '<<'
-        'captures':
-          '0':
+        'begin': '(<<)\\s*'
+        'beginCaptures':
+          '1':
             'name': 'punctuation.definition.variable.ruby'
+        'contentName': 'variable.other.object.ruby'
         'end': '(?=$)|(?![\\s\\w.:])'
         'patterns': [
           {
-            'begin': '\\s*'
-            'end': '(?=$)|(?![\\s\\w.:])'
-            'contentName': 'variable.other.object.ruby'
-            'patterns': [
-              {
-                'match': '[A-Z]\\w*'
-                'name': 'entity.name.type.class.ruby'
-              }
-              {
-                'include': '#separators'
-              }
-            ]
+            'match': '[A-Z]\\w*'
+            'name': 'entity.name.type.class.ruby'
+          }
+          {
+            'include': '#separators'
           }
         ]
       }
       {
-        'begin': '<'
-        'captures':
-          '0':
+        'begin': '(<)\\s*'
+        'beginCaptures':
+          '1':
             'name': 'punctuation.separator.inheritance.ruby'
+        'contentName': 'entity.other.inherited-class.ruby'
         'end': '(?=$)|(?![\\s\\w.:])'
         'patterns': [
           {
-            'begin': '\\s*'
-            'end': '(?=$)|(?![\\s\\w.:])'
-            'contentName': 'entity.other.inherited-class.ruby'
-            'patterns': [
-              {
-                'match': '[A-Z]\\w*'
-                'name': 'entity.name.type.class.ruby'
-              }
-              {
-                'include': '#separators'
-              }
-            ]
+            'match': '[A-Z]\\w*'
+            'name': 'entity.name.type.class.ruby'
+          }
+          {
+            'include': '#separators'
           }
         ]
       }
@@ -124,7 +112,7 @@
   }
   {
     'begin': '\\bmodule\\b'
-    'captures':
+    'beginCaptures':
       '0':
         'name': 'keyword.control.module.ruby'
     'end': '\\s*$|(?![\\s\\w.:])'
