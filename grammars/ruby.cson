@@ -2311,7 +2311,7 @@
         'name': 'punctuation.separator.object.ruby'
       }
       {
-        'match': '(::)\\s*(?=[A-Z])'
+        'match': '(::)(?=\\s*[A-Z])'
         'captures':
           '1':
             'name': 'punctuation.separator.namespace.ruby'
