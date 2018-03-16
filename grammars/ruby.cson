@@ -317,7 +317,7 @@
       }
       {
         'match': ','
-        'name': 'punctuation.separator.object.ruby'
+        'name': 'punctuation.separator.delimiter.ruby'
       }
     ]
   }
@@ -376,7 +376,7 @@
       }
       {
         'match': ','
-        'name': 'punctuation.separator.object.ruby'
+        'name': 'punctuation.separator.delimiter.ruby'
       }
     ]
   }
@@ -2308,7 +2308,7 @@
       }
       {
         'match': ','
-        'name': 'punctuation.separator.object.ruby'
+        'name': 'punctuation.separator.delimiter.ruby'
       }
       {
         'match': '(::)(?=\\s*[A-Z])'
