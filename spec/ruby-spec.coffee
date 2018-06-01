@@ -585,36 +585,51 @@ describe "Ruby grammar", ->
     expect(tokens[2]).toEqual value: '@', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.keyword.punctuation.yard.ruby']
     expect(tokens[3]).toEqual value: 'private', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.keyword.yard.ruby']
 
-    {tokens} = grammar.tokenizeLine('# @deprecated Because I said so')
-    expect(tokens[0]).toEqual value: '#', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'punctuation.definition.comment.ruby']
-    expect(tokens[1]).toEqual value: ' ', scopes: ['source.ruby', 'comment.line.number-sign.ruby']
-    expect(tokens[2]).toEqual value: '@', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.keyword.punctuation.yard.ruby']
-    expect(tokens[3]).toEqual value: 'deprecated', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.keyword.yard.ruby']
-    expect(tokens[4]).toEqual value: ' Because I said so', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.string.yard.ruby']
+    tokens = grammar.tokenizeLines '''
+      # @deprecated Because I said so,
+      #   end of discussion
+    '''
+    expect(tokens[0][0]).toEqual value: '#', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'punctuation.definition.comment.ruby']
+    expect(tokens[0][1]).toEqual value: ' ', scopes: ['source.ruby', 'comment.line.number-sign.ruby']
+    expect(tokens[0][2]).toEqual value: '@', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.keyword.punctuation.yard.ruby']
+    expect(tokens[0][3]).toEqual value: 'deprecated', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.keyword.yard.ruby']
+    expect(tokens[0][4]).toEqual value: ' Because I said so,', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.string.yard.ruby']
+    expect(tokens[1][0]).toEqual value: '#', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.string.yard.ruby', 'punctuation.definition.comment.ruby']
+    expect(tokens[1][1]).toEqual value: '   end of discussion', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.string.yard.ruby']
 
-    {tokens} = grammar.tokenizeLine('# @raise [Bar] Baz')
-    expect(tokens[0]).toEqual value: '#', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'punctuation.definition.comment.ruby']
-    expect(tokens[1]).toEqual value: ' ', scopes: ['source.ruby', 'comment.line.number-sign.ruby']
-    expect(tokens[2]).toEqual value: '@', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.keyword.punctuation.yard.ruby']
-    expect(tokens[3]).toEqual value: 'raise', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.keyword.yard.ruby']
-    expect(tokens[4]).toEqual value: ' ', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby']
-    expect(tokens[5]).toEqual value: '[', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby', 'comment.line.punctuation.yard.ruby']
-    expect(tokens[6]).toEqual value: 'Bar', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby']
-    expect(tokens[7]).toEqual value: ']', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby', 'comment.line.punctuation.yard.ruby']
-    expect(tokens[8]).toEqual value: ' Baz', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.string.yard.ruby']
+    tokens = grammar.tokenizeLines '''
+      # @raise [AccountBalanceError] if the account does not have
+      #   sufficient funds to perform the transaction
+    '''
+    expect(tokens[0][0]).toEqual value: '#', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'punctuation.definition.comment.ruby']
+    expect(tokens[0][1]).toEqual value: ' ', scopes: ['source.ruby', 'comment.line.number-sign.ruby']
+    expect(tokens[0][2]).toEqual value: '@', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.keyword.punctuation.yard.ruby']
+    expect(tokens[0][3]).toEqual value: 'raise', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.keyword.yard.ruby']
+    expect(tokens[0][4]).toEqual value: ' ', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby']
+    expect(tokens[0][5]).toEqual value: '[', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby', 'comment.line.punctuation.yard.ruby']
+    expect(tokens[0][6]).toEqual value: 'AccountBalanceError', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby']
+    expect(tokens[0][7]).toEqual value: ']', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby', 'comment.line.punctuation.yard.ruby']
+    expect(tokens[0][8]).toEqual value: ' if the account does not have', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.string.yard.ruby']
+    expect(tokens[1][0]).toEqual value: '#', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.string.yard.ruby', 'punctuation.definition.comment.ruby']
+    expect(tokens[1][1]).toEqual value: '   sufficient funds to perform the transaction', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.string.yard.ruby']
 
-    {tokens} = grammar.tokenizeLine('# @param foo [Bar] Baz')
-    expect(tokens[0]).toEqual value: '#', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'punctuation.definition.comment.ruby']
-    expect(tokens[1]).toEqual value: ' ', scopes: ['source.ruby', 'comment.line.number-sign.ruby']
-    expect(tokens[2]).toEqual value: '@', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.keyword.punctuation.yard.ruby']
-    expect(tokens[3]).toEqual value: 'param', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.keyword.yard.ruby']
-    expect(tokens[4]).toEqual value: ' ', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby']
-    expect(tokens[5]).toEqual value: 'foo', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.parameter.yard.ruby']
-    expect(tokens[6]).toEqual value: ' ', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby']
-    expect(tokens[7]).toEqual value: '[', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby', 'comment.line.punctuation.yard.ruby']
-    expect(tokens[8]).toEqual value: 'Bar', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby']
-    expect(tokens[9]).toEqual value: ']', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby', 'comment.line.punctuation.yard.ruby']
-    expect(tokens[10]).toEqual value: ' Baz', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.string.yard.ruby']
+    tokens = grammar.tokenizeLines '''
+      # @param value [Object] describe value param in a long way which
+      #   makes it multiline
+    '''
+    expect(tokens[0][0]).toEqual value: '#', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'punctuation.definition.comment.ruby']
+    expect(tokens[0][1]).toEqual value: ' ', scopes: ['source.ruby', 'comment.line.number-sign.ruby']
+    expect(tokens[0][2]).toEqual value: '@', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.keyword.punctuation.yard.ruby']
+    expect(tokens[0][3]).toEqual value: 'param', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.keyword.yard.ruby']
+    expect(tokens[0][4]).toEqual value: ' ', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby']
+    expect(tokens[0][5]).toEqual value: 'value', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.parameter.yard.ruby']
+    expect(tokens[0][6]).toEqual value: ' ', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby']
+    expect(tokens[0][7]).toEqual value: '[', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby', 'comment.line.punctuation.yard.ruby']
+    expect(tokens[0][8]).toEqual value: 'Object', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby']
+    expect(tokens[0][9]).toEqual value: ']', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby', 'comment.line.punctuation.yard.ruby']
+    expect(tokens[0][10]).toEqual value: ' describe value param in a long way which', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.string.yard.ruby']
+    expect(tokens[1][0]).toEqual value: '#', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.string.yard.ruby', 'punctuation.definition.comment.ruby']
+    expect(tokens[1][1]).toEqual value: '   makes it multiline', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.string.yard.ruby']
 
     {tokens} = grammar.tokenizeLine('# @param [Bar] Baz')
     expect(tokens[0]).toEqual value: '#', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'punctuation.definition.comment.ruby']
@@ -649,16 +664,21 @@ describe "Ruby grammar", ->
     expect(tokens[7]).toEqual value: ']', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby', 'comment.line.punctuation.yard.ruby']
     expect(tokens[8]).toEqual value: ' comment', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.string.yard.ruby']
 
-    {tokens} = grammar.tokenizeLine('# @!attribute [r] foo comment')
-    expect(tokens[0]).toEqual value: '#', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'punctuation.definition.comment.ruby']
-    expect(tokens[1]).toEqual value: ' ', scopes: ['source.ruby', 'comment.line.number-sign.ruby']
-    expect(tokens[2]).toEqual value: '@!', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.keyword.punctuation.yard.ruby']
-    expect(tokens[3]).toEqual value: 'attribute', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.keyword.yard.ruby']
-    expect(tokens[4]).toEqual value: ' ', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby']
-    expect(tokens[5]).toEqual value: '[', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby', 'comment.line.punctuation.yard.ruby']
-    expect(tokens[6]).toEqual value: 'r', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby']
-    expect(tokens[7]).toEqual value: ']', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby', 'comment.line.punctuation.yard.ruby']
-    expect(tokens[8]).toEqual value: ' foo comment', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.string.yard.ruby']
+    tokens = grammar.tokenizeLines '''
+      # @!attribute [r] count the number of items
+      #   present in the list
+    '''
+    expect(tokens[0][0]).toEqual value: '#', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'punctuation.definition.comment.ruby']
+    expect(tokens[0][1]).toEqual value: ' ', scopes: ['source.ruby', 'comment.line.number-sign.ruby']
+    expect(tokens[0][2]).toEqual value: '@!', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.keyword.punctuation.yard.ruby']
+    expect(tokens[0][3]).toEqual value: 'attribute', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.keyword.yard.ruby']
+    expect(tokens[0][4]).toEqual value: ' ', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby']
+    expect(tokens[0][5]).toEqual value: '[', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby', 'comment.line.punctuation.yard.ruby']
+    expect(tokens[0][6]).toEqual value: 'r', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby']
+    expect(tokens[0][7]).toEqual value: ']', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.yard.ruby', 'comment.line.type.yard.ruby', 'comment.line.punctuation.yard.ruby']
+    expect(tokens[0][8]).toEqual value: ' count the number of items', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.string.yard.ruby']
+    expect(tokens[1][0]).toEqual value: '#', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.string.yard.ruby', 'punctuation.definition.comment.ruby']
+    expect(tokens[1][1]).toEqual value: '   present in the list', scopes: ['source.ruby', 'comment.line.number-sign.ruby', 'comment.line.string.yard.ruby']
 
   it "tokenizes a method with *args properly", ->
     {tokens} = grammar.tokenizeLine('def method(*args)')
