@@ -3,6 +3,8 @@ name: 'Ruby'
 type: 'tree-sitter'
 parser: 'tree-sitter-ruby'
 
+injectionRegExp: 'rb|ruby'
+
 fileTypes: [
   'rb'
 ]
