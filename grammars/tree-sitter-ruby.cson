@@ -65,12 +65,7 @@ folds: [
   {
     type: ['if', 'unless', 'elsif']
     start: {index: 1}
-    end: {type: 'else'}
-  }
-  {
-    type: ['if', 'unless', 'elsif']
-    start: {index: 1}
-    end: {type: 'elsif'}
+    end: {type: ['else', 'elsif']}
   }
   {
     type: ['if', 'unless']
@@ -80,6 +75,10 @@ folds: [
   {
     type: 'else'
     start: {index: 0}
+  }
+  {
+    type: 'elsif'
+    start: {index: 1}
   }
 ]
 
