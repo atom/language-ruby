@@ -100,6 +100,10 @@ scopes:
   '"case"': 'keyword.control'
   '"when"': 'keyword.control'
 
+  'interpolation': 'source.ruby'
+  'interpolation > "#{"': 'punctuation.section.embedded'
+  'interpolation > "}"': 'punctuation.section.embedded'
+
   'constant': 'entity.name.type.class'
 
   'self': 'variable.other'
