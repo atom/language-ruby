@@ -108,7 +108,11 @@ scopes:
 
   'self': 'variable.other'
 
+  'word_array': 'string'
+
   'method > identifier': 'entity.name.function'
+  'singleton_method > identifier:nth-child(3)': 'entity.name.function'
+  'setter > identifier': 'entity.name.function'
   'call > identifier:nth-child(2)': 'entity.name.function'
   'method_call > identifier:nth-child(0)': 'entity.name.function'
 
@@ -118,9 +122,9 @@ scopes:
 
   'comment': 'comment'
   'string': 'string'
-  'regex': 'string.regex'
+  'regex': 'string.regexp'
   'heredoc_beginning': 'string'
-  'heredoc_end': 'string'
+  'heredoc_body': 'string'
   'integer': 'constant.numeric'
 
   'nil': 'constant.language.nil'
