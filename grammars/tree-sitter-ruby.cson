@@ -1,0 +1,137 @@
+id: 'ruby'
+name: 'Ruby'
+type: 'tree-sitter'
+parser: 'tree-sitter-ruby'
+
+injectionRegExp: 'rb|ruby'
+
+fileTypes: [
+  'rb'
+]
+
+comments:
+  start: '# '
+
+folds: [
+  {
+    type: ['block', 'do_block']
+    start: {type: 'block_parameters'}
+    end: {index: -1}
+  }
+  {
+    type: 'begin'
+    start: {index: 0}
+    end: {type: 'rescue'}
+  }
+  {
+    type: 'heredoc_end'
+  }
+  {
+    type: [
+      'hash'
+      'array'
+      'begin'
+      'block'
+      'do_block'
+    ]
+    start: {index: 0}
+    end: {index: -1}
+  }
+  {
+    type: 'argument_list'
+    start: {index: 0, type: '('}
+    end: {index: -1}
+  }
+  {
+    type: 'class'
+    start: {type: 'superclass'}
+    end: {index: -1}
+  }
+  {
+    type: 'class'
+    start: {index: 1}
+    end: {index: -1}
+  }
+  {
+    type: ['method', 'singleton_method']
+    start: {type: 'method_parameters'}
+    end: {index: -1}
+  }
+  {
+    type: ['method', 'singleton_method']
+    start: {index: 1}
+    end: {index: -1}
+  }
+  {
+    type: ['if', 'unless', 'elsif']
+    start: {index: 1}
+    end: {type: ['else', 'elsif']}
+  }
+  {
+    type: ['if', 'unless']
+    start: {index: 1}
+    end: {index: -1}
+  }
+  {
+    type: 'else'
+    start: {index: 0}
+  }
+  {
+    type: 'elsif'
+    start: {index: 1}
+  }
+]
+
+scopes:
+  '"if"': 'keyword.control'
+  '"unless"': 'keyword.control'
+  '"def"': 'keyword.control'
+  '"do"': 'keyword.control'
+  '"end"': 'keyword.control'
+  '"else"': 'keyword.control'
+  '"elsif"': 'keyword.control'
+  '"class"': 'keyword.control'
+  '"module"': 'keyword.control'
+  '"begin"': 'keyword.control'
+  '"rescue"': 'keyword.control'
+  '"ensure"': 'keyword.control'
+  '"return"': 'keyword.control'
+  '"yield"': 'keyword.control'
+  '"case"': 'keyword.control'
+  '"when"': 'keyword.control'
+
+  'interpolation': 'source.ruby'
+  'interpolation > "#{"': 'punctuation.section.embedded'
+  'interpolation > "}"': 'punctuation.section.embedded'
+
+  'constant': 'entity.name.type.class'
+
+  'self': 'variable.other'
+
+  '"%w("': 'punctuation.definition.parameters'
+  '"%i("': 'punctuation.definition.parameters'
+  '"("': 'punctuation.definition.parameters'
+  '")"': 'punctuation.definition.parameters'
+
+  'method > identifier': 'entity.name.function'
+  'singleton_method > identifier:nth-child(3)': 'entity.name.function'
+  'setter > identifier': 'entity.name.function'
+  'call > identifier:nth-child(2)': 'entity.name.function'
+  'method_call > identifier:nth-child(0)': 'entity.name.function'
+
+  'class_variable': 'variable.other.object.property'
+  'instance_variable': 'variable.other.object.property'
+  'symbol': 'constant.other'
+  'bare_symbol': 'constant.other'
+
+  'comment': 'comment'
+  'string': 'string'
+  'bare_string': 'string'
+  'regex': 'string.regexp'
+  'heredoc_beginning': 'string'
+  'heredoc_body': 'string'
+  'integer': 'constant.numeric'
+
+  'nil': 'constant.language.nil'
+  'true': 'constant.language.true'
+  'false': 'constant.language.false'
