@@ -9,7 +9,7 @@
   "license": "MIT",
   "repository": "https://github.com/atom/language-ruby",
   "dependencies": {
-    "tree-sitter-ruby": "^0.13.2"
+    "tree-sitter-ruby": "^0.13.3"
   },
   "devDependencies": {
     "coffeelint": "^1.10.1"

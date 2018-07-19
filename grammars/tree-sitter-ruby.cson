@@ -108,7 +108,10 @@ scopes:
 
   'self': 'variable.other'
 
-  'word_array': 'string'
+  '"%w("': 'punctuation.definition.parameters'
+  '"%i("': 'punctuation.definition.parameters'
+  '"("': 'punctuation.definition.parameters'
+  '")"': 'punctuation.definition.parameters'
 
   'method > identifier': 'entity.name.function'
   'singleton_method > identifier:nth-child(3)': 'entity.name.function'
@@ -119,9 +122,11 @@ scopes:
   'class_variable': 'variable.other.object.property'
   'instance_variable': 'variable.other.object.property'
   'symbol': 'constant.other'
+  'bare_symbol': 'constant.other'
 
   'comment': 'comment'
   'string': 'string'
+  'bare_string': 'string'
   'regex': 'string.regexp'
   'heredoc_beginning': 'string'
   'heredoc_body': 'string'
