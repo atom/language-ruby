@@ -24,7 +24,8 @@ folds: [
     end: {type: 'rescue'}
   }
   {
-    type: 'heredoc_end'
+    type: 'heredoc_body',
+    end: {type: 'heredoc_end'}
   }
   {
     type: [
