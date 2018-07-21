@@ -101,7 +101,7 @@ scopes:
   '"case"': 'keyword.control'
   '"when"': 'keyword.control'
 
-  'interpolation': 'source.ruby'
+  'interpolation': 'embedded.source'
   'interpolation > "#{"': 'punctuation.section.embedded'
   'interpolation > "}"': 'punctuation.section.embedded'
 
