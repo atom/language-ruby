@@ -6,7 +6,8 @@ parser: 'tree-sitter-ruby'
 injectionRegExp: 'rb|ruby'
 
 fileTypes: [
-  'rb'
+  'rb',
+  'Gemfile'
 ]
 
 comments:
@@ -105,7 +106,17 @@ scopes:
   'interpolation > "#{"': 'punctuation.section.embedded'
   'interpolation > "}"': 'punctuation.section.embedded'
 
-  'constant': 'entity.name.type.class'
+  'constant': [
+    {match: '^[A-Z_]+$', scopes: 'constant'}
+    'entity.name.type.class'
+  ]
+
+  'identifier': [
+    {
+      match: '^__(FILE|LINE|ENCODING)__$',
+      scopes: 'support.variable'
+    }
+  ]
 
   'self': 'variable.other'
 
@@ -118,7 +129,10 @@ scopes:
   'singleton_method > identifier:nth-child(3)': 'entity.name.function'
   'setter > identifier': 'entity.name.function'
   'call > identifier:nth-child(2)': 'entity.name.function'
-  'method_call > identifier:nth-child(0)': 'entity.name.function'
+  'method_call > identifier:nth-child(0)': [
+    {exact: 'require', scopes: 'support.function'}
+    'entity.name.function'
+  ]
 
   'class_variable': 'variable.other.object.property'
   'instance_variable': 'variable.other.object.property'
