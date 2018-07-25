@@ -2,6 +2,7 @@ id: 'ruby'
 name: 'Ruby'
 type: 'tree-sitter'
 parser: 'tree-sitter-ruby'
+legacyScopeName: 'source.ruby'
 
 injectionRegExp: 'rb|ruby'
 
@@ -104,6 +105,8 @@ scopes:
   'interpolation': 'embedded.source'
   'interpolation > "#{"': 'punctuation.section.embedded'
   'interpolation > "}"': 'punctuation.section.embedded'
+
+  'escape_sequence': 'constant.character.escape'
 
   'constant': 'entity.name.type.class'
 
