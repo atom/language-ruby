@@ -2,6 +2,7 @@ id: 'ruby'
 name: 'Ruby'
 type: 'tree-sitter'
 parser: 'tree-sitter-ruby'
+legacyScopeName: 'source.ruby'
 
 injectionRegExp: 'rb|ruby'
 
@@ -117,6 +118,8 @@ scopes:
       scopes: 'support.variable'
     }
   ]
+
+  'escape_sequence': 'constant.character.escape'
 
   'self': 'variable.other'
 
