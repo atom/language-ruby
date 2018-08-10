@@ -4,10 +4,22 @@ type: 'tree-sitter'
 parser: 'tree-sitter-ruby'
 legacyScopeName: 'source.ruby'
 
-injectionRegExp: 'rb|ruby'
+injectionRegex: 'rb|ruby'
+
+firstLineRegex: [
+  # shebang line
+  '^#!.*\\b(\w*ruby|rake)\\r?\\n'
+
+  # vim modeline
+  'vim\\b.*\\bset\\b.*\\b(filetype|ft|syntax)=ruby'
+]
 
 fileTypes: [
   'rb',
+  'rake',
+  'Podfile',
+  'Brewfile',
+  'Rakefile',
   'Gemfile'
 ]
 
