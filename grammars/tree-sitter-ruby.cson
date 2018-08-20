@@ -1,8 +1,7 @@
-id: 'ruby'
 name: 'Ruby'
+scopeName: 'source.ruby'
 type: 'tree-sitter'
 parser: 'tree-sitter-ruby'
-legacyScopeName: 'source.ruby'
 
 injectionRegex: 'rb|ruby'
 
