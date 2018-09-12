@@ -77,22 +77,19 @@ folds: [
     end: {index: -1}
   }
   {
-    type: ['if', 'unless', 'elsif']
-    start: {index: 1}
-    end: {type: ['else', 'elsif']}
+    type: 'then',
+    start: {index: 0, type: '"then"'}
   }
   {
-    type: ['if', 'unless']
-    start: {index: 1}
+    type: 'then'
+  }
+  {
+    type: 'case',
     end: {index: -1}
   }
   {
     type: 'else'
     start: {index: 0}
-  }
-  {
-    type: 'elsif'
-    start: {index: 1}
   }
 ]
 
@@ -113,6 +110,7 @@ scopes:
   '"yield"': 'keyword.control'
   '"case"': 'keyword.control'
   '"when"': 'keyword.control'
+  '"then"': 'keyword.control'
 
   'interpolation': 'embedded.source'
   'interpolation > "#{"': 'punctuation.section.embedded'
