@@ -774,6 +774,10 @@ describe "Ruby grammar", ->
     lines = grammar.tokenizeLines('<<~\'EOS\'\nThis is text\nEOS')
     expect(lines[0][0]).toEqual value: '<<~\'EOS\'', scopes: ['source.ruby', 'string.unquoted.heredoc.ruby', 'punctuation.definition.string.begin.ruby']
     expect(lines[2][0]).toEqual value: 'EOS', scopes: ['source.ruby', 'string.unquoted.heredoc.ruby', 'punctuation.definition.string.end.ruby']
+    # Backtick-quoted heredoc:
+    lines = grammar.tokenizeLines('<<~`EOS`\nThis is text\nEOS')
+    expect(lines[0][0]).toEqual value: '<<~`EOS`', scopes: ['source.ruby', 'string.unquoted.heredoc.ruby', 'punctuation.definition.string.begin.ruby']
+    expect(lines[2][0]).toEqual value: 'EOS', scopes: ['source.ruby', 'string.unquoted.heredoc.ruby', 'punctuation.definition.string.end.ruby']
 
   it "tokenizes heredoc which includes identifier in end of a line", ->
     lines = grammar.tokenizeLines('<<-EOS\nThis is text\nThis is Not EOS\nEOS')
