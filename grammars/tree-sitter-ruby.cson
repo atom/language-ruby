@@ -152,12 +152,9 @@ scopes:
   'bare_symbol': 'constant.other'
 
   'comment': 'comment'
-  'string': 'string'
-  'bare_string': 'string'
   'regex': 'string.regexp'
-  'heredoc_beginning': 'string'
-  'heredoc_body': 'string'
   'integer': 'constant.numeric'
+  'string, bare_string, subshell, heredoc_beginning, heredoc_body': 'string'
 
   'nil': 'constant.language.nil'
   'true': 'constant.language.true'
