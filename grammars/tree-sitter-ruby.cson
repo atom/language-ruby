@@ -117,9 +117,10 @@ scopes:
   'interpolation > "}"': 'punctuation.section.embedded'
 
   'constant': [
-    {match: '^[A-Z_]+$', scopes: 'constant'}
+    {match: '^[A-Z_]+$', scopes: 'variable.constant'}
     'entity.name.type.class'
   ]
+  'superclass > constant': 'entity.other.inherited-class'
 
   'identifier': [
     {
@@ -146,9 +147,12 @@ scopes:
     'entity.name.function'
   ]
 
+  'block_parameters > identifier': 'variable.other.block'
+  'method_parameters > identifier': 'variable.parameter.function'
+  'keyword_parameter > identifier:nth-child(0)': 'constant.other.symbol'
   'class_variable': 'variable.other.object.property'
   'instance_variable': 'variable.other.object.property'
-  'symbol': 'constant.other'
+  'symbol': 'constant.other.symbol'
   'bare_symbol': 'constant.other'
 
   'comment': 'comment'
