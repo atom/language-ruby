@@ -149,6 +149,7 @@ scopes:
 
   'block_parameters > identifier': 'variable.other.block'
   'method_parameters > identifier': 'variable.parameter.function'
+  'keyword_parameter > identifier:nth-child(0)': 'constant.other.symbol'
   'class_variable': 'variable.other.object.property'
   'instance_variable': 'variable.other.object.property'
   'symbol': 'constant.other.symbol'
