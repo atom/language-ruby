@@ -120,6 +120,7 @@ scopes:
     {match: '^[A-Z_]+$', scopes: 'constant'}
     'entity.name.type.class'
   ]
+  'superclass > constant': 'entity.other.inherited-class'
 
   'identifier': [
     {
@@ -146,9 +147,11 @@ scopes:
     'entity.name.function'
   ]
 
+  'block_parameters > identifier': 'variable.other.block'
+  'method_parameters > identifier': 'variable.parameter.function'
   'class_variable': 'variable.other.object.property'
   'instance_variable': 'variable.other.object.property'
-  'symbol': 'constant.other'
+  'symbol': 'constant.other.symbol'
   'bare_symbol': 'constant.other'
 
   'comment': 'comment'
