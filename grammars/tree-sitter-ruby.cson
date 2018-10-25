@@ -117,7 +117,7 @@ scopes:
   'interpolation > "}"': 'punctuation.section.embedded'
 
   'constant': [
-    {match: '^[A-Z_]+$', scopes: 'constant'}
+    {match: '^[A-Z_]+$', scopes: 'variable.constant'}
     'entity.name.type.class'
   ]
   'superclass > constant': 'entity.other.inherited-class'
