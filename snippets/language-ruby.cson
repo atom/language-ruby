@@ -344,3 +344,9 @@
   'erb_exec_block_after_quote':
     'prefix': '\"-'
     'body': '\"<% $1 %>'
+  'erb_if_block':
+    'prefix': '-if'
+    'body': '<% if ${1:condition} %>\n\t$0\n<% end %>'
+  # Turn off iframe since it conflicts with the if block
+  'Inline Frame':
+    'prefix': 'iframe'
