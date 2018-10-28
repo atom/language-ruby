@@ -111,6 +111,12 @@ scopes:
   '"case"': 'keyword.control'
   '"when"': 'keyword.control'
   '"then"': 'keyword.control'
+  '"for"': 'keyword.control'
+  '"break"': 'keyword.control'
+  '"retry"': 'keyword.control'
+  '"while"': 'keyword.control'
+  '"in"': 'keyword.control'
+  '"until"': 'keyword.control'
 
   'interpolation': 'embedded.source'
   'interpolation > "#{"': 'punctuation.section.embedded'
