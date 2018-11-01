@@ -94,6 +94,8 @@ folds: [
 ]
 
 scopes:
+  'program': 'source.ruby'
+
   '"if"': 'keyword.control'
   '"unless"': 'keyword.control'
   '"def"': 'keyword.control'
