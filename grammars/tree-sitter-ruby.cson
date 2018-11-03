@@ -133,7 +133,7 @@ scopes:
 
   'escape_sequence': 'constant.character.escape'
 
-  'self': 'variable.other'
+  'self': 'variable.language'
 
   '"%w("': 'punctuation.definition.parameters'
   '"%i("': 'punctuation.definition.parameters'
