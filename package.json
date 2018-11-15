@@ -2,6 +2,9 @@
   "name": "language-ruby",
   "version": "0.72.14",
   "description": "Ruby language support in Atom",
+  "keywords": [
+    "tree-sitter"
+  ],
   "engines": {
     "atom": "*",
     "node": "*"
