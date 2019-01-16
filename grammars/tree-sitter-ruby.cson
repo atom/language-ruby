@@ -165,6 +165,7 @@ scopes:
 
   'comment': 'comment'
   'regex': 'string.regexp'
+  'float': 'constant.numeric'
   'integer': 'constant.numeric'
   'string, bare_string, subshell, heredoc_beginning, heredoc_body': 'string'
 
