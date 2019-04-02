@@ -115,6 +115,7 @@ scopes:
   '"then"': 'keyword.control'
   '"for"': 'keyword.control'
   '"break"': 'keyword.control'
+  '"next"': 'keyword.control'
   '"retry"': 'keyword.control'
   '"while"': 'keyword.control'
   '"in"': 'keyword.control'
