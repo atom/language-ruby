@@ -129,6 +129,7 @@ scopes:
     {match: '^[A-Z_0-9]+$', scopes: 'variable.constant'}
     'entity.name.type.class'
   ]
+  'global_variable': 'variable.other.readwrite.global'
   'superclass > constant': 'entity.other.inherited-class'
 
   'identifier': [
@@ -157,7 +158,7 @@ scopes:
   ]
 
   'block_parameters > identifier': 'variable.other.block'
-  'method_parameters > identifier': 'variable.parameter.function'
+  'method_parameters > identifier, optional_parameter > identifier': 'variable.parameter.function'
   'keyword_parameter > identifier:nth-child(0)': 'constant.other.symbol'
   'class_variable': 'variable.other.object.property'
   'instance_variable': 'variable.other.object.property'
@@ -168,7 +169,71 @@ scopes:
   'regex': 'string.regexp'
   'float': 'constant.numeric'
   'integer': 'constant.numeric'
-  'string, bare_string, subshell, heredoc_beginning, heredoc_body': 'string'
+
+  'string': [
+    {match: '^"', scopes: 'string.quoted.double.interpolated'}
+    {match: "^'", scopes: 'string.quoted.single'}
+    'string'
+  ]
+
+  # Quote delimiters are the only two children of these kinds of strings. If
+  # this changes in the tree-sitter parser in the future, these selectors will
+  # need updating.
+  "string > '\"':nth-child(0)": 'punctuation.definition.string.begin'
+  "string > '\"':nth-child(1)": 'punctuation.definition.string.end'
+  'string > "\'":nth-child(0)': 'punctuation.definition.string.begin'
+  'string > "\'":nth-child(1)': 'punctuation.definition.string.end'
+
+  'heredoc_beginning, heredoc_body': 'string.unquoted.heredoc.interpolated'
+  'subshell': 'string.quoted.subshell.interpolated'
+  'bare_string': 'string.unquoted.other'
+
+  '"="': 'keyword.operator.assignment'
+
+  '"+="': 'keyword.operator.assignment.augmented'
+  '"-="': 'keyword.operator.assignment.augmented'
+  '"*="': 'keyword.operator.assignment.augmented'
+  '"/="': 'keyword.operator.assignment.augmented'
+  '"<<="': 'keyword.operator.assignment.augmented'
+  '"%="': 'keyword.operator.assignment.augmented'
+  '"&="': 'keyword.operator.assignment.augmented'
+  '"&&="': 'keyword.operator.assignment.augmented'
+  '"|="': 'keyword.operator.assignment.augmented'
+  '"||="': 'keyword.operator.assignment.augmented'
+  '"**="': 'keyword.operator.assignment.augmented'
+  '"^="': 'keyword.operator.assignment.augmented'
+
+  '"<=>"': 'keyword.operator.comparison'
+  '"<"': 'keyword.operator.comparison'
+  '">"': 'keyword.operator.comparison'
+  '"<="': 'keyword.operator.comparison'
+  '">="': 'keyword.operator.comparison'
+  '"==="': 'keyword.operator.comparison'
+  '"=="': 'keyword.operator.comparison'
+  '"=~"': 'keyword.operator.comparison'
+  '"!="': 'keyword.operator.comparison'
+  '"!~"': 'keyword.operator.comparison'
+
+  '"&&"': 'keyword.operator.logical'
+  '"!"': 'keyword.operator.logical'
+  '"||"': 'keyword.operator.logical'
+  '"and"': 'keyword.operator.logical'
+  '"not"': 'keyword.operator.logical'
+  '"or"': 'keyword.operator.logical'
+  '"^"': 'keyword.operator.logical'
+
+  '"+"': 'keyword.operator.arithmetic'
+  '"-"': 'keyword.operator.arithmetic'
+  '"*"': 'keyword.operator.arithmetic'
+  '"/"': 'keyword.operator.arithmetic'
+  '"**"': 'keyword.operator.arithmetic'
+  '"&"': 'keyword.operator.arithmetic'
+  '"%"': 'keyword.operator.arithmetic'
+
+  'call > ".", call > "&."': 'punctuation.separator.method'
+
+  '";"': 'punctuation.separator.statement'
+  '","': 'punctuation.separator.object'
 
   'nil': 'constant.language.nil'
   'true': 'constant.language.true'
