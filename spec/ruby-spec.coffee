@@ -1,4 +1,4 @@
-describe "Ruby grammar", ->
+describe "TextMate Ruby grammar", ->
   grammar = null
 
   beforeEach ->

@@ -1,4 +1,4 @@
-describe "Gemfile grammar", ->
+describe "TextMate Gemfile grammar", ->
   grammar = null
 
   beforeEach ->
