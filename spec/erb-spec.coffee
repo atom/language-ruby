@@ -1,4 +1,4 @@
-describe "HTML (Ruby - ERB) grammar", ->
+describe "TextMate HTML (Ruby - ERB) grammar", ->
   grammar = null
 
   beforeEach ->

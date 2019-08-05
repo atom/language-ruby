@@ -16,6 +16,7 @@
     "tree-sitter-ruby": "^0.15.2"
   },
   "devDependencies": {
-    "coffeelint": "^1.10.1"
+    "coffeelint": "^1.10.1",
+    "dedent": "^0.7.0"
   }
 }
