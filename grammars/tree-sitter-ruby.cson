@@ -137,6 +137,10 @@ scopes:
       match: '^__(FILE|LINE|ENCODING)__$',
       scopes: 'support.variable'
     }
+    {
+      match: '^(public|protected|private)$'
+      scopes: 'keyword.other.special-method'
+    }
   ]
 
   'escape_sequence': 'constant.character.escape'
@@ -154,6 +158,7 @@ scopes:
   'call > identifier:nth-child(2)': 'entity.name.function'
   'method_call > identifier:nth-child(0)': [
     {exact: 'require', scopes: 'support.function'}
+    {match: '^(public|protected|private)$', scopes: 'keyword.other.special-method'}
     'entity.name.function'
   ]
 
