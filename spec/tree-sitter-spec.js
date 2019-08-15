@@ -6,6 +6,23 @@ describe('Tree-sitter Ruby grammar', () => {
     await atom.packages.activatePackage('language-ruby')
   })
 
+  it('tokenizes symbols', async () => {
+    const editor = await atom.workspace.open('foo.rb')
+
+    editor.setText(dedent`
+      :foo
+      %i(foo)
+    `)
+
+    expect(editor.scopeDescriptorForBufferPosition([0, 1]).toString()).toBe(
+      '.source.ruby .constant.other.symbol'
+    )
+
+    expect(editor.scopeDescriptorForBufferPosition([1, 3]).toString()).toBe(
+      '.source.ruby .constant.other.symbol'
+    )
+  })
+
   it('tokenizes visibility modifiers', async () => {
     const editor = await atom.workspace.open('foo.rb')
 

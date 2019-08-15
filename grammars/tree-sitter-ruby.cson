@@ -168,7 +168,7 @@ scopes:
   'class_variable': 'variable.other.object.property'
   'instance_variable': 'variable.other.object.property'
   'symbol': 'constant.other.symbol'
-  'bare_symbol': 'constant.other'
+  'bare_symbol': 'constant.other.symbol'
 
   'comment': 'comment'
   'regex': 'string.regexp'
