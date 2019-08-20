@@ -55,4 +55,60 @@ describe('Tree-sitter Ruby grammar', () => {
       '.source.ruby .keyword.other.special-method'
     )
   })
+
+  it('tokenizes keyword predicates', async () => {
+    const editor = await atom.workspace.open('foo.rb')
+
+    editor.setText(dedent`
+      defined?(:thing)
+      block_given?
+      iterator?
+    `)
+
+    expect(editor.scopeDescriptorForBufferPosition([0, 0]).toString()).toBe(
+      '.source.ruby .keyword.control'
+    )
+    expect(editor.scopeDescriptorForBufferPosition([1, 0]).toString()).toBe(
+      '.source.ruby .keyword.control'
+    )
+    expect(editor.scopeDescriptorForBufferPosition([2, 0]).toString()).toBe(
+      '.source.ruby .keyword.control'
+    )
+  })
+
+  it('tokenizes alias definitions', async () => {
+    const editor = await atom.workspace.open('foo.rb')
+
+    editor.setText(dedent`
+      alias_method :name, :full_name
+      alias name full_name
+    `)
+
+    expect(editor.scopeDescriptorForBufferPosition([0, 0]).toString()).toBe(
+      '.source.ruby .keyword.control'
+    )
+    expect(editor.scopeDescriptorForBufferPosition([1, 0]).toString()).toBe(
+      '.source.ruby .keyword.control'
+    )
+  })
+
+  it('tokenizes keywords', async () => {
+    const editor = await atom.workspace.open('foo.rb')
+
+    editor.setText(dedent`
+      undef
+      redo
+      super
+    `)
+
+    expect(editor.scopeDescriptorForBufferPosition([0, 0]).toString()).toBe(
+      '.source.ruby .keyword.control'
+    )
+    expect(editor.scopeDescriptorForBufferPosition([1, 0]).toString()).toBe(
+      '.source.ruby .keyword.control'
+    )
+    expect(editor.scopeDescriptorForBufferPosition([2, 0]).toString()).toBe(
+      '.source.ruby .keyword.control'
+    )
+  })
 })
