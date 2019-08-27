@@ -120,6 +120,10 @@ scopes:
   '"while"': 'keyword.control'
   '"in"': 'keyword.control'
   '"until"': 'keyword.control'
+  '"defined?"': 'keyword.control'
+  '"alias"': 'keyword.control'
+  '"undef"': 'keyword.control'
+  'super': 'keyword.control'
 
   'interpolation': 'embedded.source'
   'interpolation > "#{"': 'punctuation.section.embedded'
@@ -141,6 +145,10 @@ scopes:
       match: '^(public|protected|private)$'
       scopes: 'keyword.other.special-method'
     }
+    {
+      match: '^(block_given\?|iterator\?|alias_method|redo)'
+      scopes: 'keyword.control'
+    }
   ]
 
   'escape_sequence': 'constant.character.escape'
@@ -159,6 +167,7 @@ scopes:
   'method_call > identifier:nth-child(0)': [
     {exact: 'require', scopes: 'support.function'}
     {match: '^(public|protected|private)$', scopes: 'keyword.other.special-method'}
+    {match: '^(block_given\?|iterator\?|alias_method|redo)', scopes: 'keyword.control'}
     'entity.name.function'
   ]
 
