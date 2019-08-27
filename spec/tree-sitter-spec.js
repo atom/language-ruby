@@ -96,18 +96,15 @@ describe('Tree-sitter Ruby grammar', () => {
     const editor = await atom.workspace.open('foo.rb')
 
     editor.setText(dedent`
-      undef
-      redo
       super
+      undef foo
     `)
 
     expect(editor.scopeDescriptorForBufferPosition([0, 0]).toString()).toBe(
       '.source.ruby .keyword.control'
     )
+
     expect(editor.scopeDescriptorForBufferPosition([1, 0]).toString()).toBe(
-      '.source.ruby .keyword.control'
-    )
-    expect(editor.scopeDescriptorForBufferPosition([2, 0]).toString()).toBe(
       '.source.ruby .keyword.control'
     )
   })
