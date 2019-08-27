@@ -1,6 +1,6 @@
 {
   "name": "language-ruby",
-  "version": "0.72.21",
+  "version": "0.72.22",
   "description": "Ruby language support in Atom",
   "keywords": [
     "tree-sitter"
