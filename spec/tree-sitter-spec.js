@@ -108,4 +108,26 @@ describe('Tree-sitter Ruby grammar', () => {
       '.source.ruby .keyword.control'
     )
   })
+
+  it('tokenizes variable in assignment expressions', async () => {
+    const editor = await atom.workspace.open('foo.rb')
+    editor.setText(dedent`
+      a = 10
+    `)
+
+    expect(editor.scopeDescriptorForBufferPosition([0, 0]).toString()).toBe(
+      '.source.ruby .variable'
+    )
+  })
+
+  it('does not tokenizes method call in assignment expressions', async () => {
+    const editor = await atom.workspace.open('foo.rb')
+    editor.setText(dedent`
+      foo() = 10
+    `)
+
+    expect(editor.scopeDescriptorForBufferPosition([0, 0]).toString()).not.toBe(
+      '.source.ruby .variable'
+    )
+  })
 })
