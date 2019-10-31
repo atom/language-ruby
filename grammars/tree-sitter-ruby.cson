@@ -161,6 +161,8 @@ scopes:
   '")"': 'punctuation.definition.parameters'
 
   'method > identifier': 'entity.name.function'
+  'assignment > identifier': 'variable'
+
   'singleton_method > identifier:nth-child(3)': 'entity.name.function'
   'setter > identifier': 'entity.name.function'
   'call > identifier:nth-child(2)': 'entity.name.function'
