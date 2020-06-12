@@ -130,6 +130,7 @@ scopes:
   'interpolation > "}"': 'punctuation.section.embedded'
 
   'constant': [
+    {exact: 'ENV', scopes: 'support.variable'}
     {match: '^[A-Z_0-9]+$', scopes: 'variable.constant'}
     'entity.name.type.class'
   ]
@@ -137,18 +138,10 @@ scopes:
   'superclass > constant': 'entity.other.inherited-class'
 
   'identifier': [
-    {
-      match: '^__(FILE|LINE|ENCODING)__$',
-      scopes: 'support.variable'
-    }
-    {
-      match: '^(public|protected|private)$'
-      scopes: 'keyword.other.special-method'
-    }
-    {
-      match: '^(block_given\?|iterator\?|alias_method)'
-      scopes: 'keyword.control'
-    }
+    {match: '^__(FILE|LINE|ENCODING)__$', scopes: 'support.variable'}
+    {match: '^(caller|binding|__dir__)$', scopes: 'support.function.kernel'}
+    {match: '^(public|protected|private|module_function|raise|caller|binding)$', scopes: 'keyword.other.special-method'}
+    {match: '^(block_given\?|iterator\?|alias_method)', scopes: 'keyword.control'}
   ]
 
   'escape_sequence': 'constant.character.escape'
@@ -165,15 +158,22 @@ scopes:
 
   'singleton_method > identifier:nth-child(3)': 'entity.name.function'
   'setter > identifier': 'entity.name.function'
-  'call > identifier:nth-child(2)': 'entity.name.function'
+  'call > identifier:nth-child(2)': [
+    {exact: 'new', scopes: 'keyword.other.special-method'}
+    'entity.name.function'
+  ]
   'method_call > identifier:nth-child(0)': [
-    {exact: 'require', scopes: 'support.function'}
-    {match: '^(public|protected|private)$', scopes: 'keyword.other.special-method'}
+    # Gemile specific TODO: move to separate grammar?
+    {match: '^(gem|git|group|platforms|ruby|source|eval_gemfile)$', scopes: 'keyword.other.special-method'}
+
+    {match: '^(require|require_relative|loop|eval|lambda|catch|raise|exit|throw|autoload|puts)$', scopes: 'support.function.kernel'}
+    {match: '^(public|protected|private|module_function|new|include|extend|inspect)$', scopes: 'keyword.other.special-method'}
+    {match: '^(attr_accessor|attr_reader|attr_writer)$', scopes: 'keyword.other.special-method'}
     {match: '^(block_given\?|iterator\?|alias_method)', scopes: 'keyword.control'}
     'entity.name.function'
   ]
 
-  'block_parameters > identifier': 'variable.other.block'
+  'block_parameters > identifier, lambda_parameters > identifier': 'variable.other.block'
   'method_parameters > identifier, optional_parameter > identifier': 'variable.parameter.function'
   'keyword_parameter > identifier:nth-child(0)': 'constant.other.symbol'
   'class_variable': 'variable.other.object.property'
@@ -254,3 +254,5 @@ scopes:
   'nil': 'constant.language.nil'
   'true': 'constant.language.true'
   'false': 'constant.language.false'
+
+  'lambda > "->"': 'support.function.kernel'
