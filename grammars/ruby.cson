@@ -60,60 +60,76 @@
 '''
 'patterns': [
   {
-    'captures':
-      '1':
+    'begin': '\\bclass\\b'
+    'beginCaptures':
+      '0':
         'name': 'keyword.control.class.ruby'
-      '2':
-        'name': 'entity.name.type.class.ruby'
-      '4':
-        'name': 'entity.other.inherited-class.ruby'
-      '5':
-        'name': 'punctuation.separator.inheritance.ruby'
-      '6':
-        'name': 'variable.other.object.ruby'
-      '7':
-        'name': 'punctuation.definition.variable.ruby'
-    'match': '''(?x)
-      ^\\s*(class)\\s+
-      (
-        (
-          [.a-zA-Z0-9_:]+
-          (\\s*(<)\\s*[.a-zA-Z0-9_:]+)?   # class A < B
-        )
-        |
-        ((<<)\\s*[.a-zA-Z0-9_:]+)         # class << C
-      )
-    '''
+    'end': '\\s*$|(?![\\s\\w.:<])'
     'name': 'meta.class.ruby'
+    'patterns': [
+      {
+        'match': '[A-Z]\\w*'
+        'name': 'entity.name.type.class.ruby'
+      }
+      {
+        'include': '#separators'
+      }
+      {
+        'begin': '(<<)\\s*'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.variable.ruby'
+        'contentName': 'variable.other.object.ruby'
+        'end': '(?=$)|(?![\\s\\w.:])'
+        'patterns': [
+          {
+            'match': '[A-Z]\\w*'
+            'name': 'entity.name.type.class.ruby'
+          }
+          {
+            'include': '#separators'
+          }
+        ]
+      }
+      {
+        'begin': '(<)\\s*'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.separator.inheritance.ruby'
+        'contentName': 'entity.other.inherited-class.ruby'
+        'end': '(?=$)|(?![\\s\\w.:])'
+        'patterns': [
+          {
+            'match': '[A-Z]\\w*'
+            'name': 'entity.name.type.class.ruby'
+          }
+          {
+            'include': '#separators'
+          }
+        ]
+      }
+    ]
   }
   {
-    'captures':
-      '1':
+    'begin': '\\bmodule\\b'
+    'beginCaptures':
+      '0':
         'name': 'keyword.control.module.ruby'
-      '2':
-        'name': 'entity.name.type.module.ruby'
-      '3':
-        'name': 'entity.other.inherited-class.module.first.ruby'
-      '4':
-        'name': 'punctuation.separator.inheritance.ruby'
-      '5':
-        'name': 'entity.other.inherited-class.module.second.ruby'
-      '6':
-        'name': 'punctuation.separator.inheritance.ruby'
-      '7':
-        'name': 'entity.other.inherited-class.module.third.ruby'
-      '8':
-        'name': 'punctuation.separator.inheritance.ruby'
-    'match': '''(?x)
-      ^\\s*(module)\\s+
-      (
-        ([A-Z]\\w*(::))?
-        ([A-Z]\\w*(::))?
-        ([A-Z]\\w*(::))*
-        [A-Z]\\w*
-      )
-    '''
+    'end': '\\s*$|(?![\\s\\w.:])'
     'name': 'meta.module.ruby'
+    'patterns': [
+      {
+        'match': '[A-Z]\\w*(?=::)'
+        'name': 'entity.other.inherited-class.module.ruby'
+      }
+      {
+        'match': '[A-Z]\\w*'
+        'name': 'entity.name.type.module.ruby'
+      }
+      {
+        'include': '#separators'
+      }
+    ]
   }
   {
     'comment': 'else if is a common mistake carried over from other languages. it works if you put in a second end, but it’s never what you want.'
@@ -247,7 +263,8 @@
       (?=def\\b)                          # optimization to help Oniguruma fail fast
       (?<=^|\\s)(def)\\s+
       (
-        (?>[a-zA-Z_]\\w*(?>\\.|::))?      # method prefix
+        (?:(self)(\\.|::))?
+        (?>[a-zA-Z_]\\w*(?>(\\.|::)))*    # method prefix
         (?>                               # method name
           [a-zA-Z_]\\w*(?>[?!]|=(?!>))?
           |
@@ -262,6 +279,13 @@
       '2':
         'name': 'entity.name.function.ruby'
       '3':
+        'name': 'variable.language.self.ruby'
+      '4':
+        'name': 'punctuation.separator.method.ruby'
+      '5':
+        'comment': 'Unfortunately, the repeated pattern (\\.|::)* only captures the last occurring separator'
+        'name': 'punctuation.separator.method.ruby'
+      '6':
         'name': 'punctuation.definition.parameters.ruby'
     'comment': 'The method pattern comes from the symbol pattern. See there for an explanation.'
     'end': '\\)'
@@ -291,6 +315,10 @@
           }
         ]
       }
+      {
+        'match': ','
+        'name': 'punctuation.separator.delimiter.ruby'
+      }
     ]
   }
   {
@@ -298,7 +326,8 @@
       (?=def\\b)                          # optimization to help Oniguruma fail fast
       (?<=^|\\s)(def)\\s+
       (
-        (?>[a-zA-Z_]\\w*(?>\\.|::))?      # method prefix
+        (?:(self)(\\.|::))?
+        (?>[a-zA-Z_]\\w*(?>(\\.|::)))*    # method prefix
         (?>                               # method name
           [a-zA-Z_]\\w*(?>[?!]|=(?!>))?
           |
@@ -313,6 +342,13 @@
         'name': 'keyword.control.def.ruby'
       '2':
         'name': 'entity.name.function.ruby'
+      '3':
+        'name': 'variable.language.self.ruby'
+      '4':
+        'name': 'punctuation.separator.method.ruby'
+      '5':
+        'comment': 'Unfortunately, the repeated pattern (\\.|::)* only captures the last occurring separator'
+        'name': 'punctuation.separator.method.ruby'
     'comment': 'same as the previous rule, but without parentheses around the arguments'
     'end': '$'
     'name': 'meta.function.method.with-arguments.ruby'
@@ -338,6 +374,10 @@
           }
         ]
       }
+      {
+        'match': ','
+        'name': 'punctuation.separator.delimiter.ruby'
+      }
     ]
   }
   {
@@ -346,6 +386,13 @@
         'name': 'keyword.control.def.ruby'
       '3':
         'name': 'entity.name.function.ruby'
+      '4':
+        'name': 'variable.language.self.ruby'
+      '5':
+        'name': 'punctuation.separator.method.ruby'
+      '6':
+        'comment': 'Unfortunately, the repeated pattern (\\.|::)* only captures the last occurring separator'
+        'name': 'punctuation.separator.method.ruby'
     'comment': ' the optional name is just to catch the def also without a method-name'
     'match': '''(?x)
       (?=def\\b)                            # optimization to help Oniguruma fail fast
@@ -353,7 +400,8 @@
       (
         \\s+
         (
-          (?>[a-zA-Z_]\\w*(?>\\.|::))?      # method prefix
+          (?:(self)(\\.|::))?
+          (?>[a-zA-Z_]\\w*(?>(\\.|::)))*    # method prefix
           (?>                               # method name
             [a-zA-Z_]\\w*(?>[?!]|=(?!>))?
             |
@@ -1878,12 +1926,11 @@
     ]
   }
   {
-    'match': '=>'
-    'name': 'punctuation.separator.key-value'
+    'include': '#separators'
   }
   {
     'match': '->'
-    'name': 'support.function.kernel.ruby'
+    'name': 'support.function.kernel.arrow.ruby'
   }
   {
     'match': '<<=|%=|&{1,2}=|\\*=|\\*\\*=|\\+=|-=|\\^=|\\|{1,2}=|<<'
@@ -1903,13 +1950,6 @@
     'name': 'keyword.operator.logical.ruby'
   }
   {
-    'comment': 'Safe navigation operator'
-    'match': '(&\\.)\\s*(?![A-Z])'
-    'captures':
-      '1':
-        'name': 'punctuation.separator.method.ruby'
-  }
-  {
     'match': '(%|&|\\*\\*|\\*|\\+|-|/)'
     'name': 'keyword.operator.arithmetic.ruby'
   }
@@ -1920,33 +1960,6 @@
   {
     'match': '\\||~|>>'
     'name': 'keyword.operator.other.ruby'
-  }
-  {
-    'match': ';'
-    'name': 'punctuation.separator.statement.ruby'
-  }
-  {
-    'match': ','
-    'name': 'punctuation.separator.object.ruby'
-  }
-  {
-    'comment': 'Mark as namespace separator if double colons followed by capital letter'
-    'match': '(::)\\s*(?=[A-Z])'
-    'captures':
-      '1':
-        'name': 'punctuation.separator.namespace.ruby'
-  }
-  {
-    'comment': 'Mark as method separator if double colons not followed by capital letter'
-    'match': '(\\.|::)\\s*(?![A-Z])'
-    'captures':
-      '1':
-        'name': 'punctuation.separator.method.ruby'
-  }
-  {
-    'comment': 'Must come after method and constant separators to prefer double colons'
-    'match': ':'
-    'name': 'punctuation.separator.other.ruby'
   }
   {
     'match': '{'
@@ -2281,6 +2294,35 @@
           '0':
             'name': 'punctuation.definition.comment.ruby'
         'name': 'comment.line.number-sign.ruby'
+      }
+    ]
+  'separators':
+    'patterns': [
+      {
+        'match': '=>'
+        'name': 'punctuation.separator.key-value.ruby'
+      }
+      {
+        'match': ';'
+        'name': 'punctuation.terminator.statement.ruby'
+      }
+      {
+        'match': ','
+        'name': 'punctuation.separator.delimiter.ruby'
+      }
+      {
+        'match': '(::)(?=\\s*[A-Z])'
+        'captures':
+          '1':
+            'name': 'punctuation.separator.namespace.ruby'
+      }
+      {
+        'match': '&?\\.|::'
+        'name': 'punctuation.separator.method.ruby'
+      }
+      {
+        'match': ':'
+        'name': 'punctuation.separator.other.ruby'
       }
     ]
   'yard':
