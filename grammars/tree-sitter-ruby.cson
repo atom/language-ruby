@@ -166,7 +166,7 @@ scopes:
   'singleton_method > identifier:nth-child(3)': 'entity.name.function'
   'setter > identifier': 'entity.name.function'
   'call > identifier:nth-child(2)': 'entity.name.function'
-  'method_call > identifier:nth-child(0)': [
+  'call > identifier:nth-child(0)': [
     {exact: 'require', scopes: 'support.function'}
     {match: '^(public|protected|private)$', scopes: 'keyword.other.special-method'}
     {match: '^(block_given\?|iterator\?|alias_method)', scopes: 'keyword.control'}
@@ -178,7 +178,9 @@ scopes:
   'keyword_parameter > identifier:nth-child(0)': 'constant.other.symbol'
   'class_variable': 'variable.other.object.property'
   'instance_variable': 'variable.other.object.property'
-  'symbol': 'constant.other.symbol'
+  'simple_symbol': 'constant.other.symbol'
+  'delimited_symbol': 'constant.other.symbol'
+  'hash_key_symbol': 'constant.other.symbol'
   'bare_symbol': 'constant.other.symbol'
 
   'comment': 'comment'
