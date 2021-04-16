@@ -166,11 +166,11 @@ scopes:
   'singleton_method > identifier:nth-child(3)': 'entity.name.function'
   'setter > identifier': 'entity.name.function'
   'call > identifier:nth-child(2)': 'entity.name.function'
-  'call > identifier:nth-child(0)': [
+  'call > identifier:nth-child(0)': 'entity.name.function'
+  'identifier': [
     {exact: 'require', scopes: 'support.function'}
     {match: '^(public|protected|private)$', scopes: 'keyword.other.special-method'}
     {match: '^(block_given\?|iterator\?|alias_method)', scopes: 'keyword.control'}
-    'entity.name.function'
   ]
 
   'block_parameters > identifier': 'variable.other.block'
