@@ -15,11 +15,11 @@ describe('Tree-sitter Ruby grammar', () => {
     `)
 
     expect(editor.scopeDescriptorForBufferPosition([0, 1]).toString()).toBe(
-      '.source.ruby .constant.other.symbol'
+      '.source.ruby .string.immutable'
     )
 
     expect(editor.scopeDescriptorForBufferPosition([1, 3]).toString()).toBe(
-      '.source.ruby .constant.other.symbol'
+      '.source.ruby .string.immutable'
     )
   })
 
@@ -37,26 +37,26 @@ describe('Tree-sitter Ruby grammar', () => {
     `)
 
     expect(editor.scopeDescriptorForBufferPosition([0, 0]).toString()).toBe(
-      '.source.ruby .keyword.other.special-method'
+      '.source.ruby .entity.function.method.support'
     )
     expect(editor.scopeDescriptorForBufferPosition([1, 0]).toString()).toBe(
-      '.source.ruby .keyword.other.special-method'
+      '.source.ruby .entity.function.method.support'
     )
     expect(editor.scopeDescriptorForBufferPosition([2, 0]).toString()).toBe(
-      '.source.ruby .keyword.other.special-method'
+      '.source.ruby .entity.function.method.support'
     )
     expect(editor.scopeDescriptorForBufferPosition([4, 0]).toString()).toBe(
-      '.source.ruby .keyword.other.special-method'
+      '.source.ruby .entity.function.method.support.call'
     )
     expect(editor.scopeDescriptorForBufferPosition([5, 0]).toString()).toBe(
-      '.source.ruby .keyword.other.special-method'
+      '.source.ruby .entity.function.method.support.call'
     )
     expect(editor.scopeDescriptorForBufferPosition([6, 0]).toString()).toBe(
-      '.source.ruby .keyword.other.special-method'
+      '.source.ruby .entity.function.method.support.call'
     )
   })
 
-  it('tokenizes keyword predicates', async () => {
+  it('tokenizes predicates', async () => {
     const editor = await atom.workspace.open('foo.rb')
 
     editor.setText(dedent`
@@ -66,13 +66,13 @@ describe('Tree-sitter Ruby grammar', () => {
     `)
 
     expect(editor.scopeDescriptorForBufferPosition([0, 0]).toString()).toBe(
-      '.source.ruby .keyword.control'
+      '.source.ruby .keyword.operator.defined'
     )
     expect(editor.scopeDescriptorForBufferPosition([1, 0]).toString()).toBe(
-      '.source.ruby .keyword.control'
+      '.source.ruby .entity.function.method.support.kernel'
     )
     expect(editor.scopeDescriptorForBufferPosition([2, 0]).toString()).toBe(
-      '.source.ruby .keyword.control'
+      '.source.ruby .entity.function.method.support.kernel'
     )
   })
 
@@ -85,10 +85,10 @@ describe('Tree-sitter Ruby grammar', () => {
     `)
 
     expect(editor.scopeDescriptorForBufferPosition([0, 0]).toString()).toBe(
-      '.source.ruby .keyword.control'
+      '.source.ruby .entity.function.method.support.call'
     )
     expect(editor.scopeDescriptorForBufferPosition([1, 0]).toString()).toBe(
-      '.source.ruby .keyword.control'
+      '.source.ruby .keyword.storage.declaration'
     )
   })
 
@@ -101,11 +101,11 @@ describe('Tree-sitter Ruby grammar', () => {
     `)
 
     expect(editor.scopeDescriptorForBufferPosition([0, 0]).toString()).toBe(
-      '.source.ruby .keyword.control'
+      '.source.ruby .keyword.function.super'
     )
 
     expect(editor.scopeDescriptorForBufferPosition([1, 0]).toString()).toBe(
-      '.source.ruby .keyword.control'
+      '.source.ruby .keyword.storage.modifier'
     )
   })
 
@@ -116,7 +116,7 @@ describe('Tree-sitter Ruby grammar', () => {
     `)
 
     expect(editor.scopeDescriptorForBufferPosition([0, 0]).toString()).toBe(
-      '.source.ruby .variable'
+      '.source.ruby .entity.variable'
     )
   })
 
@@ -127,7 +127,7 @@ describe('Tree-sitter Ruby grammar', () => {
     `)
 
     expect(editor.scopeDescriptorForBufferPosition([0, 0]).toString()).not.toBe(
-      '.source.ruby .variable'
+      '.source.ruby .entity.variable'
     )
   })
 })
