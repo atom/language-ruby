@@ -436,7 +436,7 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.symbol.begin.ruby'
-    'comment': "symbol literal with '' delimitor"
+    'comment': "symbol literal with '' delimiter"
     'end': '\''
     'endCaptures':
       '0':
@@ -454,7 +454,7 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.section.symbol.begin.ruby'
-    'comment': 'symbol literal with "" delimitor'
+    'comment': 'symbol literal with "" delimiter'
     'end': '"'
     'endCaptures':
       '0':
@@ -470,7 +470,7 @@
     ]
   }
   {
-    'comment': 'Needs higher precidence than regular expressions.'
+    'comment': 'Needs higher precedence than regular expressions.'
     'match': '(?<!\\()/='
     'name': 'keyword.operator.assignment.augmented.ruby'
   }
@@ -479,7 +479,7 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
-    'comment': "string literal with '' delimitor"
+    'comment': "string literal with '' delimiter"
     'end': '\''
     'endCaptures':
       '0':
@@ -497,7 +497,7 @@
     'beginCaptures':
       '0':
         'name': 'punctuation.definition.string.begin.ruby'
-    'comment': 'string literal with interpolation and "" delimitor'
+    'comment': 'string literal with interpolation and "" delimiter'
     'end': '"'
     'endCaptures':
       '0':
@@ -851,7 +851,7 @@
     'name': 'constant.other.symbol.ruby'
     'patterns': [
       {
-        'comment': 'Cant be named because its not neccesarily an escape.'
+        'comment': 'Cant be named because its not necessarily an escape.'
         'match': '\\\\.'
       }
     ]
@@ -1055,7 +1055,7 @@
     'name': 'string.quoted.other.ruby'
     'patterns': [
       {
-        'comment': 'Cant be named because its not neccesarily an escape.'
+        'comment': 'Cant be named because its not necessarily an escape.'
         'match': '\\\\.'
       }
     ]
@@ -1278,7 +1278,7 @@
     'name': 'string.quoted.other.ruby'
     'patterns': [
       {
-        'comment': 'Cant be named because its not neccesarily an escape.'
+        'comment': 'Cant be named because its not necessarily an escape.'
         'match': '\\\\.'
       }
     ]
@@ -1375,7 +1375,7 @@
     'name': 'constant.other.symbol.ruby'
     'patterns': [
       {
-        'comment': 'Cant be named because its not neccesarily an escape.'
+        'comment': 'Cant be named because its not necessarily an escape.'
         'match': '\\\\.'
       }
     ]
