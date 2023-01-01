@@ -96,161 +96,315 @@ folds: [
 scopes:
   'program': 'source.ruby'
 
-  '"if"': 'keyword.control'
-  '"unless"': 'keyword.control'
-  '"def"': 'keyword.control'
-  '"do"': 'keyword.control'
-  '"end"': 'keyword.control'
-  '"else"': 'keyword.control'
-  '"elsif"': 'keyword.control'
-  '"class"': 'keyword.control'
-  '"module"': 'keyword.control'
-  '"begin"': 'keyword.control'
-  '"rescue"': 'keyword.control'
-  '"ensure"': 'keyword.control'
-  '"return"': 'keyword.control'
-  '"yield"': 'keyword.control'
-  '"case"': 'keyword.control'
-  '"when"': 'keyword.control'
-  '"then"': 'keyword.control'
-  '"for"': 'keyword.control'
-  '"break"': 'keyword.control'
-  '"next"': 'keyword.control'
-  '"retry"': 'keyword.control'
-  '"while"': 'keyword.control'
-  '"in"': 'keyword.control'
-  '"until"': 'keyword.control'
-  '"defined?"': 'keyword.control'
-  '"alias"': 'keyword.control'
-  '"undef"': 'keyword.control'
-  'super': 'keyword.control'
+  # Keyword
+  '"if"': 'keyword.control.condition'
+  '"else"': 'keyword.control.condition'
+  '"elsif"': 'keyword.control.condition'
+  '"unless"': 'keyword.control.condition'
+  '"case"': 'keyword.control.condition'
+  '"when"': 'keyword.control.condition'
+  '"then"': 'keyword.control.condition'
 
-  'interpolation': 'embedded.source'
-  'interpolation > "#{"': 'punctuation.section.embedded'
-  'interpolation > "}"': 'punctuation.section.embedded'
+  '"while"': 'keyword.control.loop'
+  '"until"': 'keyword.control.loop'
+  '"for"': 'keyword.control.loop'
+  '"in"': 'keyword.control.loop'
+  '"redo"': 'keyword.control.loop'
+  '"begin"': 'keyword.control.block'
+  '"BEGIN"': 'keyword.control.block'
+  '"end"': 'keyword.control.block'
+  '"END"': 'keyword.control.block'
+  '"do"': 'keyword.control.block'
+  '"return"': 'keyword.control.jump'
+  '"yield"': 'keyword.control.jump'
+  '"break"': 'keyword.control.jump'
+  '"next"': 'keyword.control.jump'
+  '"rescue"': 'keyword.control.exception'
+  '"ensure"': 'keyword.control.exception'
+  '"retry"': 'keyword.control.exception'
 
-  'constant': [
-    {match: '^[A-Z_0-9]+$', scopes: 'variable.constant'}
-    'entity.name.type.class'
-  ]
-  'global_variable': 'variable.other.readwrite.global'
-  'superclass > constant': 'entity.other.inherited-class'
+  '"class"': 'keyword.storage.declaration'
+  '"def"': 'keyword.storage.declaration'
+  '"module"': 'keyword.storage.declaration'
+  '"alias"': 'keyword.storage.declaration'
+  '"undef"': 'keyword.storage.modifier'
 
-  'identifier': [
-    {
-      match: '^__(FILE|LINE|ENCODING)__$',
-      scopes: 'support.variable'
-    }
-    {
-      match: '^(public|protected|private)$'
-      scopes: 'keyword.other.special-method'
-    }
-    {
-      match: '^(block_given\?|iterator\?|alias_method)'
-      scopes: 'keyword.control'
-    }
-  ]
+  '"defined?"': 'keyword.operator.defined'
 
-  'escape_sequence': 'constant.character.escape'
+  '"+"': 'keyword.operator.arithmetic.symbolic'
+  '"-"': 'keyword.operator.arithmetic.symbolic'
+  '"*"': 'keyword.operator.arithmetic.symbolic'
+  '"/"': 'keyword.operator.arithmetic.symbolic'
+  '"%"': 'keyword.operator.arithmetic.symbolic'
+  '"**"': 'keyword.operator.arithmetic.symbolic'
+  '"+@"': 'keyword.operator.arithmetic.symbolic'
+  '"-@"': 'keyword.operator.arithmetic.symbolic'
 
-  'self': 'variable.language'
+  '"&"': 'keyword.operator.bitwise.symbolic'
+  '"|"': 'keyword.operator.bitwise.symbolic'
+  '"^"': 'keyword.operator.bitwise.symbolic'
+  '"~"': 'keyword.operator.bitwise.symbolic'
+  '"<<"': 'keyword.operator.bitwise.shift.symbolic'
+  '">>"': 'keyword.operator.bitwise.shift.symbolic'
 
-  '"%w("': 'punctuation.definition.parameters'
-  '"%i("': 'punctuation.definition.parameters'
-  '"("': 'punctuation.definition.parameters'
-  '")"': 'punctuation.definition.parameters'
+  '"[]"': 'keyword.operator.subscript.symbolic'
+  '"[]="': 'keyword.operator.assignement.symbolic'
 
-  'method > identifier': 'entity.name.function'
-  'assignment > identifier': 'variable'
+  '"="': 'keyword.operator.assignment.symbolic'
+  '"+="': 'keyword.operator.assignment.compound.symbolic'
+  '"-="': 'keyword.operator.assignment.compound.symbolic'
+  '"*="': 'keyword.operator.assignment.compound.symbolic'
+  '"/="': 'keyword.operator.assignment.compound.symbolic'
+  '"%="': 'keyword.operator.assignment.compound.symbolic'
+  '"**="': 'keyword.operator.assignment.compound.symbolic'
+  '"&="': 'keyword.operator.assignment.compound.symbolic'
+  '"|="': 'keyword.operator.assignment.compound.symbolic'
+  '"^="': 'keyword.operator.assignment.compound.symbolic'
+  '"<<="': 'keyword.operator.assignment.compound.symbolic'
+  '">>="': 'keyword.operator.assignment.compound.symbolic'
+  '"&&="': 'keyword.operator.assignment.compound.symbolic'
+  '"||="': 'keyword.operator.assignment.compound.symbolic'
 
-  'singleton_method > identifier:nth-child(3)': 'entity.name.function'
-  'setter > identifier': 'entity.name.function'
-  'call > identifier:nth-child(2)': 'entity.name.function'
-  'method_call > identifier:nth-child(0)': [
-    {exact: 'require', scopes: 'support.function'}
-    {match: '^(public|protected|private)$', scopes: 'keyword.other.special-method'}
-    {match: '^(block_given\?|iterator\?|alias_method)', scopes: 'keyword.control'}
-    'entity.name.function'
-  ]
+  '"=="': 'keyword.operator.comparison.symbolic'
+  '"==="': 'keyword.operator.comparison.symbolic'
+  '"!="': 'keyword.operator.comparison.symbolic'
+  '"<"': 'keyword.operator.comparison.symbolic'
+  '">"': 'keyword.operator.comparison.symbolic'
+  '"<="': 'keyword.operator.comparison.symbolic'
+  '">="': 'keyword.operator.comparison.symbolic'
+  '"<=>"': 'keyword.operator.comparison.symbolic'
+  '"=~"': 'keyword.operator.comparison.symbolic'
+  '"!~"': 'keyword.operator.comparison.symbolic'
 
-  'block_parameters > identifier': 'variable.other.block'
-  'method_parameters > identifier, optional_parameter > identifier': 'variable.parameter.function'
-  'keyword_parameter > identifier:nth-child(0)': 'constant.other.symbol'
-  'class_variable': 'variable.other.object.property'
-  'instance_variable': 'variable.other.object.property'
-  'symbol': 'constant.other.symbol'
-  'bare_symbol': 'constant.other.symbol'
-
-  'comment': 'comment'
-  'regex': 'string.regexp'
-  'float': 'constant.numeric'
-  'integer': 'constant.numeric'
-
-  'string': [
-    {match: '^"', scopes: 'string.quoted.double.interpolated'}
-    {match: "^'", scopes: 'string.quoted.single'}
-    'string'
-  ]
-
-  # Quote delimiters are the only two children of these kinds of strings. If
-  # this changes in the tree-sitter parser in the future, these selectors will
-  # need updating.
-  "string > '\"':nth-child(0)": 'punctuation.definition.string.begin'
-  "string > '\"':nth-child(1)": 'punctuation.definition.string.end'
-  'string > "\'":nth-child(0)': 'punctuation.definition.string.begin'
-  'string > "\'":nth-child(1)': 'punctuation.definition.string.end'
-
-  'heredoc_beginning, heredoc_body': 'string.unquoted.heredoc.interpolated'
-  'subshell': 'string.quoted.subshell.interpolated'
-  'bare_string': 'string.unquoted.other'
-
-  '"="': 'keyword.operator.assignment'
-
-  '"+="': 'keyword.operator.assignment.augmented'
-  '"-="': 'keyword.operator.assignment.augmented'
-  '"*="': 'keyword.operator.assignment.augmented'
-  '"/="': 'keyword.operator.assignment.augmented'
-  '"<<="': 'keyword.operator.assignment.augmented'
-  '"%="': 'keyword.operator.assignment.augmented'
-  '"&="': 'keyword.operator.assignment.augmented'
-  '"&&="': 'keyword.operator.assignment.augmented'
-  '"|="': 'keyword.operator.assignment.augmented'
-  '"||="': 'keyword.operator.assignment.augmented'
-  '"**="': 'keyword.operator.assignment.augmented'
-  '"^="': 'keyword.operator.assignment.augmented'
-
-  '"<=>"': 'keyword.operator.comparison'
-  '"<"': 'keyword.operator.comparison'
-  '">"': 'keyword.operator.comparison'
-  '"<="': 'keyword.operator.comparison'
-  '">="': 'keyword.operator.comparison'
-  '"==="': 'keyword.operator.comparison'
-  '"=="': 'keyword.operator.comparison'
-  '"=~"': 'keyword.operator.comparison'
-  '"!="': 'keyword.operator.comparison'
-  '"!~"': 'keyword.operator.comparison'
-
-  '"&&"': 'keyword.operator.logical'
-  '"!"': 'keyword.operator.logical'
-  '"||"': 'keyword.operator.logical'
+  '"!"': 'keyword.operator.logical.symbolic'
+  '"||"': 'keyword.operator.logical.symbolic'
+  '"&&"': 'keyword.operator.logical.symbolic'
   '"and"': 'keyword.operator.logical'
   '"not"': 'keyword.operator.logical'
   '"or"': 'keyword.operator.logical'
-  '"^"': 'keyword.operator.logical'
 
-  '"+"': 'keyword.operator.arithmetic'
-  '"-"': 'keyword.operator.arithmetic'
-  '"*"': 'keyword.operator.arithmetic'
-  '"/"': 'keyword.operator.arithmetic'
-  '"**"': 'keyword.operator.arithmetic'
-  '"&"': 'keyword.operator.arithmetic'
-  '"%"': 'keyword.operator.arithmetic'
+  'conditional > "?"': 'keyword.operator.ternary.symbolic'
+  'conditional > ":"': 'keyword.operator.ternary.symbolic'
 
-  'call > ".", call > "&."': 'punctuation.separator.method'
+  'super': 'keyword.function.super'
+  'self': 'keyword.variable.self'
 
-  '";"': 'punctuation.separator.statement'
-  '","': 'punctuation.separator.object'
+  # Entity
+  'identifier': [
+    {
+      match: '^__(FILE|LINE|ENCODING)__$',
+      scopes: 'keyword.variable'
+    },
+    {
+      # https://ruby-doc.org/core-3.0.0/Module.html
+      match: '^(alias_method|ancestors|append_features|attr|attr_accessor|attr_reader|attr_writer|autoload|autoload\\?|class_eval|class_exec|class_variable_defined\\?|class_variable_get|class_variable_set|class_variables|const_defined\\?|const_get|const_missing|const_set|const_source_location|constants|define_method|deprecate_constant|extend_object|extended|freeze|include|include\\?|included|included_modules|inspect|instance_method|instance_methods|method_added|method_defined\\?|method_removed|method_undefined|module_eval|module_exec|module_function|name|prepend|prepend_features|prepended|private|private_class_method|private_constant|private_instance_methods|private_method_defined\\?|protected|protected_instance_methods|protected_method_defined\\?|public|public_class_method|public_constant|public_instance_method|public_instance_methods|public_method_defined\\?|refine|remove_class_variable|remove_const|remove_method|ruby2_keywords|singleton_class\\?|to_s|undef_method|using)$'
+      scopes: 'entity.function.method.support'
+    },
+    {
+      # https://ruby-doc.org/core-3.0.0/Kernel.html
+      match: '^(__callee__|__dir__|__method__|abort|at_exit|autoload|autoload\\?|binding|block_given\\?|callcc|caller|caller_locations|catch|chomp|chop|class|clone|eval|exec|exit|exit!|fail|fork|format|frozen\\?|gets|global_variables|gsub|iterator\\?|lambda|load|local_variables|loop|open|p|pp|print|printf|proc|putc|puts|raise|rand|readline|readlines|require|require_relative|select|set_trace_func|sleep|spawn|sprintf|srand|sub|syscall|system|tap|test|then|throw|trace_var|trap|untrace_var|warn|yield_self|)$',
+      scopes: 'entity.function.method.support.kernel'
+    },
+    'entity.variable'
+  ]
 
-  'nil': 'constant.language.nil'
-  'true': 'constant.language.true'
-  'false': 'constant.language.false'
+  '''
+  method_call > identifier,
+  call > identifier:nth-child(2)
+  ''': [
+    {
+      # https://ruby-doc.org/core-3.0.0/Module.html
+      match: '^(alias_method|ancestors|append_features|attr|attr_accessor|attr_reader|attr_writer|autoload|autoload\\?|class_eval|class_exec|class_variable_defined\\?|class_variable_get|class_variable_set|class_variables|const_defined\\?|const_get|const_missing|const_set|const_source_location|constants|define_method|deprecate_constant|extend_object|extended|freeze|include|include\\?|included|included_modules|inspect|instance_method|instance_methods|method_added|method_defined\\?|method_removed|method_undefined|module_eval|module_exec|module_function|name|prepend|prepend_features|prepended|private|private_class_method|private_constant|private_instance_methods|private_method_defined\\?|protected|protected_instance_methods|protected_method_defined\\?|public|public_class_method|public_constant|public_instance_method|public_instance_methods|public_method_defined\\?|refine|remove_class_variable|remove_const|remove_method|ruby2_keywords|singleton_class\\?|to_s|undef_method|using)$'
+      scopes: 'entity.function.method.support.call'
+    },
+    {
+      # https://ruby-doc.org/core-3.0.0/Kernel.html
+      match: '^(__callee__|__dir__|__method__|abort|at_exit|autoload|autoload\\?|binding|block_given\\?|callcc|caller|caller_locations|catch|chomp|chop|class|clone|eval|exec|exit|exit!|fail|fork|format|frozen\\?|gets|global_variables|gsub|iterator\\?|lambda|load|local_variables|loop|open|p|pp|print|printf|proc|putc|puts|raise|rand|readline|readlines|require|require_relative|select|set_trace_func|sleep|spawn|sprintf|srand|sub|syscall|system|tap|test|then|throw|trace_var|trap|untrace_var|warn|yield_self|)$',
+      scopes: 'entity.function.method.support.kernel.call'
+    },
+    'entity.function.method.call'
+  ]
+
+  '''
+  method > identifier,
+  setter > identifier,
+  singleton_method > identifier:nth-child(3)
+  ''': 'entity.function.method'
+
+  '''
+  method_parameters > identifier,
+  optional_parameter > identifier,
+  lambda_parameters > identifier,
+  block_parameters > identifier,
+  ''': 'entity.variable.parameter'
+
+  'class_variable': 'entity.variable.member.static'
+  'instance_variable': 'entity.variable.member'
+  'global_variable': 'entity.variable.global'
+
+  'constant': [
+    {
+      # https://ruby-doc.org/core-3.0.0/Kernel.html
+      match: '^(Array|Complex|Float|Hash|Integer|Rational|String)$'
+      scopes: 'entity.type.class.support.kernel'
+    },
+    {
+      match: '^(IO|ENV)$'
+      scopes: 'entity.type.class.support'
+    },
+    {
+      match: '[a-z]',
+      scopes: 'entity.type.class'
+    },
+    'entity.variable.immutable'
+  ]
+
+  'superclass > constant': [
+    {
+      # https://ruby-doc.org/core-3.0.0/Kernel.html
+      match: '^(Array|Complex|Float|Hash|Integer|Rational|String)$'
+      scopes: 'entity.type.class.support.kernel.inherited'
+    },
+    {
+      match: '^(IO|ENV)$'
+      scopes: 'entity.type.class.support.inherited'
+    },
+    'entity.type.class.inherited'
+  ]
+
+  # String
+  'string': [
+    {
+      match: '^("|%Q?\\()',
+      scopes: 'string.quoted.mutable.template'
+    },
+    'string.quoted.mutable'
+  ]
+
+  'bare_string': 'string.mutable'
+
+  'symbol': [
+    {
+      match: '^:"',
+      scopes: 'string.quoted.immutable.template'
+    },
+    'string.immutable'
+  ]
+
+  'bare_symbol': 'string.immutable'
+
+  'keyword_parameter > identifier:nth-child(0)': 'string.immutable.parameter'
+
+  'regex': 'string.regexp'
+
+  'interpolation': 'string.part.interpolation'
+
+  '''
+  heredoc_beginning,
+  heredoc_body
+  ''': 'string.heredoc'
+
+  'subshell': 'string.quoted.subshell'
+
+  # Constant
+  'float': 'constant.numeric.decimal'
+  'integer': 'constant.numeric.integer'
+
+  'nil': 'constant.language.null'
+  'true': 'constant.language.boolean'
+  'false': 'constant.language.boolean'
+
+  'escape_sequence': [
+    {
+      match: '^\\\\[uxftvnrsabecCM0-7]',
+      scopes: 'constant.character.escape.code'
+    },
+    'constant.character.escape'
+  ]
+
+  # Comment
+  'comment': 'comment.line'
+
+  # Punctuation
+  '"."': 'punctuation.accessor.member'
+  '"&."': 'punctuation.accessor.member'
+  '"::"': 'punctuation.accessor.scope'
+  '"=>"': 'punctuation.association.pair'
+  '":"': 'punctuation.association.pair'
+  '","': 'punctuation.separator'
+  '";"': 'punctuation.terminator'
+  '"("': 'punctuation.delimiter'
+  '")"': 'punctuation.delimiter'
+  '"{"': 'punctuation.definition'
+  '"}"': 'punctuation.definition'
+  '"["': 'punctuation.definition'
+  '"]"': 'punctuation.definition'
+
+  '"->"': 'punctuation.definition.function.lambda'
+
+  '"\\""': 'punctuation.definition.string'
+  '":\\""': 'punctuation.definition.string.immutable'
+  'symbol > "\\""': 'punctuation.definition.string.immutable'
+  'regex > "/"': 'punctuation.definition.string.regexp'
+
+  'interpolation > "#{"': 'punctuation.delimiter.string.part.interpolation'
+  'interpolation > "}"': 'punctuation.delimiter.string.part.interpolation'
+
+  'block_parameter > "&"': 'punctuation.definition.block'
+  'block_argument > "&"': 'punctuation.definition.block'
+
+  '".."': 'punctuation.definition.range'
+  '"..."': 'punctuation.definition.range'
+
+  'rest_assignment > "*"': 'punctuation.operation.variadic.pack'
+  'splat_parameter > "*"': 'punctuation.operation.variadic.pack'
+  'splat_argument > "*"': 'punctuation.operation.variadic.unpack'
+  'hash_splat_parameter > "**"': 'punctuation.operation.variadic.pack'
+  'hash_splat_argument > "**"': 'punctuation.operation.variadic.unpack'
+
+  'superclass > "<"': 'punctuation.delimiter.type.inherited'
+
+  'argument_list > "("': 'punctuation.delimiter.arguments'
+  'argument_list > ")"': 'punctuation.delimiter.arguments'
+  'parameters > "("': 'punctuation.delimiter.parameters'
+  'parameters > ")"': 'punctuation.delimiter.parameters'
+
+  'block_parameters > "|"': 'punctuation.delimiter.parameters'
+
+  'hash > "{"': 'punctuation.definition.collection.hash'
+  'hash > "}"': 'punctuation.definition.collection.hash'
+
+  'block > "{"': 'punctuation.definition.block'
+  'block > "}"': 'punctuation.definition.block'
+  'begin_block > "{"': 'punctuation.definition.block'
+  'begin_block > "}"': 'punctuation.definition.block'
+  'end_block > "{"': 'punctuation.definition.block'
+  'end_block > "}"': 'punctuation.definition.block'
+
+  '"%w("': 'punctuation.definition.collection.array'
+  '"%i("': 'punctuation.definition.collection.array'
+  'string_array > ")"': 'punctuation.definition.collection.array'
+  'symbol_array > ")"': 'punctuation.definition.collection.array'
+
+  'array > "["': 'punctuation.definition.collection.array'
+  'array > "]"': 'punctuation.definition.collection.array'
+
+  'element_reference > "["': 'punctuation.delimiter.subscript'
+  'element_reference > "]"': 'punctuation.delimiter.subscript'
+
+  'ERROR > "."': 'punctuation.accessor.member.invalid.illegal'
+  'ERROR > "&."': 'punctuation.accessor.member.invalid.illegal'
+  'ERROR > "::"': 'punctuation.accessor.scope.invalid.illegal'
+  'ERROR > "=>"': 'punctuation.association.pair.invalid.illegal'
+  'ERROR > ":"': 'punctuation.association.pair.invalid.illegal'
+  'ERROR > ","': 'punctuation.separator.invalid.illegal'
+  'ERROR > ";"': 'punctuation.terminator.invalid.illegal'
+  'ERROR > "("': 'punctuation.delimiter.invalid.illegal'
+  'ERROR > ")"': 'punctuation.delimiter.invalid.illegal'
+  'ERROR > "{"': 'punctuation.definition.invalid.illegal'
+  'ERROR > "}"': 'punctuation.definition.invalid.illegal'
+  'ERROR > "["': 'punctuation.definition.invalid.illegal'
+  'ERROR > "]"': 'punctuation.definition.invalid.illegal'
+  'ERROR > "->"': 'punctuation.definition.function.lambda.invalid.illegal'
+  'ERROR > "\\""': 'punctuation.definition.string.invalid.illegal'
+  'ERROR > ":\\""': 'punctuation.definition.string.immutable.invalid.illegal'
